@@ -1,6 +1,6 @@
 {
   "name": "@celestial-ui/vue",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A comprehensive Vue 3 component library with multi-framework styling support",
   "type": "module",
   "license": "MIT",
@@ -8,13 +8,13 @@
     "name": "CelestialUI Team",
     "email": "support@celestialui.dev"
   },
-  "homepage": "https://github.com/your-username/celestialui-vue#readme",
+  "homepage": "https://github.com/dev-1603/CelestialUI-Vue#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-username/celestialui-vue.git"
+    "url": "https://github.com/dev-1603/CelestialUI-Vue.git"
   },
   "bugs": {
-    "url": "https://github.com/your-username/celestialui-vue/issues"
+    "url": "https://github.com/dev-1603/CelestialUI-Vue/issues"
   },
   "keywords": [
     "vue",

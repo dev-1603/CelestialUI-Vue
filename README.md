@@ -346,10 +346,10 @@ npm run test:e2e:dev
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/celestialui-vue.git
+git clone https://github.com/dev-1603/CelestialUI-Vue.git
 
 # Install dependencies
-cd celestialui-vue
+cd CelestialUI-Vue
 npm install
 
 # Start development server
@@ -412,9 +412,9 @@ MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 📞 Support
 
-- 📖 [Documentation](https://celestialui-vue.netlify.app)
-- 🐛 [Issues](https://github.com/your-username/celestialui-vue/issues)
-- 💬 [Discussions](https://github.com/your-username/celestialui-vue/discussions)
+- 📖 [Documentation](https://github.com/dev-1603/CelestialUI-Vue#readme)
+- 🐛 [Issues](https://github.com/dev-1603/CelestialUI-Vue/issues)
+- 💬 [Discussions](https://github.com/dev-1603/CelestialUI-Vue/discussions)
 - 📧 [Email](mailto:support@celestialui.dev)
 
 ---
