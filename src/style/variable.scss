@@ -1,0 +1,171 @@
+// // Define primary color palette
+// $primary-color: #3498db;
+// $primary-light: #5dade2;
+// $primary-dark: #2e86c1;
+
+// // Define secondary color palette
+// $secondary-color: #e74c3c;
+// $secondary-light: #ec7063;
+// $secondary-dark: #cb4335;
+
+// // Define neutral color palette
+// $neutral-light: #ecf0f1;
+// $neutral-medium: #bdc3c7;
+// $neutral-dark: #7f8c8d;
+
+// // Define success, warning, and error colors
+// $success-color: #28a745;
+// $warning-color: #ffc107;
+// $error-color: #dc3545;
+
+// // Define text colors
+// $text-primary: #2c3e50;
+// $text-secondary: #95a5a6;
+
+// // Define background colors
+// $background-light: #ffffff;
+// $background-dark: #34495e;
+
+// // Example usage in a component
+// .button {
+//   background-color: $primary-color;
+//   color: $background-light;
+  
+//   &:hover {
+//     background-color: $primary-dark;
+//   }
+// }
+
+// .alert-success {
+//   background-color: $success-color;
+//   color: $background-light;
+// }
+
+// .alert-error {
+//   background-color: $error-color;
+//   color: $background-light;
+// }
+
+
+// // Color Variables
+// $primary-color: #3498db;
+// $secondary-color: #2ecc71;
+// $accent-color: #e74c3c;
+// $background-color: #ecf0f1;
+// $text-color: #2c3e50;
+
+// // Font Variables
+// $font-family-base: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+// $font-size-base: 16px;
+// $font-size-large: 20px;
+// $font-size-small: 12px;
+
+// // Spacing Variables
+// $spacing-unit: 8px;
+// $spacing-small: $spacing-unit / 2;
+// $spacing-medium: $spacing-unit;
+// $spacing-large: $spacing-unit * 2;
+
+// // Border Variables
+// $border-radius: 4px;
+// $border-width: 1px;
+// $border-color: #bdc3c7;
+
+// // Shadow Variables
+// $box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+// // Theme Variables
+// $light-theme: (
+//     primary-color: $primary-color,
+//     secondary-color: $secondary-color,
+//     accent-color: $accent-color,
+//     background-color: $background-color,
+//     text-color: $text-color,
+//     border-color: $border-color,
+//     box-shadow: $box-shadow
+// );
+
+// $dark-theme: (
+//     primary-color: #2980b9,
+//     secondary-color: #27ae60,
+//     accent-color: #c0392b,
+//     background-color: #34495e,
+//     text-color: #ecf0f1,
+//     border-color: #7f8c8d,
+//     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2)
+// );
+
+// Default font family
+$font-family: 'Arial, sans-serif';
+
+// Default border styles
+$border-width: 1px;
+$border-color: #ccc;
+$border-radius: 4px;
+
+// Default box shadow
+$box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+// Default font sizes
+$font-size-h1: 2em;
+$font-size-h2: 1.5em;
+$font-size-h3: 1.17em;
+$font-size-h4: 1em;
+$font-size-h5: 0.83em;
+$font-size-h6: 0.67em;
+$font-size-p: 1em;
+
+// Color palette with opacity
+$color-palette: (
+  primary: rgba(52, 152, 219, 1),
+  primary-10: rgba(52, 152, 219, 0.1),
+  primary-30: rgba(52, 152, 219, 0.3),
+  primary-50: rgba(52, 152, 219, 0.5),
+  secondary: rgba(231, 76, 60, 1),
+  secondary-10: rgba(231, 76, 60, 0.1),
+  secondary-30: rgba(231, 76, 60, 0.3),
+  secondary-50: rgba(231, 76, 60, 0.5),
+  neutral: rgba(236, 240, 241, 1),
+  neutral-10: rgba(236, 240, 241, 0.1),
+  neutral-30: rgba(236, 240, 241, 0.3),
+  neutral-50: rgba(236, 240, 241, 0.5)
+);
+
+// Example usage in a component
+body {
+  font-family: $font-family;
+}
+
+h1 {
+  font-size: $font-size-h1;
+}
+
+h2 {
+  font-size: $font-size-h2;
+}
+
+h3 {
+  font-size: $font-size-h3;
+}
+
+h4 {
+  font-size: $font-size-h4;
+}
+
+h5 {
+  font-size: $font-size-h5;
+}
+
+h6 {
+  font-size: $font-size-h6;
+}
+
+p {
+  font-size: $font-size-p;
+}
+
+.box {
+  border: $border-width solid $border-color;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  background-color: map-get($color-palette, primary);
+}
