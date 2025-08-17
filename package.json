@@ -1,8 +1,33 @@
 {
-  "name": "@celestialui/vue",
-  "version": "1.0.0",
+  "name": "@celestial-ui/vue",
+  "version": "1.0.1",
   "description": "A comprehensive Vue 3 component library with multi-framework styling support",
   "type": "module",
+  "license": "MIT",
+  "author": {
+    "name": "CelestialUI Team",
+    "email": "support@celestialui.dev"
+  },
+  "homepage": "https://github.com/your-username/celestialui-vue#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/celestialui-vue.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/celestialui-vue/issues"
+  },
+  "keywords": [
+    "vue",
+    "vue3",
+    "component-library",
+    "ui-components",
+    "tailwind",
+    "scss",
+    "material-design",
+    "typescript",
+    "nuxt",
+    "storybook"
+  ],
   "files": [
     "dist",
     "lib"
@@ -38,11 +63,12 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "chromatic": "npx chromatic --project-token=PROJECT_TOKEN",
-    "release": "npm run build && npm publish"
-  },
-  "dependencies": {
-    "vue": "^3.5.12",
-    "vue-router": "^4.4.5"
+    "prepublishOnly": "npm run build-lib",
+    "release": "npm run build-lib && npm publish",
+    "release:beta": "npm run build-lib && npm publish --tag beta",
+    "version:patch": "npm version patch",
+    "version:minor": "npm version minor",
+    "version:major": "npm version major"
   },
   "peerDependencies": {
     "vue": "^3.0.0"
@@ -87,6 +113,7 @@
     "start-server-and-test": "^2.0.8",
     "storybook": "^8.4.2",
     "tailwindcss": "^3.4.14",
+    "terser": "^5.43.1",
     "typescript": "~5.6.3",
     "unplugin-auto-import": "^19.0.0",
     "unplugin-vue-components": "^28.0.0",
@@ -94,6 +121,8 @@
     "vite-plugin-dts": "^4.5.4",
     "vite-plugin-vue-devtools": "^7.5.4",
     "vitest": "^2.1.4",
+    "vue": "^3.5.12",
+    "vue-router": "^4.4.5",
     "vue-tsc": "^2.1.10"
   },
   "eslintConfig": {

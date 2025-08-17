@@ -1,8 +1,8 @@
 # 🌟 CelestialUI Vue
 
-A comprehensive Vue 3 component library with multi-framework styling support, inspired by [shadcn/ui](https://ui.shadcn.com/) and [Aceternity UI](https://ui.aceternity.com/).
+A comprehensive **Vue 3 component library** with multi-framework styling support and full compatibility with Vue 3 ecosystem and Nuxt 3/4 applications.
 
-[![npm version](https://badge.fury.io/js/@celestialui%2Fvue.svg)](https://badge.fury.io/js/@celestialui%2Fvue)
+[![npm version](https://badge.fury.io/js/@celestial-ui%2Fvue.svg)](https://badge.fury.io/js/@celestial-ui%2Fvue)
 [![Vue 3](https://img.shields.io/badge/Vue-3.x-4FC08D.svg)](https://vuejs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-3178C6.svg)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -10,8 +10,8 @@ A comprehensive Vue 3 component library with multi-framework styling support, in
 ## ✨ Features
 
 - 🎨 **Multi-Framework Styling**: Support for Tailwind CSS, SCSS, Material Design, and pure CSS
-- 🔧 **Vue 3 & Nuxt 3/4 Compatible**: Full compatibility with Vue 3 and Nuxt 3/4
-- 🎯 **TypeScript First**: Comprehensive type definitions included
+- 🔧 **Vue 3 & Nuxt Ready**: Built specifically for Vue 3 with full Nuxt 3/4 compatibility
+- 🎯 **TypeScript Support**: Full TypeScript support with comprehensive type definitions
 - ♿ **Accessibility Focused**: WCAG compliant components with keyboard navigation
 - 🎭 **Universal Icon System**: Support for FontAwesome, Material Icons, Heroicons, Lucide, and custom SVGs
 - 📱 **Responsive Design**: Mobile-first approach with responsive utilities
@@ -26,25 +26,27 @@ A comprehensive Vue 3 component library with multi-framework styling support, in
 
 ```bash
 # npm
-npm install @celestialui/vue
+npm install @celestial-ui/vue
 
 # yarn
-yarn add @celestialui/vue
+yarn add @celestial-ui/vue
 
 # pnpm
-pnpm add @celestialui/vue
+pnpm add @celestial-ui/vue
 ```
 
 ### Basic Usage
 
 ```typescript
-// main.ts
+// main.ts - Vue 3 setup
 import { createApp } from 'vue'
-import CelestialUI from '@celestialui/vue'
-import '@celestialui/vue/style.css'
+import App from './App.vue'
+import CelestialUI from '@celestial-ui/vue'
+import '@celestial-ui/vue/style.css'
 
 const app = createApp(App)
 
+// Register CelestialUI Vue components globally
 app.use(CelestialUI, {
   theme: {
     framework: 'tailwind', // 'tailwind' | 'scss' | 'material' | 'css'
@@ -59,17 +61,17 @@ app.use(CelestialUI, {
 app.mount('#app')
 ```
 
-### Component Usage
+### Vue Component Usage
 
 ```vue
 <template>
   <div>
-    <!-- Buttons -->
+    <!-- Vue Button Components -->
     <CButton variant="primary" size="lg" left-icon="star">
       Primary Button
     </CButton>
     
-    <!-- Input -->
+    <!-- Vue Input Component with v-model -->
     <CInput
       v-model="email"
       label="Email Address"
@@ -78,7 +80,7 @@ app.mount('#app')
       clearable
     />
     
-    <!-- Card -->
+    <!-- Vue Card Component with slots -->
     <CCard title="Card Title" subtitle="Card subtitle" hoverable>
       <p>Card content goes here...</p>
       <template #footer>
@@ -86,7 +88,7 @@ app.mount('#app')
       </template>
     </CCard>
     
-    <!-- Modal -->
+    <!-- Vue Modal with v-model binding -->
     <CModal v-model="showModal" title="Modal Title">
       <p>Modal content...</p>
       <template #footer>
@@ -97,6 +99,7 @@ app.mount('#app')
 </template>
 
 <script setup lang="ts">
+// Vue 3 Composition API
 import { ref } from 'vue'
 
 const email = ref('')
@@ -159,15 +162,15 @@ app.use(CelestialUI, {
 ### Installation
 
 ```bash
-npm install @celestialui/vue
+npm install @celestial-ui/vue
 ```
 
 ### Nuxt Plugin
 
 ```typescript
 // plugins/celestialui.client.ts
-import CelestialUI from '@celestialui/vue'
-import '@celestialui/vue/style.css'
+import CelestialUI from '@celestial-ui/vue'
+import '@celestial-ui/vue/style.css'
 
 export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.use(CelestialUI, {
@@ -381,12 +384,31 @@ npm run build
 
 MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+## 🔧 Compatibility
 
-- Inspired by [shadcn/ui](https://ui.shadcn.com/)
-- Design patterns from [Aceternity UI](https://ui.aceternity.com/)
-- Built with [Vue 3](https://vuejs.org/)
-- Powered by [Vite](https://vitejs.dev/)
+### Vue 3 Ecosystem
+- **Vue 3.x**: Full compatibility with Vue 3 Composition API and Options API
+- **Vite**: Optimized for Vite build system with fast HMR
+- **TypeScript**: Complete TypeScript support with type definitions
+- **Vue DevTools**: Full integration with Vue DevTools for debugging
+
+### Nuxt Framework
+- **Nuxt 3**: Native support for Nuxt 3 with auto-imports and SSR
+- **Nuxt 4**: Forward compatibility with upcoming Nuxt 4 features
+- **Server-Side Rendering**: Components work seamlessly with SSR/SSG
+- **Auto-imports**: Automatic component registration in Nuxt projects
+
+### Styling Systems
+- **Tailwind CSS**: Native Tailwind integration with utility classes
+- **SCSS/Sass**: Full SCSS support with CSS modules
+- **Material Design**: Material Design 3 theming system
+- **Pure CSS**: Custom CSS properties and variables support
+
+### Build Tools
+- **Vite**: Primary build tool with optimized bundling
+- **Webpack**: Compatible with Webpack-based projects
+- **Rollup**: ES modules and UMD builds
+- **Tree Shaking**: Optimized for bundle size reduction
 
 ## 📞 Support
 

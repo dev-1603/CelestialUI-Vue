@@ -7,12 +7,13 @@ import { resolve } from 'path'
 export default defineConfig({
   plugins: [
     vue(),
-    dts({
-      include: ['lib/**/*'],
-      exclude: ['src/**/*'],
-      insertTypesEntry: true,
-      rollupTypes: true
-    }),
+    // Temporarily disable DTS generation
+    // dts({
+    //   include: ['lib/**/*'],
+    //   exclude: ['src/**/*', 'tests/**/*'],
+    //   insertTypesEntry: true,
+    //   rollupTypes: false
+    // }),
     visualizer({
       filename: 'dist/stats.html',
       open: false,
@@ -29,11 +30,14 @@ export default defineConfig({
       fileName: (format) => `celestial-ui.${format}.js`
     },
 
-    rollupOptions: {
+        rollupOptions: {
       // Externalize deps that shouldn't be bundled into the library
       external: ['vue', 'vue-router'],
 
       output: {
+        // Fix named/default export issue
+        exports: 'named',
+
         // Provide global variables for externalized deps in UMD build
         globals: {
           vue: 'Vue',
@@ -53,8 +57,8 @@ export default defineConfig({
     // Generate source maps
     sourcemap: true,
 
-    // Minify output
-    minify: 'terser',
+    // Disable minification for now
+    minify: false,
 
     // Target modern browsers
     target: 'esnext',

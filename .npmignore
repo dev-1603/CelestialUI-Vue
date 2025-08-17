@@ -1,0 +1,49 @@
+# Source files
+src/
+tests/
+cypress/
+.storybook/
+stories/
+
+# Development files
+*.log
+.env*
+.vscode/
+.idea/
+
+# Build artifacts
+node_modules/
+.DS_Store
+Thumbs.db
+
+# Testing
+coverage/
+.nyc_output/
+
+# Storybook
+storybook-static/
+
+# Development configs
+vite.config.ts
+vitest.config.ts
+cypress.config.ts
+tailwind.config.js
+postcss.config.js
+tsconfig*.json
+eslint.config.js
+
+# Documentation (keep only essential)
+development-guide.md
+
+# Git
+.git/
+.gitignore
+
+# Yarn/npm
+yarn.lock
+package-lock.json
+.yarn/
+
+# Others
+*.tgz
+*.tar.gz

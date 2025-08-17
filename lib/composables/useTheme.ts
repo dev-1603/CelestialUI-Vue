@@ -64,7 +64,7 @@ export function useTheme() {
     // Apply CSS variables
     const vars = generateCSSVariables(getThemeTokens(theme))
     Object.entries(vars).forEach(([property, value]) => {
-      root.style.setProperty(property, value)
+      root.style.setProperty(property, value as string)
     })
 
     // Emit theme change event

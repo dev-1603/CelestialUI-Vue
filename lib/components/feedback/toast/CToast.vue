@@ -97,8 +97,7 @@ const toastClasses = computed(() => {
 
 const toastStyles = computed(() => {
   return {
-    ...componentStyles.value,
-    ...(props.style || {})
+    ...componentStyles.value
   }
 })
 
