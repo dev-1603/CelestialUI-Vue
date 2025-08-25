@@ -1,30 +1,117 @@
 {
-  "name": "celestialui-vue",
-  "version": "0.0.0",
-  "private": true,
+  "name": "@celestial-ui/vue",
+  "version": "1.0.0",
+  "description": "A comprehensive Vue 3 component library with atomic design principles",
   "type": "module",
+  "license": "MIT",
+  "author": {
+    "name": "CelestialUI Team",
+    "email": "support@celestialui.dev"
+  },
+  "homepage": "https://github.com/dev-1603/CelestialUI-Vue#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dev-1603/CelestialUI-Vue.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dev-1603/CelestialUI-Vue/issues"
+  },
+  "keywords": [
+    "vue",
+    "vue3",
+    "component-library",
+    "ui-components",
+    "tailwind",
+    "typescript",
+    "atomic-design",
+    "storybook",
+    "accessibility"
+  ],
+  "files": [
+    "dist",
+    "lib"
+  ],
+  "main": "./dist/celestial-ui.umd.js",
+  "module": "./dist/celestial-ui.es.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/celestial-ui.es.js",
+      "require": "./dist/celestial-ui.umd.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./style.css": {
+      "default": "./dist/style.css"
+    },
+    "./themes/*": {
+      "default": "./dist/themes/*"
+    },
+    "./atoms": {
+      "import": "./dist/components/atoms/index.js",
+      "types": "./dist/components/atoms/index.d.ts"
+    },
+    "./molecules": {
+      "import": "./dist/components/molecules/index.js",
+      "types": "./dist/components/molecules/index.d.ts"
+    },
+    "./organisms": {
+      "import": "./dist/components/organisms/index.js",
+      "types": "./dist/components/organisms/index.d.ts"
+    },
+    "./templates": {
+      "import": "./dist/components/templates/index.js",
+      "types": "./dist/components/templates/index.d.ts"
+    },
+    "./composables": {
+      "import": "./dist/composables/index.js",
+      "types": "./dist/composables/index.d.ts"
+    },
+    "./plugins": {
+      "import": "./dist/plugins/index.js", 
+      "types": "./dist/plugins/index.d.ts"
+    },
+    "./utils": {
+      "import": "./dist/utils/index.js",
+      "types": "./dist/utils/index.d.ts"
+    },
+    "./components/*": {
+      "import": "./lib/components/*",
+      "types": "./dist/components/*"
+    }
+  },
   "scripts": {
     "dev": "vite",
-    "build": "run-p type-check \"build-only {@}\" --",
+    "build": "run-p type-check:lib build-lib build-demo",
+    "build-lib": "vite build --config vite.config.lib.ts",
+    "build-demo": "vite build --config vite.config.ts",
+    "type-check:lib": "vue-tsc --build --force ./tsconfig.lib.json",
+    "type-check": "vue-tsc --build --force",
     "preview": "vite preview",
     "test:unit": "vitest",
     "test:e2e": "start-server-and-test preview http://localhost:4173 'cypress run --e2e'",
     "test:e2e:dev": "start-server-and-test 'vite dev --port 4173' http://localhost:4173 'cypress open --e2e'",
-    "build-only": "vite build",
-    "type-check": "vue-tsc --build --force",
+    "test:coverage": "vitest run --coverage",
     "lint:oxlint": "oxlint . --fix -D correctness --ignore-path .gitignore",
     "lint:eslint": "eslint . --fix",
     "lint": "run-s lint:*",
-    "format": "prettier --write src/",
+    "format": "prettier --write src/ lib/",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "chromatic": "npx chromatic --project-token=PROJECT_TOKEN",
+    "prepublishOnly": "npm run build-lib",
+    "release": "npm run build-lib && npm publish",
+    "release:beta": "npm run build-lib && npm publish --tag beta",
+    "version:patch": "npm version patch",
+    "version:minor": "npm version minor",
+    "version:major": "npm version major"
   },
-  "dependencies": {
-    "vue": "^3.5.12",
-    "vue-router": "^4.4.5"
+  "peerDependencies": {
+    "vue": "^3.0.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.2",
+    "@storybook/addon-a11y": "8.5.0",
+    "@storybook/addon-docs": "8.5.0",
     "@storybook/addon-essentials": "^8.4.2",
     "@storybook/addon-interactions": "^8.4.2",
     "@storybook/addon-onboarding": "^8.4.2",
@@ -34,14 +121,17 @@
     "@storybook/vue3-vite": "^8.4.2",
     "@tsconfig/node22": "^22.0.0",
     "@types/jsdom": "^21.1.7",
-    "@types/node": "^22.9.0",
+    "@types/node": "^22.10.7",
     "@vitejs/plugin-vue": "^5.1.4",
+    "@vitest/coverage-v8": "^2.1.4",
     "@vitest/eslint-plugin": "1.1.7",
     "@vue/eslint-config-prettier": "^10.1.0",
     "@vue/eslint-config-typescript": "^14.1.3",
     "@vue/test-utils": "^2.4.6",
     "@vue/tsconfig": "^0.5.1",
+    "@vueuse/core": "^11.3.0",
     "autoprefixer": "^10.4.20",
+    "chromatic": "^11.18.0",
     "cypress": "^13.15.1",
     "eslint": "^9.14.0",
     "eslint-plugin-cypress": "^4.1.0",
@@ -53,13 +143,21 @@
     "oxlint": "^0.11.0",
     "postcss": "^8.4.47",
     "prettier": "^3.3.3",
+    "rollup-plugin-visualizer": "^5.14.0",
+    "sass-embedded": "^1.85.0",
     "start-server-and-test": "^2.0.8",
     "storybook": "^8.4.2",
     "tailwindcss": "^3.4.14",
+    "terser": "^5.43.1",
     "typescript": "~5.6.3",
+    "unplugin-auto-import": "^19.0.0",
+    "unplugin-vue-components": "^28.0.0",
     "vite": "^5.4.10",
+    "vite-plugin-dts": "^4.5.4",
     "vite-plugin-vue-devtools": "^7.5.4",
     "vitest": "^2.1.4",
+    "vue": "^3.5.12",
+    "vue-router": "^4.4.5",
     "vue-tsc": "^2.1.10"
   },
   "eslintConfig": {

@@ -1,0 +1,612 @@
+{
+  "themes": {
+    "portfolio-showcase": {
+      "name": "Portfolio Showcase",
+      "mode": "both",
+      "description": "Premium gradient-ready theme designed for creative portfolios and modern web apps",
+      "category": "portfolio",
+      "featured": true,
+      "dark": {
+        "primary": "#8b5cf6",
+        "secondary": "#06b6d4",
+        "accent": "#f59e0b",
+        "background": "#0f0f23",
+        "surface": "#1a1b3a",
+        "surfaceHover": "#252654",
+        "text": "#f8fafc",
+        "textSecondary": "#cbd5e1",
+        "textMuted": "#94a3b8",
+        "border": "#374151",
+        "borderHover": "#4b5563",
+        "success": "#10b981",
+        "warning": "#f59e0b",
+        "error": "#ef4444",
+        "info": "#06b6d4",
+        "gradient": {
+          "primary": "linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%)",
+          "secondary": "linear-gradient(135deg, #f59e0b 0%, #ef4444 100%)",
+          "surface": "linear-gradient(135deg, #1a1b3a 0%, #252654 100%)"
+        },
+        "shadow": {
+          "sm": "0 1px 2px 0 rgba(139, 92, 246, 0.15)",
+          "md": "0 4px 6px -1px rgba(139, 92, 246, 0.15)",
+          "lg": "0 10px 15px -3px rgba(139, 92, 246, 0.15)",
+          "glow": "0 0 20px rgba(139, 92, 246, 0.3)"
+        }
+      },
+      "light": {
+        "primary": "#7c3aed",
+        "secondary": "#0891b2",
+        "accent": "#ea580c",
+        "background": "#fefefe",
+        "surface": "#ffffff",
+        "surfaceHover": "#f8fafc",
+        "text": "#1e293b",
+        "textSecondary": "#475569",
+        "textMuted": "#64748b",
+        "border": "#e2e8f0",
+        "borderHover": "#cbd5e1",
+        "success": "#059669",
+        "warning": "#d97706",
+        "error": "#dc2626",
+        "info": "#0284c7",
+        "gradient": {
+          "primary": "linear-gradient(135deg, #7c3aed 0%, #0891b2 100%)",
+          "secondary": "linear-gradient(135deg, #ea580c 0%, #dc2626 100%)",
+          "surface": "linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)"
+        },
+        "shadow": {
+          "sm": "0 1px 2px 0 rgba(124, 58, 237, 0.1)",
+          "md": "0 4px 6px -1px rgba(124, 58, 237, 0.1)",
+          "lg": "0 10px 15px -3px rgba(124, 58, 237, 0.1)",
+          "glow": "0 0 20px rgba(124, 58, 237, 0.2)"
+        }
+      }
+    },
+    "modern-saas": {
+      "name": "Modern SaaS",
+      "mode": "both",
+      "description": "Clean, trustworthy palette perfect for SaaS applications and business dashboards",
+      "category": "saas",
+      "featured": true,
+      "dark": {
+        "primary": "#3b82f6",
+        "secondary": "#10b981",
+        "accent": "#f59e0b",
+        "background": "#0c111b",
+        "surface": "#151b26",
+        "surfaceHover": "#1f2937",
+        "text": "#f9fafb",
+        "textSecondary": "#d1d5db",
+        "textMuted": "#9ca3af",
+        "border": "#374151",
+        "borderHover": "#4b5563",
+        "success": "#10b981",
+        "warning": "#f59e0b",
+        "error": "#ef4444",
+        "info": "#06b6d4",
+        "gradient": {
+          "primary": "linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)",
+          "secondary": "linear-gradient(135deg, #10b981 0%, #047857 100%)",
+          "surface": "linear-gradient(135deg, #151b26 0%, #1f2937 100%)"
+        },
+        "shadow": {
+          "sm": "0 1px 2px 0 rgba(59, 130, 246, 0.1)",
+          "md": "0 4px 6px -1px rgba(59, 130, 246, 0.1)",
+          "lg": "0 10px 15px -3px rgba(59, 130, 246, 0.1)",
+          "glow": "0 0 20px rgba(59, 130, 246, 0.25)"
+        }
+      },
+      "light": {
+        "primary": "#2563eb",
+        "secondary": "#059669",
+        "accent": "#d97706",
+        "background": "#ffffff",
+        "surface": "#f8fafc",
+        "surfaceHover": "#f1f5f9",
+        "text": "#111827",
+        "textSecondary": "#374151",
+        "textMuted": "#6b7280",
+        "border": "#e5e7eb",
+        "borderHover": "#d1d5db",
+        "success": "#059669",
+        "warning": "#d97706",
+        "error": "#dc2626",
+        "info": "#0284c7",
+        "gradient": {
+          "primary": "linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)",
+          "secondary": "linear-gradient(135deg, #059669 0%, #047857 100%)",
+          "surface": "linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%)"
+        },
+        "shadow": {
+          "sm": "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+          "md": "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+          "lg": "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
+          "glow": "0 0 20px rgba(37, 99, 235, 0.15)"
+        }
+      }
+    },
+    "creative-studio": {
+      "name": "Creative Studio",
+      "mode": "both",
+      "description": "Bold, artistic palette with high contrast for creative agencies and design studios",
+      "category": "creative",
+      "featured": true,
+      "dark": {
+        "primary": "#ec4899",
+        "secondary": "#8b5cf6",
+        "accent": "#06b6d4",
+        "background": "#0f0f0f",
+        "surface": "#1a1a1a",
+        "surfaceHover": "#262626",
+        "text": "#ffffff",
+        "textSecondary": "#e5e5e5",
+        "textMuted": "#a3a3a3",
+        "border": "#404040",
+        "borderHover": "#525252",
+        "success": "#22c55e",
+        "warning": "#eab308",
+        "error": "#ef4444",
+        "info": "#06b6d4",
+        "gradient": {
+          "primary": "linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%)",
+          "secondary": "linear-gradient(135deg, #06b6d4 0%, #22c55e 100%)",
+          "surface": "linear-gradient(135deg, #1a1a1a 0%, #262626 100%)",
+          "rainbow": "linear-gradient(90deg, #ec4899 0%, #8b5cf6 25%, #06b6d4 50%, #22c55e 75%, #eab308 100%)"
+        },
+        "shadow": {
+          "sm": "0 1px 2px 0 rgba(236, 72, 153, 0.2)",
+          "md": "0 4px 6px -1px rgba(236, 72, 153, 0.2)",
+          "lg": "0 10px 15px -3px rgba(236, 72, 153, 0.2)",
+          "glow": "0 0 30px rgba(236, 72, 153, 0.4)"
+        }
+      },
+      "light": {
+        "primary": "#db2777",
+        "secondary": "#7c3aed",
+        "accent": "#0891b2",
+        "background": "#ffffff",
+        "surface": "#fafafa",
+        "surfaceHover": "#f5f5f5",
+        "text": "#171717",
+        "textSecondary": "#404040",
+        "textMuted": "#737373",
+        "border": "#e5e5e5",
+        "borderHover": "#d4d4d4",
+        "success": "#16a34a",
+        "warning": "#ca8a04",
+        "error": "#dc2626",
+        "info": "#0284c7",
+        "gradient": {
+          "primary": "linear-gradient(135deg, #db2777 0%, #7c3aed 100%)",
+          "secondary": "linear-gradient(135deg, #0891b2 0%, #16a34a 100%)",
+          "surface": "linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%)",
+          "rainbow": "linear-gradient(90deg, #db2777 0%, #7c3aed 25%, #0891b2 50%, #16a34a 75%, #ca8a04 100%)"
+        },
+        "shadow": {
+          "sm": "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+          "md": "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+          "lg": "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
+          "glow": "0 0 30px rgba(219, 39, 119, 0.2)"
+        }
+      }
+    },
+    "premium-finance": {
+      "name": "Premium Finance",
+      "mode": "both",
+      "description": "Sophisticated financial theme with trust-building colors and professional gradients",
+      "category": "finance",
+      "featured": true,
+      "dark": {
+        "primary": "#1e40af",
+        "secondary": "#059669",
+        "accent": "#dc2626",
+        "background": "#0a0e1a",
+        "surface": "#111827",
+        "surfaceHover": "#1f2937",
+        "text": "#f9fafb",
+        "textSecondary": "#d1d5db",
+        "textMuted": "#9ca3af",
+        "border": "#374151",
+        "borderHover": "#4b5563",
+        "success": "#059669",
+        "warning": "#d97706",
+        "error": "#dc2626",
+        "info": "#0284c7",
+        "bull": "#059669",
+        "bear": "#dc2626",
+        "neutral": "#6b7280",
+        "gradient": {
+          "primary": "linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%)",
+          "secondary": "linear-gradient(135deg, #059669 0%, #047857 100%)",
+          "surface": "linear-gradient(135deg, #111827 0%, #1f2937 100%)",
+          "bullish": "linear-gradient(135deg, #059669 0%, #10b981 100%)",
+          "bearish": "linear-gradient(135deg, #dc2626 0%, #ef4444 100%)"
+        },
+        "shadow": {
+          "sm": "0 1px 2px 0 rgba(30, 64, 175, 0.15)",
+          "md": "0 4px 6px -1px rgba(30, 64, 175, 0.15)",
+          "lg": "0 10px 15px -3px rgba(30, 64, 175, 0.15)",
+          "glow": "0 0 20px rgba(30, 64, 175, 0.3)"
+        }
+      },
+      "light": {
+        "primary": "#1d4ed8",
+        "secondary": "#047857",
+        "accent": "#b91c1c",
+        "background": "#ffffff",
+        "surface": "#f8fafc",
+        "surfaceHover": "#f1f5f9",
+        "text": "#111827",
+        "textSecondary": "#374151",
+        "textMuted": "#6b7280",
+        "border": "#e5e7eb",
+        "borderHover": "#d1d5db",
+        "success": "#047857",
+        "warning": "#b45309",
+        "error": "#b91c1c",
+        "info": "#0369a1",
+        "bull": "#047857",
+        "bear": "#b91c1c",
+        "neutral": "#4b5563",
+        "gradient": {
+          "primary": "linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%)",
+          "secondary": "linear-gradient(135deg, #047857 0%, #059669 100%)",
+          "surface": "linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%)",
+          "bullish": "linear-gradient(135deg, #047857 0%, #059669 100%)",
+          "bearish": "linear-gradient(135deg, #b91c1c 0%, #dc2626 100%)"
+        },
+        "shadow": {
+          "sm": "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+          "md": "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+          "lg": "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
+          "glow": "0 0 20px rgba(29, 78, 216, 0.15)"
+        }
+      }
+    },
+    "neo-brutalist": {
+      "name": "Neo Brutalist",
+      "mode": "both",
+      "description": "Bold, high-contrast design with strong geometric elements for modern web apps",
+      "category": "brutalist",
+      "featured": true,
+      "dark": {
+        "primary": "#ffffff",
+        "secondary": "#22c55e",
+        "accent": "#f59e0b",
+        "background": "#000000",
+        "surface": "#111111",
+        "surfaceHover": "#1a1a1a",
+        "text": "#ffffff",
+        "textSecondary": "#e5e5e5",
+        "textMuted": "#a3a3a3",
+        "border": "#333333",
+        "borderHover": "#404040",
+        "borderThick": "#666666",
+        "success": "#22c55e",
+        "warning": "#f59e0b",
+        "error": "#ef4444",
+        "info": "#06b6d4",
+        "gradient": {
+          "primary": "linear-gradient(90deg, #ffffff 0%, #e5e5e5 100%)",
+          "secondary": "linear-gradient(90deg, #22c55e 0%, #16a34a 100%)",
+          "surface": "linear-gradient(90deg, #111111 0%, #1a1a1a 100%)",
+          "brutalist": "conic-gradient(from 45deg, #ffffff 0deg, #22c55e 90deg, #f59e0b 180deg, #ef4444 270deg, #ffffff 360deg)"
+        },
+        "shadow": {
+          "sm": "2px 2px 0px #333333",
+          "md": "4px 4px 0px #333333",
+          "lg": "8px 8px 0px #333333",
+          "brutal": "12px 12px 0px #ffffff"
+        }
+      },
+      "light": {
+        "primary": "#000000",
+        "secondary": "#16a34a",
+        "accent": "#d97706",
+        "background": "#ffffff",
+        "surface": "#f5f5f5",
+        "surfaceHover": "#e5e5e5",
+        "text": "#000000",
+        "textSecondary": "#171717",
+        "textMuted": "#525252",
+        "border": "#d4d4d4",
+        "borderHover": "#a3a3a3",
+        "borderThick": "#737373",
+        "success": "#16a34a",
+        "warning": "#d97706",
+        "error": "#dc2626",
+        "info": "#0284c7",
+        "gradient": {
+          "primary": "linear-gradient(90deg, #000000 0%, #171717 100%)",
+          "secondary": "linear-gradient(90deg, #16a34a 0%, #22c55e 100%)",
+          "surface": "linear-gradient(90deg, #f5f5f5 0%, #e5e5e5 100%)",
+          "brutalist": "conic-gradient(from 45deg, #000000 0deg, #16a34a 90deg, #d97706 180deg, #dc2626 270deg, #000000 360deg)"
+        },
+        "shadow": {
+          "sm": "2px 2px 0px #d4d4d4",
+          "md": "4px 4px 0px #d4d4d4",
+          "lg": "8px 8px 0px #d4d4d4",
+          "brutal": "12px 12px 0px #000000"
+        }
+      }
+    },
+    "elegant-minimal": {
+      "name": "Elegant Minimal",
+      "mode": "both",
+      "description": "Refined minimalist palette with subtle elegance for luxury and premium applications",
+      "category": "luxury",
+      "featured": true,
+      "dark": {
+        "primary": "#d4af93",
+        "secondary": "#9ca3af",
+        "accent": "#60a5fa",
+        "background": "#0f0f0f",
+        "surface": "#171717",
+        "surfaceHover": "#1f1f1f",
+        "text": "#f5f5f4",
+        "textSecondary": "#e7e5e4",
+        "textMuted": "#a8a29e",
+        "border": "#292524",
+        "borderHover": "#44403c",
+        "success": "#84cc16",
+        "warning": "#eab308",
+        "error": "#ef4444",
+        "info": "#06b6d4",
+        "gradient": {
+          "primary": "linear-gradient(135deg, #d4af93 0%, #a8a29e 100%)",
+          "secondary": "linear-gradient(135deg, #9ca3af 0%, #6b7280 100%)",
+          "surface": "linear-gradient(135deg, #171717 0%, #1f1f1f 100%)",
+          "luxury": "linear-gradient(135deg, #d4af93 0%, #60a5fa 50%, #a8a29e 100%)"
+        },
+        "shadow": {
+          "sm": "0 1px 2px 0 rgba(212, 175, 147, 0.1)",
+          "md": "0 4px 6px -1px rgba(212, 175, 147, 0.1)",
+          "lg": "0 10px 15px -3px rgba(212, 175, 147, 0.1)",
+          "glow": "0 0 25px rgba(212, 175, 147, 0.2)"
+        }
+      },
+      "light": {
+        "primary": "#a3845a",
+        "secondary": "#6b7280",
+        "accent": "#3b82f6",
+        "background": "#fefefe",
+        "surface": "#fafaf9",
+        "surfaceHover": "#f5f5f4",
+        "text": "#1c1917",
+        "textSecondary": "#292524",
+        "textMuted": "#78716c",
+        "border": "#e7e5e4",
+        "borderHover": "#d6d3d1",
+        "success": "#65a30d",
+        "warning": "#ca8a04",
+        "error": "#dc2626",
+        "info": "#0284c7",
+        "gradient": {
+          "primary": "linear-gradient(135deg, #a3845a 0%, #78716c 100%)",
+          "secondary": "linear-gradient(135deg, #6b7280 0%, #4b5563 100%)",
+          "surface": "linear-gradient(135deg, #fafaf9 0%, #f5f5f4 100%)",
+          "luxury": "linear-gradient(135deg, #a3845a 0%, #3b82f6 50%, #78716c 100%)"
+        },
+        "shadow": {
+          "sm": "0 1px 2px 0 rgba(0, 0, 0, 0.03)",
+          "md": "0 4px 6px -1px rgba(0, 0, 0, 0.07)",
+          "lg": "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
+          "glow": "0 0 25px rgba(163, 132, 90, 0.15)"
+        }
+      }
+    },
+    "neon-edge": {
+      "name": "Neon Edge",
+      "mode": "both",
+      "description": "Futuristic, high-contrast neon accents on dark UI",
+      "category": "futuristic",
+      "featured": true,
+      "dark": {
+        "primary": "#1e90ff",
+        "secondary": "#00ff85",
+        "accent": "#ff0099",
+        "background": "#0d0d0d",
+        "surface": "#151515",
+        "text": "#ffffff"
+      },
+      "light": {
+        "primary": "#0ea5e9",
+        "secondary": "#10b981",
+        "accent": "#ec4899",
+        "background": "#f1f5f9",
+        "surface": "#ffffff",
+        "text": "#0f172a"
+      }
+    },
+    "emerald-ledger": {
+      "name": "Emerald Ledger",
+      "mode": "both",
+      "description": "Confident greens for finance and sustainability narratives",
+      "category": "nature",
+      "featured": true,
+      "dark": {
+        "primary": "#16a34a",
+        "secondary": "#34d399",
+        "accent": "#22c55e",
+        "background": "#0b130e",
+        "surface": "#122017",
+        "text": "#d1fae5"
+      },
+      "light": {
+        "primary": "#15803d",
+        "secondary": "#86efac",
+        "accent": "#22c55e",
+        "background": "#f0fdf4",
+        "surface": "#ffffff",
+        "text": "#14532d"
+      }
+    },
+    "graphite-pro": {
+      "name": "Graphite Pro",
+      "mode": "both",
+      "description": "Monochrome-first with subtle blue accent; dev‑friendly",
+      "category": "developer",
+      "featured": true,
+      "dark": {
+        "primary": "#94a3b8",
+        "secondary": "#475569",
+        "accent": "#38bdf8",
+        "background": "#0b0c0e",
+        "surface": "#15181c",
+        "text": "#e5e7eb"
+      },
+      "light": {
+        "primary": "#475569",
+        "secondary": "#cbd5e1",
+        "accent": "#0ea5e9",
+        "background": "#ffffff",
+        "surface": "#f1f5f9",
+        "text": "#111827"
+      }
+    },
+    "cyan-matrix": {
+      "name": "Cyan Matrix",
+      "mode": "both",
+      "description": "Tech‑forward cyan on deep navy surfaces",
+      "category": "tech",
+      "featured": true,
+      "dark": {
+        "primary": "#22d3ee",
+        "secondary": "#67e8f9",
+        "accent": "#06b6d4",
+        "background": "#06121a",
+        "surface": "#0b1e29",
+        "text": "#dff7ff"
+      },
+      "light": {
+        "primary": "#0891b2",
+        "secondary": "#67e8f9",
+        "accent": "#06b6d4",
+        "background": "#f0fbff",
+        "surface": "#ffffff",
+        "text": "#083344"
+      }
+    },
+    "solar-professional": {
+      "name": "Solar Professional",
+      "mode": "both",
+      "description": "Warm gold accents that feel welcoming yet formal",
+      "category": "warm",
+      "featured": true,
+      "dark": {
+        "primary": "#f2cd5d",
+        "secondary": "#dea54b",
+        "accent": "#f59e0b",
+        "background": "#151515",
+        "surface": "#1e1e1e",
+        "text": "#fff8e1"
+      },
+      "light": {
+        "primary": "#eab308",
+        "secondary": "#f59e0b",
+        "accent": "#fbbf24",
+        "background": "#fffcf2",
+        "surface": "#ffffff",
+        "text": "#3b2f0e"
+      }
+    },
+    "data-indigo": {
+      "name": "Data Indigo",
+      "mode": "both",
+      "description": "Indigo-centric system with high-contrast accents for charts",
+      "category": "analytics",
+      "featured": true,
+      "dark": {
+        "primary": "#4f46e5",
+        "secondary": "#818cf8",
+        "accent": "#22d3ee",
+        "background": "#0b0e1a",
+        "surface": "#151834",
+        "text": "#eef2ff"
+      },
+      "light": {
+        "primary": "#4338ca",
+        "secondary": "#6366f1",
+        "accent": "#0891b2",
+        "background": "#f8fafc",
+        "surface": "#ffffff",
+        "text": "#111827"
+      }
+    },
+    "ruby-statement": {
+      "name": "Ruby Statement",
+      "mode": "both",
+      "description": "Strong red for action, alerts, and operational clarity",
+      "category": "action",
+      "featured": true,
+      "dark": {
+        "primary": "#ef4444",
+        "secondary": "#fb7185",
+        "accent": "#f97316",
+        "background": "#180e0e",
+        "surface": "#251515",
+        "text": "#ffe4e6"
+      },
+      "light": {
+        "primary": "#dc2626",
+        "secondary": "#fda4af",
+        "accent": "#f97316",
+        "background": "#fff5f5",
+        "surface": "#ffffff",
+        "text": "#7f1d1d"
+      }
+    },
+    "glacier-ux": {
+      "name": "Glacier UX",
+      "mode": "both",
+      "description": "Cool, airy palette optimized for long work sessions",
+      "category": "cool",
+      "featured": true,
+      "dark": {
+        "primary": "#60a5fa",
+        "secondary": "#93c5fd",
+        "accent": "#86efac",
+        "background": "#0b1220",
+        "surface": "#131c2b",
+        "text": "#e6f0ff"
+      },
+      "light": {
+        "primary": "#2563eb",
+        "secondary": "#93c5fd",
+        "accent": "#22c55e",
+        "background": "#f8fbff",
+        "surface": "#ffffff",
+        "text": "#0b1a33"
+      }
+    }
+  },
+  "meta": {
+    "version": "3.1.0",
+    "generated": "2024-01-20T00:00:00Z",
+    "author": "CelestialUI Team",
+    "description": "Curated collection of unique, high-quality themes with extended color palettes for modern applications",
+    "totalThemes": 14,
+    "newFeatures": [
+      "Extended color palettes with semantic colors",
+      "Gradient support for modern UI designs",
+      "Custom shadow systems with glow effects",
+      "Surface hover states and interactive elements",
+      "Specialized themes for portfolios, SaaS, and creative work",
+      "Financial trading colors (bull/bear) for fintech apps",
+      "Curated selection removing redundant themes"
+    ],
+    "categories": [
+      "portfolio", "saas", "creative", "finance", "brutalist", "luxury",
+      "futuristic", "nature", "developer", "tech", "warm", "analytics",
+      "action", "cool"
+    ],
+    "featuredThemes": [
+      "portfolio-showcase", "modern-saas", "creative-studio",
+      "premium-finance", "neo-brutalist", "elegant-minimal"
+    ],
+    "changelog": {
+      "3.1.0": "Curated collection - removed redundant themes, kept only unique high-value themes"
+    }
+  }
+}

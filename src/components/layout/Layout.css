@@ -1,0 +1,48 @@
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.app-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  margin-top: 0; /* Ensure no margin that could affect header */
+}
+
+.app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--cui-color-background-base);
+  margin-left: 0;
+  transition: padding-left 0.3s ease;
+}
+
+/* Desktop sidebar layout - use padding instead of margin to avoid layout issues */
+@media (min-width: 768px) {
+  
+}
+
+.app-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2rem;
+}
+
+@media (max-width: 768px) {
+  .app-content {
+    padding: 1.5rem 1rem;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .app-content {
+    padding: 1rem;
+  }
+}
