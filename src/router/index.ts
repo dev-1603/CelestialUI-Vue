@@ -3,6 +3,7 @@ import HomePage from '../pages/HomePage.vue'
 import PlaygroundPage from '../pages/PlaygroundPage.vue'
 import ComponentDocPage from '../pages/ComponentDocPage.vue'
 import PlaceholderPage from '../pages/PlaceholderPage.vue'
+import testingRoutes from './testing'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -79,23 +80,17 @@ const routes: RouteRecordRaw[] = [
       title: 'Component - Coming Soon'
     }
   },
-  // Legacy routes for backward compatibility
+  // Component testing routes (imported from ./testing.ts)
+  ...testingRoutes,
   {
-    path: '/about',
-    name: 'about',
-    component: () => import('../views/AboutView.vue'),
+    path: '/button-test',
+    name: 'button-test',
+    component: () => import('../pages/ButtonTestPage.vue'),
     meta: {
-      title: 'About'
+      title: 'CButton - Component Testing'
     }
   },
-  {
-    path: '/component-test',
-    name: 'component-test',
-    component: () => import('../views/component-test.vue'),
-    meta: {
-      title: 'Component Test'
-    }
-  }
+
 ]
 
 const router = createRouter({

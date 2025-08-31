@@ -1,0 +1,151 @@
+/* Base button styles */
+.celestial-button {
+  /* Flexbox layout */
+  @apply inline-flex items-center justify-center;
+  
+  /* Typography */
+  @apply font-medium;
+  
+  /* Transitions */
+  @apply transition-all duration-200 ease-in-out;
+  
+  /* Focus styles */
+  @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+  
+  /* Disabled styles */
+  @apply disabled:opacity-50 disabled:cursor-not-allowed;
+  
+  /* Remove default button styles */
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-decoration: none;
+  
+  /* Prevent text selection */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Size variants */
+.celestial-button--xs {
+  @apply px-2 py-1 text-xs min-h-[24px] gap-1;
+  border-radius: 0.25rem; /* 4px */
+}
+
+.celestial-button--sm {
+  @apply px-3 py-1.5 text-sm min-h-[32px] gap-1.5;
+  border-radius: 0.375rem; /* 6px */
+}
+
+.celestial-button--md {
+  @apply px-4 py-2 text-base min-h-[40px] gap-2;
+  border-radius: 0.5rem; /* 8px */
+}
+
+.celestial-button--lg {
+  @apply px-6 py-3 text-lg min-h-[48px] gap-2.5;
+  border-radius: 0.625rem; /* 10px */
+}
+
+.celestial-button--xl {
+  @apply px-8 py-4 text-xl min-h-[56px] gap-3;
+  border-radius: 0.75rem; /* 12px */
+}
+
+/* Block variant */
+.celestial-button--block {
+  @apply w-full;
+}
+
+/* Loading state */
+.celestial-button--loading {
+  @apply cursor-wait;
+  position: relative;
+}
+
+.celestial-button--loading .celestial-button__text {
+  @apply opacity-75;
+}
+
+/* Disabled state */
+.celestial-button--disabled {
+  @apply pointer-events-none;
+}
+
+/* Icon styles */
+.celestial-button__icon {
+  @apply flex-shrink-0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Icon sizes */
+.celestial-button__icon--xs {
+  @apply w-3 h-3;
+}
+
+.celestial-button__icon--sm {
+  @apply w-3.5 h-3.5;
+}
+
+.celestial-button__icon--md {
+  @apply w-4 h-4;
+}
+
+.celestial-button__icon--lg {
+  @apply w-5 h-5;
+}
+
+.celestial-button__icon--xl {
+  @apply w-6 h-6;
+}
+
+/* Text wrapper */
+.celestial-button__text {
+  @apply flex-1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Rounded variants */
+.celestial-button--rounded {
+  @apply rounded-lg;
+}
+
+.celestial-button--rounded-sm {
+  @apply rounded-sm;
+}
+
+.celestial-button--rounded-md {
+  @apply rounded-md;
+}
+
+.celestial-button--rounded-lg {
+  @apply rounded-lg;
+}
+
+.celestial-button--rounded-xl {
+  @apply rounded-xl;
+}
+
+.celestial-button--rounded-full {
+  @apply rounded-full;
+}
+
+/* Link variant specific styles */
+.celestial-button--link {
+  @apply min-h-0 p-0;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.celestial-button--link:hover {
+  @apply underline;
+}
+
+/* Focus ring colors will be set in variants file */

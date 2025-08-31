@@ -259,6 +259,101 @@
   text-decoration: none;
 }
 
+/* Button Styles - Temporary until CButton is implemented */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  outline: none;
+  font-family: inherit;
+}
+
+.btn:focus {
+  outline: 2px solid var(--cui-color-primary-500);
+  outline-offset: 2px;
+}
+
+.btn-primary {
+  background: var(--cui-color-primary-500, #3b82f6);
+  color: white;
+  border-color: var(--cui-color-primary-500, #3b82f6);
+}
+
+.btn-primary:hover {
+  background: var(--cui-color-primary-600, #2563eb);
+  border-color: var(--cui-color-primary-600, #2563eb);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--cui-color-primary-600, #2563eb);
+  border-color: var(--cui-color-primary-300, #93c5fd);
+}
+
+.btn-outline:hover {
+  background: var(--cui-color-primary-50, #eff6ff);
+  border-color: var(--cui-color-primary-400, #60a5fa);
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--cui-color-text-secondary, #6b7280);
+  border-color: transparent;
+}
+
+.btn-ghost:hover {
+  background: var(--cui-color-background-hover, #f3f4f6);
+  color: var(--cui-color-text-primary, #111827);
+}
+
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .btn-primary {
+    background: var(--cui-color-primary-600, #2563eb);
+    border-color: var(--cui-color-primary-600, #2563eb);
+  }
+
+  .btn-primary:hover {
+    background: var(--cui-color-primary-700, #1d4ed8);
+    border-color: var(--cui-color-primary-700, #1d4ed8);
+  }
+
+  .btn-outline {
+    color: var(--cui-color-primary-400, #60a5fa);
+    border-color: var(--cui-color-primary-600, #2563eb);
+  }
+
+  .btn-outline:hover {
+    background: var(--cui-color-primary-950, #172554);
+    border-color: var(--cui-color-primary-500, #3b82f6);
+  }
+
+  .btn-ghost {
+    color: var(--cui-color-text-secondary, #9ca3af);
+  }
+
+  .btn-ghost:hover {
+    background: var(--cui-color-background-hover, #374151);
+    color: var(--cui-color-text-primary, #f9fafb);
+  }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .home-header h1 {

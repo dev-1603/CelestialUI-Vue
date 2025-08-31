@@ -1,50 +1,46 @@
 // Templates - Layout patterns
-export { default as CDashboardLayout } from './dashboard-layout/CDashboardLayout.vue'
-export { default as CAdminLayout } from './admin-layout/CAdminLayout.vue'
-export { default as CAuthLayout } from './auth-layout/CAuthLayout.vue'
-export { default as CLandingLayout } from './landing-layout/CLandingLayout.vue'
-export { default as CErrorLayout } from './error-layout/CErrorLayout.vue'
-export { default as CAppBar } from './app-bar/CAppBar.vue'
-export { default as CNavigationRail } from './navigation-rail/CNavigationRail.vue'
-export { default as CBottomNavigation } from './bottom-navigation/CBottomNavigation.vue'
-export { default as CSideNavigation } from './side-navigation/CSideNavigation.vue'
+// Only export components that actually exist
 
-// Type exports for templates
-export type * from './dashboard-layout/CDashboardLayout.types'
-export type * from './admin-layout/CAdminLayout.types'
-export type * from './auth-layout/CAuthLayout.types'
-export type * from './landing-layout/CLandingLayout.types'
-export type * from './error-layout/CErrorLayout.types'
-export type * from './app-bar/CAppBar.types'
-export type * from './navigation-rail/CNavigationRail.types'
-export type * from './bottom-navigation/CBottomNavigation.types'
-export type * from './side-navigation/CSideNavigation.types'
+// Type definitions for when components are implemented
+export interface TemplateComponent {
+  name: string
+  implemented: boolean
+  description: string
+  category: 'page-layout' | 'navigation'
+}
 
-// Templates collection for bulk operations
-export const TEMPLATES = {
-  CDashboardLayout,
-  CAdminLayout,
-  CAuthLayout,
-  CLandingLayout,
-  CErrorLayout,
-  CAppBar,
-  CNavigationRail,
-  CBottomNavigation,
-  CSideNavigation
-} as const
+// Template registry for development tracking
+export const TEMPLATE_REGISTRY: TemplateComponent[] = [
+  { name: 'CDashboardLayout', implemented: false, description: 'Dashboard page layout', category: 'page-layout' },
+  { name: 'CAdminLayout', implemented: false, description: 'Admin panel layout', category: 'page-layout' },
+  { name: 'CAuthLayout', implemented: false, description: 'Authentication layout', category: 'page-layout' },
+  { name: 'CLandingLayout', implemented: false, description: 'Landing page layout', category: 'page-layout' },
+  { name: 'CErrorLayout', implemented: false, description: 'Error page layout', category: 'page-layout' },
+  { name: 'CAppBar', implemented: false, description: 'Application bar', category: 'navigation' },
+  { name: 'CNavigationRail', implemented: false, description: 'Navigation rail', category: 'navigation' },
+  { name: 'CBottomNavigation', implemented: false, description: 'Bottom navigation', category: 'navigation' },
+  { name: 'CSideNavigation', implemented: false, description: 'Side navigation', category: 'navigation' }
+]
 
-// Template categories for better organization
-export const PAGE_LAYOUTS = {
-  CDashboardLayout,
-  CAdminLayout,
-  CAuthLayout,
-  CLandingLayout,
-  CErrorLayout
-} as const
+// Empty collections for now - will be populated as components are implemented
+export const TEMPLATES = {} as const
 
-export const NAVIGATION_TEMPLATES = {
-  CAppBar,
-  CNavigationRail,
-  CBottomNavigation,
-  CSideNavigation
-} as const
+export const PAGE_LAYOUTS = {} as const
+export const NAVIGATION_TEMPLATES = {} as const
+
+// Helper functions
+export function getTemplateStatus(name: string): TemplateComponent | undefined {
+  return TEMPLATE_REGISTRY.find(template => template.name === name)
+}
+
+export function getImplementedTemplates(): TemplateComponent[] {
+  return TEMPLATE_REGISTRY.filter(template => template.implemented)
+}
+
+export function getPendingTemplates(): TemplateComponent[] {
+  return TEMPLATE_REGISTRY.filter(template => !template.implemented)
+}
+
+export function getTemplatesByCategory(category: TemplateComponent['category']): TemplateComponent[] {
+  return TEMPLATE_REGISTRY.filter(template => template.category === category)
+}

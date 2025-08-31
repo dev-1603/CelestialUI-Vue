@@ -57,6 +57,10 @@
 import './page.css';
 import MyHeader from './Header.vue';
 
+defineOptions({
+  name: 'MyPage'
+});
+
 import { ref } from 'vue';
 
 const user = ref<{ name: string } | null>(null);

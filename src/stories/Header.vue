@@ -25,6 +25,10 @@
 import './header.css';
 import MyButton from './Button.vue';
 
+defineOptions({
+  name: 'CUIHeader'
+});
+
 defineProps<{ user: { name: string } | null }>();
 
 defineEmits<{

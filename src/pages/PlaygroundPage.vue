@@ -1,306 +1,287 @@
 <template>
   <div class="p-6">
     <div class="mb-8">
-      <h1 class="text-3xl font-bold text-text-primary mb-4">Component Playground</h1>
-      <p class="text-text-secondary text-lg">
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Component Playground</h1>
+      <p class="text-gray-600 dark:text-gray-300 text-lg">
         Interactive examples and demonstrations of CelestialUI components.
       </p>
     </div>
 
-    <!-- Existing Components Section -->
-    <div class="mb-12">
-      <h2 class="text-2xl font-semibold text-text-primary mb-6">Implemented Components</h2>
-
-      <!-- Button Examples -->
-      <CCard class="mb-6">
-        <template #header>
-          <h3 class="text-lg font-semibold text-text-primary">Button Component</h3>
-        </template>
-        <div class="space-y-4">
-          <div>
-            <h4 class="text-sm font-medium text-text-secondary mb-2">Variants</h4>
-            <div class="flex flex-wrap gap-2">
-              <CButton variant="primary">Primary</CButton>
-              <CButton variant="secondary">Secondary</CButton>
-              <CButton variant="outline">Outline</CButton>
-              <CButton variant="ghost">Ghost</CButton>
-              <CButton variant="link">Link</CButton>
-              <CButton variant="destructive">Delete</CButton>
-            </div>
-          </div>
-          <div>
-            <h4 class="text-sm font-medium text-text-secondary mb-2">Sizes</h4>
-            <div class="flex flex-wrap items-center gap-2">
-              <CButton size="sm">Small</CButton>
-              <CButton size="md">Medium</CButton>
-              <CButton size="lg">Large</CButton>
-            </div>
-          </div>
-          <div>
-            <h4 class="text-sm font-medium text-text-secondary mb-2">With Icons</h4>
-            <div class="flex flex-wrap gap-2">
-              <CButton left-icon="star">With Left Icon</CButton>
-              <CButton right-icon="arrow-right">With Right Icon</CButton>
-              <CButton left-icon="heart" right-icon="arrow-right">Both Icons</CButton>
-            </div>
-          </div>
-          <div>
-            <h4 class="text-sm font-medium text-text-secondary mb-2">States</h4>
-            <div class="flex flex-wrap gap-2">
-              <CButton :loading="true">Loading</CButton>
-              <CButton disabled>Disabled</CButton>
-              <CButton @click="showToast('success', 'Button clicked!')">Click Me</CButton>
-            </div>
-          </div>
-        </div>
-      </CCard>
-
-      <!-- Input Examples -->
-      <CCard class="mb-6">
-        <template #header>
-          <h3 class="text-lg font-semibold text-text-primary">Input Component</h3>
-        </template>
-        <div class="space-y-4">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <CInput
-              v-model="demoInput"
-              label="Email Address"
-              type="email"
-              placeholder="Enter your email"
-              prefix-icon="envelope"
-              clearable
-            />
-            <CInput
-              v-model="demoPassword"
-              label="Password"
-              type="password"
-              placeholder="Enter your password"
-              prefix-icon="lock"
-              helper-text="Must be at least 8 characters"
-            />
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <CInput
-              v-model="demoInput2"
-              label="With Error"
-              placeholder="This input has an error"
-              :error="true"
-              error-text="This field is required"
-            />
-            <CInput
-              v-model="demoInput3"
-              label="Disabled Input"
-              placeholder="This input is disabled"
-              disabled
-            />
-          </div>
-        </div>
-      </CCard>
-
-      <!-- Card Examples -->
-      <CCard class="mb-6">
-        <template #header>
-          <h3 class="text-lg font-semibold text-text-primary">Card Component</h3>
-        </template>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <CCard title="Basic Card" subtitle="Simple card example">
-            <p class="text-text-secondary">This is a basic card with title and subtitle.</p>
-            <template #footer>
-              <CButton size="sm">Action</CButton>
-            </template>
-          </CCard>
-
-          <CCard variant="outlined" hoverable clickable @click="showToast('info', 'Card clicked!')">
-            <template #header>
-              <CIcon name="image" />
-              <div>
-                <h4 class="text-text-primary">Interactive Card</h4>
-                <p class="text-text-secondary">Click me!</p>
-              </div>
-            </template>
-            <p class="text-text-secondary">This card is interactive and shows a toast when clicked.</p>
-          </CCard>
-        </div>
-      </CCard>
-
-      <!-- Modal Example -->
-      <CCard class="mb-6">
-        <template #header>
-          <h3 class="text-lg font-semibold text-text-primary">Modal Component</h3>
-        </template>
-        <div class="space-y-4">
-          <CButton @click="openModal" left-icon="window-maximize">
-            Open Modal
-          </CButton>
-          <p class="text-sm text-text-secondary">
-            Click the button above to open a modal dialog.
+    <!-- Development Notice -->
+    <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6 mb-8">
+      <div class="flex items-start gap-3">
+        <div class="text-blue-500 text-2xl">🚧</div>
+        <div>
+          <h3 class="text-lg font-semibold text-blue-800 dark:text-blue-200 mb-2">
+            Components Under Development
+          </h3>
+          <p class="text-blue-700 dark:text-blue-300 mb-4">
+            The CelestialUI component library is currently in active development.
+            Components will be implemented according to the roadmap and will appear here as they become available.
           </p>
-        </div>
-      </CCard>
-
-      <!-- Toast Examples -->
-      <CCard class="mb-6">
-        <template #header>
-          <h3 class="text-lg font-semibold text-text-primary">Toast Component</h3>
-        </template>
-        <div class="space-y-4">
           <div class="flex flex-wrap gap-2">
-            <CButton @click="showToast('success', 'Success message!')" left-icon="check-circle">
-              Success Toast
-            </CButton>
-            <CButton @click="showToast('error', 'Error message!')" variant="destructive" left-icon="exclamation-circle">
-              Error Toast
-            </CButton>
-            <CButton @click="showToast('warning', 'Warning message!')" variant="outline" left-icon="exclamation-triangle">
-              Warning Toast
-            </CButton>
-            <CButton @click="showToast('info', 'Info message!')" left-icon="info-circle">
-              Info Toast
-            </CButton>
+            <span class="px-3 py-1 bg-blue-100 dark:bg-blue-800 text-blue-800 dark:text-blue-200 text-sm rounded-full">
+              ⏳ Button
+            </span>
+            <span class="px-3 py-1 bg-blue-100 dark:bg-blue-800 text-blue-800 dark:text-blue-200 text-sm rounded-full">
+              ⏳ Input
+            </span>
+            <span class="px-3 py-1 bg-blue-100 dark:bg-blue-800 text-blue-800 dark:text-blue-200 text-sm rounded-full">
+              ⏳ Card
+            </span>
+            <span class="px-3 py-1 bg-blue-100 dark:bg-blue-800 text-blue-800 dark:text-blue-200 text-sm rounded-full">
+              ⏳ Modal
+            </span>
+            <span class="px-3 py-1 bg-blue-100 dark:bg-blue-800 text-blue-800 dark:text-blue-200 text-sm rounded-full">
+              ⏳ Icon
+            </span>
           </div>
-          <p class="text-sm text-text-secondary">
-            Click any button above to show different types of toast notifications.
-          </p>
         </div>
-      </CCard>
-    </div>
-
-    <!-- Coming Soon Section -->
-    <div class="mb-12">
-      <h2 class="text-2xl font-semibold text-text-primary mb-6">Coming Soon</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <CCard v-for="component in comingSoonComponents" :key="component.name" class="p-4">
-          <div class="flex items-center gap-3 mb-3">
-            <CIcon :name="component.icon" class="text-primary-500" />
-            <h3 class="text-lg font-semibold text-text-primary">{{ component.name }}</h3>
-          </div>
-          <p class="text-text-secondary text-sm mb-4">{{ component.description }}</p>
-          <div class="flex items-center justify-between">
-            <span class="text-xs text-text-muted">Planned</span>
-            <CButton variant="ghost" size="sm" disabled>
-              Coming Soon
-            </CButton>
-          </div>
-        </CCard>
       </div>
     </div>
 
-    <!-- Demo Modal -->
-    <CModal
-      v-model="isModalOpen"
-      title="Demo Modal"
-      max-width="600px"
-    >
-      <div class="space-y-4">
-        <h4 class="text-lg font-semibold text-text-primary">Welcome to CelestialUI!</h4>
-        <p class="text-text-secondary">
-          This is a demo modal showcasing the modal component. You can:
+    <!-- Playground Preview -->
+    <div class="space-y-8">
+      <!-- Sample Component Preview -->
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+        <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+          Component Preview Area
+        </h2>
+        <p class="text-gray-600 dark:text-gray-400 mb-6">
+          Once components are implemented, they will be showcased here with interactive controls.
         </p>
-        <ul class="list-disc list-inside text-text-secondary space-y-1">
-          <li>Close with the X button</li>
-          <li>Close by pressing Escape</li>
-          <li>Close by clicking outside (if not persistent)</li>
-        </ul>
 
-        <div class="mt-6">
-          <CInput
-            v-model="modalInput"
-            label="Your Name"
-            placeholder="Enter your name"
-            prefix-icon="user"
-          />
+        <!-- Mock Component Preview -->
+        <div class="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-8">
+          <div class="text-center">
+            <div class="text-6xl mb-4">🎨</div>
+            <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-2">
+              Interactive Component Demo
+            </h3>
+            <p class="text-gray-500 dark:text-gray-400">
+              Live component examples will appear here as they are developed
+            </p>
+          </div>
         </div>
       </div>
 
-      <template #footer>
-        <div class="flex gap-2">
-          <CButton variant="outline" @click="isModalOpen = false">
-            Cancel
-          </CButton>
-          <CButton @click="submitModal" :disabled="!modalInput">
-            Submit
-          </CButton>
+      <!-- Code Examples -->
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+        <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+          Code Examples
+        </h2>
+        <p class="text-gray-600 dark:text-gray-400 mb-4">
+          Sample usage patterns and API examples for CelestialUI components.
+        </p>
+
+        <!-- Example Code Block -->
+        <div class="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
+          <pre class="text-sm"><code class="text-gray-800 dark:text-gray-200"><!-- Future component examples -->
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;!-- Button Examples --&gt;
+    &lt;CButton variant="primary"&gt;Primary Button&lt;/CButton&gt;
+    &lt;CButton variant="outline"&gt;Outline Button&lt;/CButton&gt;
+
+    &lt;!-- Input Examples --&gt;
+    &lt;CInput
+      v-model="value"
+      placeholder="Enter text..."
+      label="Example Input"
+    /&gt;
+
+    &lt;!-- Card Examples --&gt;
+    &lt;CCard&gt;
+      &lt;template #header&gt;
+        &lt;h3&gt;Card Title&lt;/h3&gt;
+      &lt;/template&gt;
+      Card content goes here
+    &lt;/CCard&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre>
         </div>
-      </template>
-    </CModal>
+      </div>
+
+      <!-- Theme Testing -->
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+        <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+          Theme Testing
+        </h2>
+        <p class="text-gray-600 dark:text-gray-400 mb-4">
+          Test components across different themes and color schemes.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div
+            v-for="theme in themes"
+            :key="theme.name"
+            class="p-4 rounded-lg border-2 border-gray-200 dark:border-gray-700 cursor-pointer hover:border-blue-400 transition-colors"
+            @click="selectTheme(theme)"
+          >
+            <div class="flex items-center gap-2 mb-2">
+              <div
+                class="w-4 h-4 rounded-full"
+                :style="{ backgroundColor: theme.primary }"
+              ></div>
+              <span class="font-medium text-gray-900 dark:text-white">{{ theme.name }}</span>
+            </div>
+            <div class="flex gap-1">
+              <div
+                v-for="color in [theme.primary, theme.secondary, theme.accent]"
+                :key="color"
+                class="w-6 h-6 rounded"
+                :style="{ backgroundColor: color }"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Component Status -->
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+        <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+          Development Status
+        </h2>
+        <div class="space-y-3">
+          <div
+            v-for="component in componentStatus"
+            :key="component.name"
+            class="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded-lg"
+          >
+            <div class="flex items-center gap-3">
+              <span class="text-lg">{{ component.icon }}</span>
+              <div>
+                <div class="font-medium text-gray-900 dark:text-white">{{ component.name }}</div>
+                <div class="text-sm text-gray-500 dark:text-gray-400">{{ component.description }}</div>
+              </div>
+            </div>
+            <span
+              :class="[
+                'px-3 py-1 rounded-full text-sm font-medium',
+                component.status === 'ready'
+                  ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
+                  : component.status === 'development'
+                  ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200'
+                  : 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200'
+              ]"
+            >
+              {{ component.status === 'ready' ? '✅ Ready' : component.status === 'development' ? '🚧 In Progress' : '⏳ Planned' }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useToast, CButton, CInput, CCard, CIcon, CModal } from '../../lib/index'
 
-const { success: showSuccessToast, error: showErrorToast, warning: showWarningToast, info: showInfoToast } = useToast()
-
-// Demo state
-const demoInput = ref('')
-const demoPassword = ref('')
-const demoInput2 = ref('')
-const demoInput3 = ref('')
-const isModalOpen = ref(false)
-const modalInput = ref('')
-
-const comingSoonComponents = [
+// Theme options for testing
+const themes = ref([
   {
-    name: 'Avatar',
-    description: 'User profile image display with fallback support',
-    icon: 'user-circle'
+    name: 'Default',
+    primary: '#3b82f6',
+    secondary: '#8b5cf6',
+    accent: '#06b6d4'
   },
   {
-    name: 'Badge',
-    description: 'Status indicators and notification badges',
-    icon: 'tag'
+    name: 'Dark',
+    primary: '#1d4ed8',
+    secondary: '#7c3aed',
+    accent: '#0891b2'
   },
   {
-    name: 'Checkbox',
-    description: 'Binary selection control with validation',
-    icon: 'check-square'
+    name: 'Forest',
+    primary: '#059669',
+    secondary: '#0d9488',
+    accent: '#84cc16'
   },
   {
-    name: 'Select',
-    description: 'Dropdown selection with search and multi-select',
-    icon: 'chevron-down'
-  },
-  {
-    name: 'Tabs',
-    description: 'Tab navigation with content switching',
-    icon: 'folder'
-  },
-  {
-    name: 'Progress',
-    description: 'Progress indicators and loading bars',
-    icon: 'spinner'
+    name: 'Sunset',
+    primary: '#dc2626',
+    secondary: '#ea580c',
+    accent: '#f59e0b'
   }
-]
+])
 
-const showToast = (type: 'success' | 'error' | 'warning' | 'info', message: string) => {
-  switch (type) {
-    case 'success':
-      showSuccessToast(message)
-      break
-    case 'error':
-      showErrorToast(message)
-      break
-    case 'warning':
-      showWarningToast(message)
-      break
-    case 'info':
-      showInfoToast(message)
-      break
+// Component development status
+const componentStatus = ref([
+  {
+    name: 'Button',
+    description: 'Action trigger component',
+    icon: '🔘',
+    status: 'planned'
+  },
+  {
+    name: 'Input',
+    description: 'Text input field',
+    icon: '📝',
+    status: 'planned'
+  },
+  {
+    name: 'Card',
+    description: 'Content container',
+    icon: '🗃️',
+    status: 'planned'
+  },
+  {
+    name: 'Modal',
+    description: 'Overlay dialog',
+    icon: '🪟',
+    status: 'planned'
+  },
+  {
+    name: 'Icon',
+    description: 'SVG icon system',
+    icon: '⭐',
+    status: 'planned'
+  },
+  {
+    name: 'Toast',
+    description: 'Notification system',
+    icon: '🔔',
+    status: 'development'
   }
-}
+])
 
-const openModal = () => {
-  isModalOpen.value = true
-}
-
-const submitModal = () => {
-  showSuccessToast(`Hello, ${modalInput.value}!`)
-  isModalOpen.value = false
-  modalInput.value = ''
+// Theme selection
+const selectTheme = (theme: any) => {
+  console.log('Selected theme:', theme.name)
+  // Theme switching logic will be implemented with the theme system
 }
 </script>
 
 <style scoped>
-/* Additional styles can be added here if needed */
+/* Component-specific styles */
+.theme-preview {
+  transition: all 0.2s ease;
+}
+
+.theme-preview:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Code block styling */
+pre {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  line-height: 1.5;
+}
+
+/* Animation for status cards */
+.space-y-3 > div {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 </style>

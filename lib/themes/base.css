@@ -1,0 +1,238 @@
+/* CelestialUI Base Theme */
+/* CSS Custom Properties for theming */
+
+:root {
+  /* Colors */
+  --cui-color-primary-50: #eff6ff;
+  --cui-color-primary-100: #dbeafe;
+  --cui-color-primary-200: #bfdbfe;
+  --cui-color-primary-300: #93c5fd;
+  --cui-color-primary-400: #60a5fa;
+  --cui-color-primary-500: #3b82f6;
+  --cui-color-primary-600: #2563eb;
+  --cui-color-primary-700: #1d4ed8;
+  --cui-color-primary-800: #1e40af;
+  --cui-color-primary-900: #1e3a8a;
+  --cui-color-primary-950: #172554;
+
+  --cui-color-gray-50: #f9fafb;
+  --cui-color-gray-100: #f3f4f6;
+  --cui-color-gray-200: #e5e7eb;
+  --cui-color-gray-300: #d1d5db;
+  --cui-color-gray-400: #9ca3af;
+  --cui-color-gray-500: #6b7280;
+  --cui-color-gray-600: #4b5563;
+  --cui-color-gray-700: #374151;
+  --cui-color-gray-800: #1f2937;
+  --cui-color-gray-900: #111827;
+  --cui-color-gray-950: #030712;
+
+  --cui-color-success-50: #f0fdf4;
+  --cui-color-success-100: #dcfce7;
+  --cui-color-success-200: #bbf7d0;
+  --cui-color-success-300: #86efac;
+  --cui-color-success-400: #4ade80;
+  --cui-color-success-500: #22c55e;
+  --cui-color-success-600: #16a34a;
+  --cui-color-success-700: #15803d;
+  --cui-color-success-800: #166534;
+  --cui-color-success-900: #14532d;
+
+  --cui-color-warning-50: #fffbeb;
+  --cui-color-warning-100: #fef3c7;
+  --cui-color-warning-200: #fde68a;
+  --cui-color-warning-300: #fcd34d;
+  --cui-color-warning-400: #fbbf24;
+  --cui-color-warning-500: #f59e0b;
+  --cui-color-warning-600: #d97706;
+  --cui-color-warning-700: #b45309;
+  --cui-color-warning-800: #92400e;
+  --cui-color-warning-900: #78350f;
+
+  --cui-color-danger-50: #fef2f2;
+  --cui-color-danger-100: #fee2e2;
+  --cui-color-danger-200: #fecaca;
+  --cui-color-danger-300: #fca5a5;
+  --cui-color-danger-400: #f87171;
+  --cui-color-danger-500: #ef4444;
+  --cui-color-danger-600: #dc2626;
+  --cui-color-danger-700: #b91c1c;
+  --cui-color-danger-800: #991b1b;
+  --cui-color-danger-900: #7f1d1d;
+
+  /* Background Colors */
+  --cui-color-background-base: #ffffff;
+  --cui-color-background-surface: #ffffff;
+  --cui-color-background-muted: #f9fafb;
+  --cui-color-background-subtle: #f3f4f6;
+  --cui-color-background-hover: #f9fafb;
+
+  /* Text Colors */
+  --cui-color-text-primary: #111827;
+  --cui-color-text-secondary: #6b7280;
+  --cui-color-text-muted: #9ca3af;
+  --cui-color-text-inverse: #ffffff;
+
+  /* Border Colors */
+  --cui-color-border-base: #e5e7eb;
+  --cui-color-border-muted: #f3f4f6;
+  --cui-color-border-subtle: #f9fafb;
+
+  /* Typography */
+  --cui-font-family-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --cui-font-family-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --cui-font-family-mono: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+
+  /* Font Sizes */
+  --cui-font-size-xs: 0.75rem;
+  --cui-font-size-sm: 0.875rem;
+  --cui-font-size-base: 1rem;
+  --cui-font-size-lg: 1.125rem;
+  --cui-font-size-xl: 1.25rem;
+  --cui-font-size-2xl: 1.5rem;
+  --cui-font-size-3xl: 1.875rem;
+  --cui-font-size-4xl: 2.25rem;
+
+  /* Font Weights */
+  --cui-font-weight-normal: 400;
+  --cui-font-weight-medium: 500;
+  --cui-font-weight-semibold: 600;
+  --cui-font-weight-bold: 700;
+
+  /* Line Heights */
+  --cui-line-height-tight: 1.25;
+  --cui-line-height-normal: 1.5;
+  --cui-line-height-relaxed: 1.625;
+
+  /* Spacing */
+  --cui-space-0: 0;
+  --cui-space-1: 0.25rem;
+  --cui-space-2: 0.5rem;
+  --cui-space-3: 0.75rem;
+  --cui-space-4: 1rem;
+  --cui-space-5: 1.25rem;
+  --cui-space-6: 1.5rem;
+  --cui-space-8: 2rem;
+  --cui-space-10: 2.5rem;
+  --cui-space-12: 3rem;
+  --cui-space-16: 4rem;
+  --cui-space-20: 5rem;
+
+  /* Border Radius */
+  --cui-radius-none: 0;
+  --cui-radius-sm: 0.125rem;
+  --cui-radius-base: 0.25rem;
+  --cui-radius-md: 0.375rem;
+  --cui-radius-lg: 0.5rem;
+  --cui-radius-xl: 0.75rem;
+  --cui-radius-2xl: 1rem;
+  --cui-radius-full: 9999px;
+
+  /* Shadows */
+  --cui-shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --cui-shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --cui-shadow-base: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --cui-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --cui-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+  /* Z-indices */
+  --cui-z-hide: -1;
+  --cui-z-auto: auto;
+  --cui-z-base: 0;
+  --cui-z-docked: 10;
+  --cui-z-dropdown: 1000;
+  --cui-z-sticky: 1100;
+  --cui-z-banner: 1200;
+  --cui-z-overlay: 1300;
+  --cui-z-modal: 1400;
+  --cui-z-popover: 1500;
+  --cui-z-skipLink: 1600;
+  --cui-z-toast: 1700;
+  --cui-z-tooltip: 1800;
+
+  /* Breakpoints */
+  --cui-breakpoint-sm: 640px;
+  --cui-breakpoint-md: 768px;
+  --cui-breakpoint-lg: 1024px;
+  --cui-breakpoint-xl: 1280px;
+  --cui-breakpoint-2xl: 1536px;
+
+  /* Transitions */
+  --cui-transition-fast: 150ms;
+  --cui-transition-normal: 200ms;
+  --cui-transition-slow: 300ms;
+  --cui-transition-slower: 500ms;
+
+  /* Animation easing */
+  --cui-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --cui-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --cui-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+  --cui-color-background-base: #111827;
+  --cui-color-background-surface: #1f2937;
+  --cui-color-background-muted: #374151;
+  --cui-color-background-subtle: #4b5563;
+  --cui-color-background-hover: #374151;
+
+  --cui-color-text-primary: #f9fafb;
+  --cui-color-text-secondary: #d1d5db;
+  --cui-color-text-muted: #9ca3af;
+  --cui-color-text-inverse: #111827;
+
+  --cui-color-border-base: #374151;
+  --cui-color-border-muted: #4b5563;
+  --cui-color-border-subtle: #6b7280;
+}
+
+/* Base component styles */
+.cui-component {
+  font-family: var(--cui-font-family-sans);
+  line-height: var(--cui-line-height-normal);
+}
+
+/* Focus styles */
+.cui-focus {
+  outline: 2px solid var(--cui-color-primary-500);
+  outline-offset: 2px;
+}
+
+/* Utility classes */
+.cui-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  border-color: var(--cui-color-border-base);
+}
+
+/* Smooth transitions */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: var(--cui-ease-in-out);
+  transition-duration: var(--cui-transition-fast);
+}
+
+
+
+
+
+
+
+

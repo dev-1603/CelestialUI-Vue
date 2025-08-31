@@ -1,0 +1,4 @@
+/* Import all button styles */
+@import './CButton.css';
+@import './CButton.variants.css';
+@import './CButton.animations.css';

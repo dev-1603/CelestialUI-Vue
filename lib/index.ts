@@ -22,6 +22,10 @@ export * from './utils'
 // Type exports
 export type * from './types'
 
+// Import plugins directly
+import { createThemePlugin } from './plugins/theme'
+import { createIconPlugin } from './plugins/icon'
+
 // Collections for easy access
 import { ATOMS } from './components/atoms'
 import { MOLECULES } from './components/molecules'
@@ -44,15 +48,12 @@ export const COMPONENT_CATEGORIES = {
   templates: TEMPLATES
 } as const
 
+// Import existing components for backward compatibility
+import CToast from './components/molecules/toast/CToast.vue'
+
 // Legacy component map for backward compatibility
 const components = {
-  // Core components that were previously exported
-  CButton: ATOMS.CButton,
-  CInput: ATOMS.CInput,
-  CCard: MOLECULES.CCard,
-  CIcon: ATOMS.CIcon,
-  CModal: MOLECULES.CModal,
-  CToast: MOLECULES.CToast
+  CToast
 }
 
 // Vue plugin install function
@@ -60,7 +61,6 @@ const CelestialUI = {
   install(app: App, options: CelestialUIOptions = {}) {
     // Install theme plugin
     if (options.theme) {
-      console.trace('options.theme', options.theme)
       app.use(createThemePlugin(options.theme))
     }
 

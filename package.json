@@ -67,7 +67,7 @@
       "types": "./dist/composables/index.d.ts"
     },
     "./plugins": {
-      "import": "./dist/plugins/index.js", 
+      "import": "./dist/plugins/index.js",
       "types": "./dist/plugins/index.d.ts"
     },
     "./utils": {
@@ -164,5 +164,8 @@
     "extends": [
       "plugin:storybook/recommended"
     ]
+  },
+  "dependencies": {
+    "axios": "^1.11.0"
   }
 }

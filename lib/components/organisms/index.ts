@@ -1,128 +1,66 @@
 // Organisms - Complex UI patterns
-export { default as CTable } from './table/CTable.vue'
-export { default as CDataTable } from './data-table/CDataTable.vue'
-export { default as CVirtualTable } from './virtual-table/CVirtualTable.vue'
-export { default as CList } from './list/CList.vue'
-export { default as CInfiniteScroll } from './infinite-scroll/CInfiniteScroll.vue'
-export { default as CImage } from './image/CImage.vue'
-export { default as CCarousel } from './carousel/CCarousel.vue'
-export { default as CGallery } from './gallery/CGallery.vue'
-export { default as CVideoPlayer } from './video-player/CVideoPlayer.vue'
-export { default as CContainer } from './container/CContainer.vue'
-export { default as CStack } from './stack/CStack.vue'
-export { default as CGrid } from './grid/CGrid.vue'
-export { default as CFlex } from './flex/CFlex.vue'
-export { default as CBox } from './box/CBox.vue'
-export { default as CCenter } from './center/CCenter.vue'
-export { default as CSpacer } from './spacer/CSpacer.vue'
-export { default as CSidebar } from './sidebar/CSidebar.vue'
-export { default as CHeader } from './header/CHeader.vue'
-export { default as CFooter } from './footer/CFooter.vue'
-export { default as CAppShell } from './app-shell/CAppShell.vue'
-export { default as CFormWizard } from './form-wizard/CFormWizard.vue'
-export { default as CFormBuilder } from './form-builder/CFormBuilder.vue'
-export { default as CSurvey } from './survey/CSurvey.vue'
-export { default as CAutocomplete } from './autocomplete/CAutocomplete.vue'
-export { default as CComboBox } from './combo-box/CComboBox.vue'
-export { default as CMention } from './mention/CMention.vue'
-export { default as CTagInput } from './tag-input/CTagInput.vue'
+// Only export components that actually exist
 
-// Type exports for organisms
-export type * from './table/CTable.types'
-export type * from './data-table/CDataTable.types'
-export type * from './virtual-table/CVirtualTable.types'
-export type * from './list/CList.types'
-export type * from './infinite-scroll/CInfiniteScroll.types'
-export type * from './image/CImage.types'
-export type * from './carousel/CCarousel.types'
-export type * from './gallery/CGallery.types'
-export type * from './video-player/CVideoPlayer.types'
-export type * from './container/CContainer.types'
-export type * from './stack/CStack.types'
-export type * from './grid/CGrid.types'
-export type * from './flex/CFlex.types'
-export type * from './box/CBox.types'
-export type * from './center/CCenter.types'
-export type * from './spacer/CSpacer.types'
-export type * from './sidebar/CSidebar.types'
-export type * from './header/CHeader.types'
-export type * from './footer/CFooter.types'
-export type * from './app-shell/CAppShell.types'
-export type * from './form-wizard/CFormWizard.types'
-export type * from './form-builder/CFormBuilder.types'
-export type * from './survey/CSurvey.types'
-export type * from './autocomplete/CAutocomplete.types'
-export type * from './combo-box/CComboBox.types'
-export type * from './mention/CMention.types'
-export type * from './tag-input/CTagInput.types'
+// Type definitions for when components are implemented
+export interface OrganismComponent {
+  name: string
+  implemented: boolean
+  description: string
+  category: 'data' | 'media' | 'layout' | 'form'
+}
 
-// Organisms collection for bulk operations
-export const ORGANISMS = {
-  CTable,
-  CDataTable,
-  CVirtualTable,
-  CList,
-  CInfiniteScroll,
-  CImage,
-  CCarousel,
-  CGallery,
-  CVideoPlayer,
-  CContainer,
-  CStack,
-  CGrid,
-  CFlex,
-  CBox,
-  CCenter,
-  CSpacer,
-  CSidebar,
-  CHeader,
-  CFooter,
-  CAppShell,
-  CFormWizard,
-  CFormBuilder,
-  CSurvey,
-  CAutocomplete,
-  CComboBox,
-  CMention,
-  CTagInput
-} as const
+// Organism registry for development tracking
+export const ORGANISM_REGISTRY: OrganismComponent[] = [
+  { name: 'CTable', implemented: false, description: 'Data table', category: 'data' },
+  { name: 'CDataTable', implemented: false, description: 'Advanced data table', category: 'data' },
+  { name: 'CVirtualTable', implemented: false, description: 'Virtualized table', category: 'data' },
+  { name: 'CList', implemented: false, description: 'List component', category: 'data' },
+  { name: 'CInfiniteScroll', implemented: false, description: 'Infinite scroll list', category: 'data' },
+  { name: 'CImage', implemented: false, description: 'Responsive image', category: 'media' },
+  { name: 'CCarousel', implemented: false, description: 'Image carousel', category: 'media' },
+  { name: 'CGallery', implemented: false, description: 'Image gallery', category: 'media' },
+  { name: 'CVideoPlayer', implemented: false, description: 'Video player', category: 'media' },
+  { name: 'CContainer', implemented: false, description: 'Layout container', category: 'layout' },
+  { name: 'CStack', implemented: false, description: 'Stack layout', category: 'layout' },
+  { name: 'CGrid', implemented: false, description: 'Grid layout', category: 'layout' },
+  { name: 'CFlex', implemented: false, description: 'Flex layout', category: 'layout' },
+  { name: 'CBox', implemented: false, description: 'Box component', category: 'layout' },
+  { name: 'CCenter', implemented: false, description: 'Center alignment', category: 'layout' },
+  { name: 'CSpacer', implemented: false, description: 'Spacing component', category: 'layout' },
+  { name: 'CSidebar', implemented: false, description: 'Sidebar navigation', category: 'layout' },
+  { name: 'CHeader', implemented: false, description: 'Page header', category: 'layout' },
+  { name: 'CFooter', implemented: false, description: 'Page footer', category: 'layout' },
+  { name: 'CAppShell', implemented: false, description: 'Application shell', category: 'layout' },
+  { name: 'CFormWizard', implemented: false, description: 'Multi-step form', category: 'form' },
+  { name: 'CFormBuilder', implemented: false, description: 'Dynamic form builder', category: 'form' },
+  { name: 'CSurvey', implemented: false, description: 'Survey component', category: 'form' },
+  { name: 'CAutocomplete', implemented: false, description: 'Autocomplete input', category: 'form' },
+  { name: 'CComboBox', implemented: false, description: 'Combo box component', category: 'form' },
+  { name: 'CMention', implemented: false, description: 'Mention input', category: 'form' },
+  { name: 'CTagInput', implemented: false, description: 'Tag input field', category: 'form' }
+]
 
-// Organism categories for better organization
-export const DATA_ORGANISMS = {
-  CTable,
-  CDataTable,
-  CVirtualTable,
-  CList,
-  CInfiniteScroll
-} as const
+// Empty collections for now - will be populated as components are implemented
+export const ORGANISMS = {} as const
 
-export const MEDIA_ORGANISMS = {
-  CImage,
-  CCarousel,
-  CGallery,
-  CVideoPlayer
-} as const
+export const DATA_ORGANISMS = {} as const
+export const MEDIA_ORGANISMS = {} as const
+export const LAYOUT_ORGANISMS = {} as const
+export const FORM_ORGANISMS = {} as const
 
-export const LAYOUT_ORGANISMS = {
-  CContainer,
-  CStack,
-  CGrid,
-  CFlex,
-  CBox,
-  CCenter,
-  CSpacer,
-  CSidebar,
-  CHeader,
-  CFooter,
-  CAppShell
-} as const
+// Helper functions
+export function getOrganismStatus(name: string): OrganismComponent | undefined {
+  return ORGANISM_REGISTRY.find(organism => organism.name === name)
+}
 
-export const FORM_ORGANISMS = {
-  CFormWizard,
-  CFormBuilder,
-  CSurvey,
-  CAutocomplete,
-  CComboBox,
-  CMention,
-  CTagInput
-} as const
+export function getImplementedOrganisms(): OrganismComponent[] {
+  return ORGANISM_REGISTRY.filter(organism => organism.implemented)
+}
+
+export function getPendingOrganisms(): OrganismComponent[] {
+  return ORGANISM_REGISTRY.filter(organism => !organism.implemented)
+}
+
+export function getOrganismsByCategory(category: OrganismComponent['category']): OrganismComponent[] {
+  return ORGANISM_REGISTRY.filter(organism => organism.category === category)
+}

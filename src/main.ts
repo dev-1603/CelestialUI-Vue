@@ -8,11 +8,7 @@ import router from './router'
 
 // Import CelestialUI
 import CelestialUI from '../lib/index'
-import { createThemePlugin } from '../lib/plugins/theme'
-import { createIconPlugin } from '../lib/plugins/icon'
 import { defaultTokens } from '../lib/themes'
-// Import toast container
-import CToastContainer from '../lib/components/feedback/toast/CToastContainer.vue'
 
 const app = createApp(App)
 

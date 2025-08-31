@@ -6,6 +6,10 @@
 import './button.css';
 import { computed } from 'vue';
 
+defineOptions({
+  name: 'MyButton'
+});
+
 const props = withDefaults(defineProps<{
   /**
    * The label of the button

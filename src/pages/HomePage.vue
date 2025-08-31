@@ -24,112 +24,42 @@
       </div>
 
       <div class="home-actions">
-        <CButton
-          left-icon="book"
-          @click="openStorybook('')"
+        <button
+          @click="openStorybook"
+          class="btn btn-primary"
         >
-          View Storybook
-        </CButton>
-        <CButton
-          variant="outline"
-          left-icon="github"
+          📖 View Storybook
+        </button>
+        <button
           @click="openGitHub"
+          class="btn btn-outline"
         >
-          GitHub
-        </CButton>
+          📁 GitHub
+        </button>
       </div>
     </div>
 
     <!-- Content Section -->
     <div class="home-content">
-      <section
-        v-for="(components, category) in componentsByCategory"
-        :key="category"
-        class="category-section"
-      >
+      <section class="category-section">
         <div class="category-header">
           <div class="category-title-group">
             <h2 class="category-title">
-              {{ category }} Components
-              <span class="category-count">({{ getCategoryStatsForCategory(category).total }})</span>
+              Component Library
+              <span class="category-count">(Coming Soon)</span>
             </h2>
             <p class="category-description">
-              {{ categoryDescriptions[category as keyof typeof categoryDescriptions] }}
+              Components will be built and displayed here as development progresses.
             </p>
-          </div>
-          <div class="category-progress">
-            <div class="progress-stats">
-              <span class="progress-text">
-                {{ getCategoryStatsForCategory(category).implemented }} of {{ getCategoryStatsForCategory(category).total }} implemented
-              </span>
-              <div class="progress-bar">
-                <div
-                  class="progress-fill"
-                  :style="{ width: `${(getCategoryStatsForCategory(category).implemented / getCategoryStatsForCategory(category).total) * 100}%` }"
-                />
-              </div>
-            </div>
           </div>
         </div>
 
         <div class="components-table-container">
-          <table class="components-table">
-            <thead>
-              <tr>
-                <th>Component</th>
-                <th>Description</th>
-                <th>Status</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr
-                v-for="component in components"
-                :key="component.name"
-                :class="component.implemented ? '' : 'component-row--pending'"
-              >
-                <td>
-                  <router-link
-                    :to="component.docPath"
-                    class="component-name-link"
-                  >
-                    {{ component.name }}
-                  </router-link>
-                </td>
-                <td class="component-description">
-                  {{ component.description }}
-                </td>
-                <td>
-                  <span
-                    :class="[
-                      'status-badge',
-                      component.implemented ? 'status-badge--ready' : 'status-badge--pending'
-                    ]"
-                  >
-                    {{ component.implemented ? '✓ Ready' : '⏳ Planned' }}
-                  </span>
-                </td>
-                <td>
-                  <div class="component-actions">
-                    <router-link :to="component.docPath">
-                      <CButton size="sm" variant="ghost">
-                        Docs
-                      </CButton>
-                    </router-link>
-                    <CButton
-                      v-if="component.implemented && component.storybookPath"
-                      size="sm"
-                      variant="outline"
-                      left-icon="external-link"
-                      @click="openStorybook(component.storybookPath)"
-                    >
-                      Storybook
-                    </CButton>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="text-center py-8 text-gray-500">
+            <div class="text-6xl mb-4">🚧</div>
+            <h3 class="text-xl font-semibold mb-2">Components Under Development</h3>
+            <p>This section will be populated as components are implemented.</p>
+          </div>
         </div>
       </section>
     </div>
@@ -137,42 +67,80 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import { getComponentsByCategory, getCategoryStats } from '../data/components'
-import { CButton } from '../../lib/index'
+// HOMEPAGE COMPONENT LOGIC (COMMENTED FOR STRUCTURE ONLY)
+
+import { ref } from 'vue'
 import './HomePage.css'
 
-const componentsByCategory = computed(() => getComponentsByCategory())
-const categoryStats = computed(() => getCategoryStats())
+// Basic demo data for structure display
+const totalImplemented = ref(3)
+const totalComponents = ref(10)
 
-const totalImplemented = computed(() =>
-  categoryStats.value.reduce((sum, stat) => sum + stat.implemented, 0)
-)
-const totalComponents = computed(() =>
-  categoryStats.value.reduce((sum, stat) => sum + stat.total, 0)
-)
+// All complex functionality commented out - showing structure only
+// import { getComponentsByCategory, getCategoryStats } from '../data/components'
+// const componentsByCategory = computed(() => getComponentsByCategory())
+// const categoryStats = computed(() => getCategoryStats())
+// const totalImplemented = computed(() => /* calculation logic */)
+// const totalComponents = computed(() => /* calculation logic */)
+// const categoryDescriptions = { /* category descriptions */ }
+// const getCategoryStatsForCategory = (category: string) => { /* stats logic */ }
 
-const categoryDescriptions = {
-  ATOMIC: 'Basic building blocks - fundamental components that cannot be broken down further',
-  MOLECULAR: 'Simple combinations - components built by combining atomic components',
-  ORGANISM: 'Complex UI patterns - sophisticated components with multiple features',
-  TEMPLATE: 'Layout patterns - page-level structure and navigation components',
-  ADVANCED: 'Complex interactions - feature-rich components with advanced functionality'
-}
-
-const getCategoryStatsForCategory = (category: string) => {
-  return categoryStats.value?.find(stat => stat.category === category) || { implemented: 0, total: 0 }
-}
-
-const openStorybook = (path: string) => {
-  window.open(`http://localhost:6006${path}`, '_blank')
+const openStorybook = () => {
+  // window.open('http://localhost:6006', '_blank')
+  console.log('Would open Storybook')
 }
 
 const openGitHub = () => {
-  window.open('https://github.com/dev-1603/celestialui-vue', '_blank')
+  // window.open('https://github.com/dev-1603/celestialui-vue', '_blank')
+  console.log('Would open GitHub')
 }
 </script>
 
 <style scoped>
-/* Additional styles can be added here if needed */
+/* Temporary button styles until components are built */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  outline: none;
+  font-family: inherit;
+}
+
+.btn-primary {
+  background: #3b82f6;
+  color: white;
+  border-color: #3b82f6;
+}
+
+.btn-primary:hover {
+  background: #2563eb;
+  border-color: #2563eb;
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: #2563eb;
+  border-color: #93c5fd;
+}
+
+.btn-outline:hover {
+  background: #eff6ff;
+  border-color: #60a5fa;
+  transform: translateY(-1px);
+}
+
+.btn:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
 </style>

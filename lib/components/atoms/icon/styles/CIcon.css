@@ -1,0 +1,299 @@
+/* CIcon Component Styles */
+
+.c-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  color: inherit;
+  fill: currentColor;
+  transition: all 0.2s ease;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+/* Type-specific styles */
+.c-icon--font {
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.c-icon--svg {
+  width: 1em;
+  height: 1em;
+}
+
+.c-icon--image {
+  object-fit: contain;
+  width: 1em;
+  height: 1em;
+}
+
+/* Size variants */
+.c-icon--xs {
+  font-size: 0.75rem;
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+.c-icon--sm {
+  font-size: 0.875rem;
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+.c-icon--md {
+  font-size: 1rem;
+  width: 1rem;
+  height: 1rem;
+}
+
+.c-icon--lg {
+  font-size: 1.25rem;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.c-icon--xl {
+  font-size: 1.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.c-icon--2xl {
+  font-size: 2rem;
+  width: 2rem;
+  height: 2rem;
+}
+
+.c-icon--3xl {
+  font-size: 3rem;
+  width: 3rem;
+  height: 3rem;
+}
+
+/* Color variants */
+.c-icon--current {
+  color: currentColor;
+}
+
+.c-icon--primary {
+  color: var(--cui-color-primary-500, #3b82f6);
+}
+
+.c-icon--secondary {
+  color: var(--cui-color-secondary-500, #6b7280);
+}
+
+.c-icon--success {
+  color: var(--cui-color-success-500, #10b981);
+}
+
+.c-icon--warning {
+  color: var(--cui-color-warning-500, #f59e0b);
+}
+
+.c-icon--error {
+  color: var(--cui-color-error-500, #ef4444);
+}
+
+.c-icon--info {
+  color: var(--cui-color-info-500, #06b6d4);
+}
+
+/* Interactive states */
+.c-icon--clickable {
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0.25rem;
+  border-radius: 0.375rem;
+  transition: all 0.2s ease;
+}
+
+.c-icon--clickable:hover {
+  background-color: var(--cui-color-background-hover, rgba(0, 0, 0, 0.05));
+  transform: scale(1.05);
+}
+
+.c-icon--clickable:active {
+  transform: scale(0.95);
+}
+
+.c-icon--clickable:focus-visible {
+  outline: 2px solid var(--cui-color-primary-500, #3b82f6);
+  outline-offset: 2px;
+}
+
+.c-icon--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.c-icon--loading {
+  opacity: 0.7;
+}
+
+/* Transform utilities */
+.c-icon--flip-x {
+  transform: scaleX(-1);
+}
+
+.c-icon--flip-y {
+  transform: scaleY(-1);
+}
+
+.c-icon--rotate-45 {
+  transform: rotate(45deg);
+}
+
+.c-icon--rotate-90 {
+  transform: rotate(90deg);
+}
+
+.c-icon--rotate-135 {
+  transform: rotate(135deg);
+}
+
+.c-icon--rotate-180 {
+  transform: rotate(180deg);
+}
+
+.c-icon--rotate-225 {
+  transform: rotate(225deg);
+}
+
+.c-icon--rotate-270 {
+  transform: rotate(270deg);
+}
+
+.c-icon--rotate-315 {
+  transform: rotate(315deg);
+}
+
+/* Animation utilities */
+.c-icon--spin {
+  animation: cui-spin 1s linear infinite;
+}
+
+.c-icon--pulse {
+  animation: cui-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.c-icon--bounce {
+  animation: cui-bounce 1s infinite;
+}
+
+.c-icon--fade {
+  animation: cui-fade 2s ease-in-out infinite alternate;
+}
+
+/* Keyframe animations */
+@keyframes cui-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes cui-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes cui-bounce {
+  0%, 20%, 53%, 80%, 100% {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translate3d(0, 0, 0);
+  }
+  40%, 43% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -30px, 0) scaleY(1.1);
+  }
+  70% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -15px, 0) scaleY(1.05);
+  }
+  90% {
+    transform: translate3d(0, -4px, 0) scaleY(1.02);
+  }
+}
+
+@keyframes cui-fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Material Icons specific styles */
+.material-icons,
+.material-icons-outlined,
+.material-icons-round,
+.material-icons-sharp,
+.material-icons-two-tone {
+  font-family: 'Material Icons', 'Material Icons Outlined', 'Material Icons Round', 'Material Icons Sharp', 'Material Icons Two Tone';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Material Icons size classes */
+.material-icons.md-12 { font-size: 12px; }
+.material-icons.md-14 { font-size: 14px; }
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+.material-icons.md-64 { font-size: 64px; }
+
+/* Font Awesome compatibility */
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .c-icon--clickable:hover {
+    background-color: var(--cui-color-background-hover-dark, rgba(255, 255, 255, 0.1));
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .c-icon {
+    filter: contrast(2);
+  }
+}

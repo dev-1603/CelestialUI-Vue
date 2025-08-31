@@ -1,0 +1,90 @@
+/* Loading animation */
+@keyframes celestial-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.celestial-button--loading .celestial-button__icon[data-loading="true"] {
+  animation: celestial-spin 1s linear infinite;
+}
+
+/* Ripple effect animation */
+@keyframes celestial-ripple {
+  0% {
+    transform: scale(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.celestial-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.celestial-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: currentColor;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.celestial-button:active::before {
+  width: 100px;
+  height: 100px;
+  opacity: 0.1;
+  transition: width 0.3s ease, height 0.3s ease, opacity 0.1s ease;
+}
+
+/* Disabled animation prevention */
+.celestial-button--disabled::before {
+  display: none;
+}
+
+/* Scale animation on press */
+.celestial-button:active:not(.celestial-button--disabled):not(.celestial-button--loading) {
+  transform: scale(0.98);
+}
+
+/* Hover elevation for certain variants */
+.celestial-button--primary:hover:not(.celestial-button--disabled),
+.celestial-button--outline:hover:not(.celestial-button--disabled) {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+/* Focus animation */
+.celestial-button:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 
+    0 0 0 2px var(--focus-ring-color, rgba(59, 130, 246, 0.5)),
+    0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Transition overrides for specific states */
+.celestial-button--loading {
+  transition: all 0.2s ease-in-out, transform 0s;
+}
+
+.celestial-button--disabled {
+  transition: opacity 0.2s ease-in-out;
+}
