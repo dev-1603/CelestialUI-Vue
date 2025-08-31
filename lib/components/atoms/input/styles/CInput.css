@@ -1,0 +1,264 @@
+/* Base input styles */
+.celestial-input {
+  /* Display and positioning */
+  @apply relative inline-block w-full;
+  
+  /* Font family inheritance */
+  font-family: inherit;
+}
+
+/* Input container */
+.celestial-input__container {
+  /* Layout */
+  @apply relative flex items-center;
+  
+  /* Transitions */
+  @apply transition-all duration-200 ease-in-out;
+  
+  /* Border radius */
+  @apply rounded-md;
+  
+  /* Default border and background */
+  @apply border border-gray-300 bg-white;
+}
+
+/* Input field */
+.celestial-input__field {
+  /* Layout and sizing */
+  @apply flex-1 w-full;
+  
+  /* Typography */
+  @apply font-normal leading-normal;
+  
+  /* Colors */
+  @apply text-gray-900 placeholder-gray-500;
+  
+  /* Remove default styles */
+  border: none;
+  background: transparent;
+  outline: none;
+  
+  /* Transitions */
+  @apply transition-colors duration-200 ease-in-out;
+}
+
+/* Size variants for container */
+.celestial-input__container--sm {
+  @apply px-3 py-1.5 text-sm min-h-[32px] gap-2;
+}
+
+.celestial-input__container--md {
+  @apply px-4 py-2.5 text-base min-h-[40px] gap-2.5;
+}
+
+.celestial-input__container--lg {
+  @apply px-5 py-3 text-lg min-h-[48px] gap-3;
+}
+
+/* Size variants for field */
+.celestial-input__field--sm {
+  @apply text-sm;
+}
+
+.celestial-input__field--md {
+  @apply text-base;
+}
+
+.celestial-input__field--lg {
+  @apply text-lg;
+}
+
+/* Field padding adjustments for elements */
+.celestial-input__field--has-left {
+  @apply pl-0;
+}
+
+.celestial-input__field--has-right {
+  @apply pr-0;
+}
+
+/* Left element */
+.celestial-input__left-element {
+  /* Layout */
+  @apply flex items-center justify-center flex-shrink-0;
+  
+  /* Colors */
+  @apply text-gray-500;
+  
+  /* Transitions */
+  @apply transition-colors duration-200 ease-in-out;
+}
+
+/* Right element */
+.celestial-input__right-element {
+  /* Layout */
+  @apply flex items-center justify-center flex-shrink-0;
+  
+  /* Colors */
+  @apply text-gray-500;
+  
+  /* Transitions */
+  @apply transition-colors duration-200 ease-in-out;
+}
+
+/* Element size variants */
+.celestial-input__left-element--sm,
+.celestial-input__right-element--sm {
+  @apply w-4 h-4 text-sm;
+}
+
+.celestial-input__left-element--md,
+.celestial-input__right-element--md {
+  @apply w-5 h-5 text-base;
+}
+
+.celestial-input__left-element--lg,
+.celestial-input__right-element--lg {
+  @apply w-6 h-6 text-lg;
+}
+
+/* Helper text */
+.celestial-input__helper-text {
+  /* Layout */
+  @apply block mt-1;
+  
+  /* Colors */
+  @apply text-gray-600;
+  
+  /* Typography */
+  @apply leading-tight;
+}
+
+/* Helper text size variants */
+.celestial-input__helper-text--sm {
+  @apply text-xs;
+}
+
+.celestial-input__helper-text--md {
+  @apply text-sm;
+}
+
+.celestial-input__helper-text--lg {
+  @apply text-base;
+}
+
+/* Error message */
+.celestial-input__error-message {
+  /* Layout */
+  @apply block mt-1;
+  
+  /* Colors */
+  @apply text-red-600;
+  
+  /* Typography */
+  @apply font-medium leading-tight;
+}
+
+/* Error message size variants */
+.celestial-input__error-message--sm {
+  @apply text-xs;
+}
+
+.celestial-input__error-message--md {
+  @apply text-sm;
+}
+
+.celestial-input__error-message--lg {
+  @apply text-base;
+}
+
+/* Focus states */
+.celestial-input--focused .celestial-input__container {
+  @apply ring-2 ring-blue-500 ring-offset-0 border-blue-500;
+}
+
+.celestial-input--focused .celestial-input__left-element,
+.celestial-input--focused .celestial-input__right-element {
+  @apply text-blue-500;
+}
+
+/* Hover states */
+.celestial-input:not(.celestial-input--disabled):hover .celestial-input__container {
+  @apply border-gray-400;
+}
+
+/* Invalid/Error states */
+.celestial-input--invalid .celestial-input__container {
+  @apply border-red-500;
+}
+
+.celestial-input--invalid.celestial-input--focused .celestial-input__container {
+  @apply ring-red-500 border-red-500;
+}
+
+.celestial-input--invalid .celestial-input__left-element,
+.celestial-input--invalid .celestial-input__right-element {
+  @apply text-red-500;
+}
+
+/* Disabled states */
+.celestial-input--disabled .celestial-input__container {
+  @apply bg-gray-100 border-gray-200 cursor-not-allowed;
+}
+
+.celestial-input--disabled .celestial-input__field {
+  @apply text-gray-500 cursor-not-allowed;
+  -webkit-text-fill-color: theme('colors.gray.500');
+}
+
+.celestial-input--disabled .celestial-input__left-element,
+.celestial-input--disabled .celestial-input__right-element {
+  @apply text-gray-400;
+}
+
+.celestial-input--disabled .celestial-input__helper-text {
+  @apply text-gray-400;
+}
+
+/* Readonly states */
+.celestial-input--readonly .celestial-input__container {
+  @apply bg-gray-50;
+}
+
+.celestial-input--readonly .celestial-input__field {
+  @apply cursor-default;
+}
+
+/* Required indicator */
+.celestial-input--required .celestial-input__field::placeholder {
+  /* Could add required styling here if needed */
+}
+
+/* Autocomplete styles */
+.celestial-input__field:-webkit-autofill,
+.celestial-input__field:-webkit-autofill:hover,
+.celestial-input__field:-webkit-autofill:focus,
+.celestial-input__field:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  -webkit-text-fill-color: theme('colors.gray.900') !important;
+}
+
+/* Hide browser password reveal button */
+.celestial-input__field::-ms-reveal,
+.celestial-input__field::-ms-clear {
+  display: none;
+}
+
+/* Hide number input spinners */
+.celestial-input__field[type="number"]::-webkit-outer-spin-button,
+.celestial-input__field[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.celestial-input__field[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Search input clear button */
+.celestial-input__field[type="search"]::-webkit-search-decoration,
+.celestial-input__field[type="search"]::-webkit-search-cancel-button,
+.celestial-input__field[type="search"]::-webkit-search-results-button,
+.celestial-input__field[type="search"]::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+}

@@ -1,0 +1,4 @@
+/* Import all checkbox styles */
+@import './CCheckbox.css';
+@import './CCheckbox.variants.css';
+@import './CCheckbox.animations.css';

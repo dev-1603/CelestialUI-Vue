@@ -22,49 +22,7 @@
       </p>
 
       <!-- API Reference -->
-      <div class="bg-blue-50 p-6 rounded-lg mb-8">
-        <h2 class="text-xl font-semibold mb-4">API Reference</h2>
-        <div class="grid md:grid-cols-3 gap-6">
-          <div>
-            <h3 class="font-semibold text-blue-800 mb-2">Props</h3>
-            <ul class="text-sm space-y-1">
-              <li><code>children</code> - string</li>
-              <li><code>variant</code> - 'primary' | 'secondary' | 'outline' | 'ghost' | 'link'</li>
-              <li><code>size</code> - 'xs' | 'sm' | 'md' | 'lg' | 'xl'</li>
-              <li><code>disabled</code> - boolean</li>
-              <li><code>loading</code> - boolean</li>
-              <li><code>fullWidth</code> - boolean</li>
-              <li><code>leftIcon</code> - string</li>
-              <li><code>rightIcon</code> - string</li>
-              <li><code>type</code> - 'button' | 'submit' | 'reset'</li>
-              <li><code>as</code> - 'button' | 'a' | 'div'</li>
-              <li><code>href</code> - string</li>
-              <li><code>target</code> - string</li>
-              <li><code>download</code> - string | boolean</li>
-              <li><code>rounded</code> - boolean | string</li>
-            </ul>
-          </div>
-          <div>
-            <h3 class="font-semibold text-green-800 mb-2">Events</h3>
-            <ul class="text-sm space-y-1">
-              <li><code>@click</code> - MouseEvent</li>
-              <li><code>@focus</code> - FocusEvent</li>
-              <li><code>@blur</code> - FocusEvent</li>
-              <li><code>@mouseenter</code> - MouseEvent</li>
-              <li><code>@mouseleave</code> - MouseEvent</li>
-            </ul>
-          </div>
-          <div>
-            <h3 class="font-semibold text-purple-800 mb-2">Slots</h3>
-            <ul class="text-sm space-y-1">
-              <li><code>default</code> - Main content</li>
-              <li><code>leftIcon</code> - Custom left icon</li>
-              <li><code>rightIcon</code> - Custom right icon</li>
-              <li><code>loadingSpinner</code> - Custom loading</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <ApiReference v-bind="buttonApiData" />
     </div>
 
     <!-- Event Display -->
@@ -392,13 +350,15 @@
 import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { CButton } from '@lib/components/atoms/button'
+import ApiReference from '@/components/Common/ApiReference/apiReference.vue'
+import { buttonApiData } from '@/data/apiReference'
 
 // Router
 const router = useRouter()
 
 // Back button functionality
 const goBack = () => {
-  router.push('/test')
+  router.push('/playground')
 }
 
 // Event tracking

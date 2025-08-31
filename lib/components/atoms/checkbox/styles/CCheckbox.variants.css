@@ -1,0 +1,121 @@
+/* Color scheme variants */
+
+/* Primary (default blue) */
+.celestial-checkbox--primary .celestial-checkbox__box--checked,
+.celestial-checkbox--primary .celestial-checkbox__box--indeterminate {
+  @apply bg-blue-600 border-blue-600;
+}
+
+.celestial-checkbox--primary:not(.celestial-checkbox--disabled):hover .celestial-checkbox__box--checked,
+.celestial-checkbox--primary:not(.celestial-checkbox--disabled):hover .celestial-checkbox__box--indeterminate {
+  @apply bg-blue-700 border-blue-700;
+}
+
+.celestial-checkbox--primary .celestial-checkbox__input:focus + .celestial-checkbox__box {
+  @apply ring-blue-500;
+}
+
+/* Secondary (gray) */
+.celestial-checkbox--secondary .celestial-checkbox__box--checked,
+.celestial-checkbox--secondary .celestial-checkbox__box--indeterminate {
+  @apply bg-gray-600 border-gray-600;
+}
+
+.celestial-checkbox--secondary:not(.celestial-checkbox--disabled):hover .celestial-checkbox__box--checked,
+.celestial-checkbox--secondary:not(.celestial-checkbox--disabled):hover .celestial-checkbox__box--indeterminate {
+  @apply bg-gray-700 border-gray-700;
+}
+
+.celestial-checkbox--secondary .celestial-checkbox__input:focus + .celestial-checkbox__box {
+  @apply ring-gray-500;
+}
+
+/* Success (green) */
+.celestial-checkbox--success .celestial-checkbox__box--checked,
+.celestial-checkbox--success .celestial-checkbox__box--indeterminate {
+  @apply bg-green-600 border-green-600;
+}
+
+.celestial-checkbox--success:not(.celestial-checkbox--disabled):hover .celestial-checkbox__box--checked,
+.celestial-checkbox--success:not(.celestial-checkbox--disabled):hover .celestial-checkbox__box--indeterminate {
+  @apply bg-green-700 border-green-700;
+}
+
+.celestial-checkbox--success .celestial-checkbox__input:focus + .celestial-checkbox__box {
+  @apply ring-green-500;
+}
+
+/* Warning (yellow) */
+.celestial-checkbox--warning .celestial-checkbox__box--checked,
+.celestial-checkbox--warning .celestial-checkbox__box--indeterminate {
+  @apply bg-yellow-500 border-yellow-500;
+}
+
+.celestial-checkbox--warning:not(.celestial-checkbox--disabled):hover .celestial-checkbox__box--checked,
+.celestial-checkbox--warning:not(.celestial-checkbox--disabled):hover .celestial-checkbox__box--indeterminate {
+  @apply bg-yellow-600 border-yellow-600;
+}
+
+.celestial-checkbox--warning .celestial-checkbox__input:focus + .celestial-checkbox__box {
+  @apply ring-yellow-500;
+}
+
+/* Danger (red) */
+.celestial-checkbox--danger .celestial-checkbox__box--checked,
+.celestial-checkbox--danger .celestial-checkbox__box--indeterminate {
+  @apply bg-red-600 border-red-600;
+}
+
+.celestial-checkbox--danger:not(.celestial-checkbox--disabled):hover .celestial-checkbox__box--checked,
+.celestial-checkbox--danger:not(.celestial-checkbox--disabled):hover .celestial-checkbox__box--indeterminate {
+  @apply bg-red-700 border-red-700;
+}
+
+.celestial-checkbox--danger .celestial-checkbox__input:focus + .celestial-checkbox__box {
+  @apply ring-red-500;
+}
+
+/* Info (cyan) */
+.celestial-checkbox--info .celestial-checkbox__box--checked,
+.celestial-checkbox--info .celestial-checkbox__box--indeterminate {
+  @apply bg-cyan-600 border-cyan-600;
+}
+
+.celestial-checkbox--info:not(.celestial-checkbox--disabled):hover .celestial-checkbox__box--checked,
+.celestial-checkbox--info:not(.celestial-checkbox--disabled):hover .celestial-checkbox__box--indeterminate {
+  @apply bg-cyan-700 border-cyan-700;
+}
+
+.celestial-checkbox--info .celestial-checkbox__input:focus + .celestial-checkbox__box {
+  @apply ring-cyan-500;
+}
+
+/* Purple */
+.celestial-checkbox--purple .celestial-checkbox__box--checked,
+.celestial-checkbox--purple .celestial-checkbox__box--indeterminate {
+  @apply bg-purple-600 border-purple-600;
+}
+
+.celestial-checkbox--purple:not(.celestial-checkbox--disabled):hover .celestial-checkbox__box--checked,
+.celestial-checkbox--purple:not(.celestial-checkbox--disabled):hover .celestial-checkbox__box--indeterminate {
+  @apply bg-purple-700 border-purple-700;
+}
+
+.celestial-checkbox--purple .celestial-checkbox__input:focus + .celestial-checkbox__box {
+  @apply ring-purple-500;
+}
+
+/* Pink */
+.celestial-checkbox--pink .celestial-checkbox__box--checked,
+.celestial-checkbox--pink .celestial-checkbox__box--indeterminate {
+  @apply bg-pink-600 border-pink-600;
+}
+
+.celestial-checkbox--pink:not(.celestial-checkbox--disabled):hover .celestial-checkbox__box--checked,
+.celestial-checkbox--pink:not(.celestial-checkbox--disabled):hover .celestial-checkbox__box--indeterminate {
+  @apply bg-pink-700 border-pink-700;
+}
+
+.celestial-checkbox--pink .celestial-checkbox__input:focus + .celestial-checkbox__box {
+  @apply ring-pink-500;
+}

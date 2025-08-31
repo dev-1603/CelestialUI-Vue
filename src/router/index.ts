@@ -14,14 +14,14 @@ const routes: RouteRecordRaw[] = [
       title: 'CelestialUI Components'
     }
   },
-  {
-    path: '/playground',
-    name: 'playground',
-    component: PlaygroundPage,
-    meta: {
-      title: 'Component Playground'
-    }
-  },
+  // {
+  //   path: '/playground',
+  //   name: 'playground',
+  //   component: PlaygroundPage,
+  //   meta: {
+  //     title: 'Component Playground'
+  //   }
+  // },
   {
     path: '/themes',
     name: 'themes',

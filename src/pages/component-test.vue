@@ -14,24 +14,36 @@
       <nav class="mb-8">
         <div class="flex flex-wrap gap-4">
           <router-link
-            to="/test"
+            to="/playground"
             exact-active-class="bg-blue-600 text-white"
             class="px-4 py-2 rounded-lg bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors"
           >
             Overview
           </router-link>
           <router-link
-            to="/test/atomic/button"
+            to="/playground/atomic/button"
             class="px-4 py-2 rounded-lg bg-green-500 text-white hover:bg-green-600 transition-colors"
           >
             Button Test →
           </router-link>
           <router-link
-            to="/test/atomic/icon"
+            to="/playground/atomic/icon"
             class="px-4 py-2 rounded-lg bg-purple-500 text-white hover:bg-purple-600 transition-colors"
           >
             Icon Test →
           </router-link>
+                  <router-link
+          to="/playground/atomic/checkbox"
+          class="px-4 py-2 rounded-lg bg-orange-500 text-white hover:bg-orange-600 transition-colors"
+        >
+          Checkbox Test →
+        </router-link>
+        <router-link
+          to="/playground/atomic/input"
+          class="px-4 py-2 rounded-lg bg-green-500 text-white hover:bg-green-600 transition-colors"
+        >
+          Input Test →
+        </router-link>
         </div>
       </nav>
 
@@ -45,7 +57,7 @@
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <!-- Button Test Card -->
             <router-link
-              to="/test/atomic/button"
+              to="/playground/atomic/button"
               class="group block p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-700 hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors"
             >
               <div class="flex items-center gap-3 mb-2">
@@ -64,7 +76,7 @@
 
             <!-- Icon Test Card -->
             <router-link
-              to="/test/atomic/icon"
+              to="/playground/atomic/icon"
               class="group block p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg border border-purple-200 dark:border-purple-700 hover:bg-purple-100 dark:hover:bg-purple-900/30 transition-colors"
             >
               <div class="flex items-center gap-3 mb-2">
@@ -80,6 +92,43 @@
                 Click to test →
               </div>
             </router-link>
+
+            <!-- Checkbox Test Card -->
+                    <router-link
+          to="/playground/atomic/checkbox"
+          class="group block p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg border border-orange-200 dark:border-orange-700 hover:bg-orange-100 dark:hover:bg-orange-900/30 transition-colors"
+        >
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center">
+              <span class="text-white text-sm font-bold">☑</span>
+            </div>
+            <h3 class="font-semibold text-orange-800 dark:text-orange-200">Checkbox Component</h3>
+          </div>
+          <p class="text-sm text-orange-600 dark:text-orange-300">
+            Test checkbox states, sizes, colors, and form integration
+          </p>
+          <div class="mt-2 text-xs text-orange-500 dark:text-orange-400 group-hover:text-orange-600">
+            Click to test →
+          </div>
+        </router-link>
+
+        <router-link
+          to="/playground/atomic/input"
+          class="group block p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-700 hover:bg-green-100 dark:hover:bg-green-900/30 transition-colors"
+        >
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center">
+              <span class="text-white text-sm font-bold">📝</span>
+            </div>
+            <h3 class="font-semibold text-green-800 dark:text-green-200">Input Component</h3>
+          </div>
+          <p class="text-sm text-green-600 dark:text-green-300">
+            Test input types, validation, debouncing, and headless usage
+          </p>
+          <div class="mt-2 text-xs text-green-500 dark:text-green-400 group-hover:text-green-600">
+            Click to test →
+          </div>
+        </router-link>
 
             <!-- Coming Soon Card -->
             <div class="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg border border-gray-200 dark:border-gray-600 opacity-60">

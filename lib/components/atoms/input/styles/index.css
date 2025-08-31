@@ -1,0 +1,4 @@
+/* Import all input styles */
+@import './CInput.css';
+@import './CInput.variants.css';
+@import './CInput.animations.css';

@@ -1,0 +1,158 @@
+/* Input variant styles */
+
+/* Outline variant (default) */
+.celestial-input__container--outline {
+  @apply border border-gray-300 bg-white;
+}
+
+.celestial-input--focused .celestial-input__container--outline {
+  @apply ring-2 ring-blue-500 ring-offset-0 border-blue-500;
+}
+
+.celestial-input:not(.celestial-input--disabled):hover .celestial-input__container--outline {
+  @apply border-gray-400;
+}
+
+.celestial-input--invalid .celestial-input__container--outline {
+  @apply border-red-500;
+}
+
+.celestial-input--invalid.celestial-input--focused .celestial-input__container--outline {
+  @apply ring-red-500 border-red-500;
+}
+
+.celestial-input--disabled .celestial-input__container--outline {
+  @apply bg-gray-100 border-gray-200;
+}
+
+.celestial-input--readonly .celestial-input__container--outline {
+  @apply bg-gray-50 border-gray-300;
+}
+
+/* Filled variant */
+.celestial-input__container--filled {
+  @apply border-0 bg-gray-100;
+}
+
+.celestial-input--focused .celestial-input__container--filled {
+  @apply ring-2 ring-blue-500 ring-offset-0 bg-white;
+}
+
+.celestial-input:not(.celestial-input--disabled):hover .celestial-input__container--filled {
+  @apply bg-gray-200;
+}
+
+.celestial-input--focused:hover .celestial-input__container--filled {
+  @apply bg-white;
+}
+
+.celestial-input--invalid .celestial-input__container--filled {
+  @apply bg-red-50;
+}
+
+.celestial-input--invalid.celestial-input--focused .celestial-input__container--filled {
+  @apply ring-red-500 bg-white;
+}
+
+.celestial-input--disabled .celestial-input__container--filled {
+  @apply bg-gray-200;
+}
+
+.celestial-input--readonly .celestial-input__container--filled {
+  @apply bg-gray-200;
+}
+
+/* Unstyled variant */
+.celestial-input__container--unstyled {
+  @apply border-0 bg-transparent p-0 gap-0;
+  box-shadow: none;
+}
+
+.celestial-input__container--unstyled .celestial-input__field {
+  @apply p-0;
+}
+
+.celestial-input--focused .celestial-input__container--unstyled {
+  box-shadow: none;
+  ring: none;
+}
+
+.celestial-input:hover .celestial-input__container--unstyled {
+  /* No hover styles for unstyled */
+}
+
+.celestial-input--invalid .celestial-input__container--unstyled {
+  /* Minimal invalid styling for unstyled */
+}
+
+.celestial-input--disabled .celestial-input__container--unstyled {
+  @apply bg-transparent;
+}
+
+/* Size-specific variant adjustments */
+
+/* Small size variants */
+.celestial-input--sm .celestial-input__container--outline {
+  @apply rounded;
+}
+
+.celestial-input--sm .celestial-input__container--filled {
+  @apply rounded;
+}
+
+/* Medium size variants */
+.celestial-input--md .celestial-input__container--outline {
+  @apply rounded-md;
+}
+
+.celestial-input--md .celestial-input__container--filled {
+  @apply rounded-md;
+}
+
+/* Large size variants */
+.celestial-input--lg .celestial-input__container--outline {
+  @apply rounded-lg;
+}
+
+.celestial-input--lg .celestial-input__container--filled {
+  @apply rounded-lg;
+}
+
+/* Dark mode support - use .dark class instead of media query for better control */
+.dark .celestial-input__container--outline {
+  @apply border-gray-600 bg-gray-800;
+}
+
+.dark .celestial-input__field {
+  @apply text-gray-100 placeholder-gray-400;
+}
+
+.dark .celestial-input__container--filled {
+  @apply bg-gray-700;
+}
+
+.dark .celestial-input--focused .celestial-input__container--filled {
+  @apply bg-gray-800;
+}
+
+.dark .celestial-input__helper-text {
+  @apply text-gray-300;
+}
+
+.dark .celestial-input__left-element,
+.dark .celestial-input__right-element {
+  @apply text-gray-400;
+}
+
+.dark .celestial-input--focused .celestial-input__left-element,
+.dark .celestial-input--focused .celestial-input__right-element {
+  @apply text-blue-400;
+}
+
+.dark .celestial-input--disabled .celestial-input__container {
+  @apply bg-gray-900 border-gray-700;
+}
+
+.dark .celestial-input--disabled .celestial-input__field {
+  @apply text-gray-600;
+}

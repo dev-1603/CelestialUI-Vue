@@ -2,12 +2,13 @@
 // Atoms - Basic building blocks
 export { default as CButton } from './button/CButton.vue'
 export { default as CIcon } from './icon/CIcon.vue'
-// export { default as CInput } from './input/CInput.vue'
+export { default as CCheckbox } from './checkbox/CCheckbox.vue'
+export { default as CInput } from './input/CInput.vue'
+export { default as CInputHeadless } from './input/CInputHeadless.vue'
 // export { default as CBadge } from './badge/CBadge.vue'
 // export { default as CAvatar } from './avatar/CAvatar.vue'
 // export { default as CSpinner } from './spinner/CSpinner.vue'
 // export { default as CDivider } from './divider/CDivider.vue'
-// export { default as CCheckbox } from './checkbox/CCheckbox.vue'
 // export { default as CRadio } from './radio/CRadio.vue'
 // export { default as CSwitch } from './switch/CSwitch.vue'
 // export { default as CSlider } from './slider/CSlider.vue'
@@ -21,12 +22,12 @@ export { default as CIcon } from './icon/CIcon.vue'
 // Type exports for atoms
 export type * from './button/CButton.types'
 export type * from './icon/CIcon.types'
-// export type * from './input/CInput.types'
+export type * from './checkbox/CCheckbox.types'
+export type * from './input/CInput.types'
 // export type * from './badge/CBadge.types'
 // export type * from './avatar/CAvatar.types'
 // export type * from './spinner/CSpinner.types'
 // export type * from './divider/CDivider.types'
-// export type * from './checkbox/CCheckbox.types'
 // export type * from './radio/CRadio.types'
 // export type * from './switch/CSwitch.types'
 // export type * from './slider/CSlider.types'
@@ -47,13 +48,13 @@ export interface AtomicComponent {
 // Atom registry for development tracking
 export const ATOM_REGISTRY: AtomicComponent[] = [
   { name: 'CButton', implemented: true, description: 'Action trigger component' },
-  { name: 'CInput', implemented: false, description: 'Text input field' },
+  { name: 'CInput', implemented: true, description: 'Text input field' },
   { name: 'CIcon', implemented: true, description: 'SVG icon component' },
   { name: 'CBadge', implemented: false, description: 'Status indicator' },
   { name: 'CAvatar', implemented: false, description: 'User profile image' },
   { name: 'CSpinner', implemented: false, description: 'Loading indicator' },
   { name: 'CDivider', implemented: false, description: 'Visual separator' },
-  { name: 'CCheckbox', implemented: false, description: 'Boolean selection' },
+  { name: 'CCheckbox', implemented: true, description: 'Boolean selection' },
   { name: 'CRadio', implemented: false, description: 'Single selection' },
   { name: 'CSwitch', implemented: false, description: 'Toggle control' },
   { name: 'CSlider', implemented: false, description: 'Range selection' },
@@ -87,14 +88,24 @@ export const ATOM_REGISTRY: AtomicComponent[] = [
 // Import implemented components
 import CButton from './button/CButton.vue'
 import CIcon from './icon/CIcon.vue'
+import CCheckbox from './checkbox/CCheckbox.vue'
+import CInput from './input/CInput.vue'
+import CInputHeadless from './input/CInputHeadless.vue'
 
 // Collections for implemented components
 export const ATOMS = {
   CButton,
-  CIcon
+  CIcon,
+  CCheckbox,
+  CInput,
+  CInputHeadless
 } as const
 
-export const FORM_ATOMS = {} as const
+export const FORM_ATOMS = {
+  CCheckbox,
+  CInput,
+  CInputHeadless
+} as const
 export const DISPLAY_ATOMS = {} as const
 export const FEEDBACK_ATOMS = {} as const
 export const LAYOUT_ATOMS = {} as const

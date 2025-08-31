@@ -1,0 +1,141 @@
+/* Checkbox animations */
+
+/* Spring animation for check state */
+@keyframes checkbox-check {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) rotate(-45deg);
+  }
+  25% {
+    opacity: 1;
+    transform: scale(0.7) rotate(-45deg);
+  }
+  50% {
+    transform: scale(1.1) rotate(-45deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* Bounce animation for indeterminate state */
+@keyframes checkbox-indeterminate {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Ripple effect animation */
+@keyframes checkbox-ripple {
+  0% {
+    opacity: 0.4;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+/* Scale animation for box on press */
+@keyframes checkbox-press {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Apply animations */
+.celestial-checkbox__icon--visible {
+  animation: checkbox-check 0.3s ease-in-out;
+}
+
+.celestial-checkbox__icon--indeterminate {
+  animation: checkbox-indeterminate 0.2s ease-in-out;
+}
+
+/* Ripple effect on focus */
+.celestial-checkbox__box::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none;
+  background-color: currentColor;
+}
+
+.celestial-checkbox__input:focus + .celestial-checkbox__box::after {
+  animation: checkbox-ripple 0.4s ease-out;
+}
+
+/* Press animation on active state */
+.celestial-checkbox__input:active + .celestial-checkbox__box {
+  animation: checkbox-press 0.1s ease-in-out;
+}
+
+/* Smooth transition for all interactive states */
+.celestial-checkbox__box {
+  transition: 
+    background-color 0.2s ease-in-out,
+    border-color 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out,
+    transform 0.1s ease-in-out;
+}
+
+.celestial-checkbox__icon {
+  transition: 
+    opacity 0.15s ease-in-out,
+    transform 0.15s ease-in-out;
+}
+
+.celestial-checkbox__label {
+  transition: color 0.2s ease-in-out;
+}
+
+/* Disabled state transitions */
+.celestial-checkbox--disabled {
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .celestial-checkbox__icon--visible,
+  .celestial-checkbox__icon--indeterminate {
+    animation: none;
+  }
+  
+  .celestial-checkbox__box::after {
+    animation: none;
+  }
+  
+  .celestial-checkbox__input:active + .celestial-checkbox__box {
+    animation: none;
+  }
+  
+  .celestial-checkbox__box,
+  .celestial-checkbox__icon,
+  .celestial-checkbox__label,
+  .celestial-checkbox--disabled {
+    transition: none;
+  }
+}

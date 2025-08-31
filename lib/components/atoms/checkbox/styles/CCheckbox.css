@@ -1,0 +1,207 @@
+/* Base checkbox styles */
+.celestial-checkbox {
+  /* Flexbox layout */
+  @apply inline-flex items-start gap-2;
+  
+  /* Position relative for absolute positioned input */
+  position: relative;
+}
+
+/* Hidden native input */
+.celestial-checkbox__input {
+  /* Visually hidden but accessible */
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Custom checkbox box */
+.celestial-checkbox__box {
+  /* Flexbox for centering icon */
+  @apply inline-flex items-center justify-center;
+  
+  /* Border and background */
+  @apply border-2 border-gray-300 bg-white;
+  
+  /* Transitions */
+  @apply transition-all duration-200 ease-in-out;
+  
+  /* Cursor */
+  @apply cursor-pointer;
+  
+  /* Flex shrink */
+  @apply flex-shrink-0;
+  
+  /* Position relative for pseudo elements */
+  position: relative;
+}
+
+/* Size variants for checkbox box */
+.celestial-checkbox__box--sm {
+  @apply w-4 h-4 rounded-sm;
+}
+
+.celestial-checkbox__box--md {
+  @apply w-5 h-5 rounded;
+}
+
+.celestial-checkbox__box--lg {
+  @apply w-6 h-6 rounded-md;
+}
+
+/* Checkbox icon */
+.celestial-checkbox__icon {
+  /* Flexbox for centering */
+  @apply flex items-center justify-center;
+  
+  /* Full size */
+  @apply w-full h-full;
+  
+  /* Color */
+  @apply text-white;
+  
+  /* Initially hidden */
+  opacity: 0;
+  transform: scale(0.5);
+  
+  /* Transitions */
+  @apply transition-all duration-150 ease-in-out;
+}
+
+/* Icon size variants */
+.celestial-checkbox__icon--sm {
+  font-size: 0.75rem; /* 12px */
+}
+
+.celestial-checkbox__icon--md {
+  font-size: 0.875rem; /* 14px */
+}
+
+.celestial-checkbox__icon--lg {
+  font-size: 1rem; /* 16px */
+}
+
+/* Icon visibility states */
+.celestial-checkbox__icon--visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.celestial-checkbox__icon--indeterminate {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Label styles */
+.celestial-checkbox__label {
+  /* Typography */
+  @apply font-medium leading-relaxed;
+  
+  /* Cursor */
+  @apply cursor-pointer;
+  
+  /* Color */
+  @apply text-gray-900;
+  
+  /* Flex grow */
+  @apply flex-1;
+}
+
+/* Label size variants */
+.celestial-checkbox__label--sm {
+  @apply text-sm;
+}
+
+.celestial-checkbox__label--md {
+  @apply text-base;
+}
+
+.celestial-checkbox__label--lg {
+  @apply text-lg;
+}
+
+/* Description styles */
+.celestial-checkbox__description {
+  /* Typography */
+  @apply text-gray-600 leading-relaxed;
+  
+  /* Spacing */
+  @apply mt-1;
+}
+
+/* Description size variants */
+.celestial-checkbox__description--sm {
+  @apply text-xs;
+}
+
+.celestial-checkbox__description--md {
+  @apply text-sm;
+}
+
+.celestial-checkbox__description--lg {
+  @apply text-base;
+}
+
+/* Checked state */
+.celestial-checkbox__box--checked {
+  @apply bg-blue-600 border-blue-600;
+}
+
+/* Indeterminate state */
+.celestial-checkbox__box--indeterminate {
+  @apply bg-blue-600 border-blue-600;
+}
+
+/* Disabled state */
+.celestial-checkbox--disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+.celestial-checkbox--disabled .celestial-checkbox__box {
+  @apply cursor-not-allowed;
+}
+
+.celestial-checkbox--disabled .celestial-checkbox__label {
+  @apply cursor-not-allowed;
+}
+
+.celestial-checkbox__box--disabled {
+  @apply bg-gray-100 border-gray-200;
+}
+
+/* Focus styles */
+.celestial-checkbox__input:focus + .celestial-checkbox__box {
+  @apply ring-2 ring-blue-500 ring-offset-2;
+}
+
+/* Focus visible for better accessibility */
+.celestial-checkbox__input:focus-visible + .celestial-checkbox__box {
+  @apply ring-2 ring-blue-500 ring-offset-2;
+}
+
+/* Hover states */
+.celestial-checkbox:not(.celestial-checkbox--disabled):hover .celestial-checkbox__box {
+  @apply border-blue-400;
+}
+
+.celestial-checkbox:not(.celestial-checkbox--disabled):hover .celestial-checkbox__box--checked {
+  @apply bg-blue-700 border-blue-700;
+}
+
+.celestial-checkbox:not(.celestial-checkbox--disabled):hover .celestial-checkbox__box--indeterminate {
+  @apply bg-blue-700 border-blue-700;
+}
+
+/* Active states */
+.celestial-checkbox__input:active + .celestial-checkbox__box {
+  @apply scale-95;
+}
+
+/* Default icons are now handled in the template for better flexibility */
