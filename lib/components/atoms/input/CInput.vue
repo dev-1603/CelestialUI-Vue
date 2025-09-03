@@ -174,11 +174,11 @@ const {
 
 // Helper text and error message display logic
 const showHelperText = computed(() => {
-  return (props.helperText || slots.helperText) && !showErrorMessage.value
+  return (props.helperText || slots.helperText) && !showErrorMessage
 })
 
 const showErrorMessage = computed(() => {
-  return (props.errorMessage || slots.errorMessage) && isInvalid.value
+  return (props.errorMessage || slots.errorMessage) && isInvalid
 })
 
 // IDs for accessibility
@@ -192,7 +192,7 @@ const errorMessageId = computed(() => {
 
 // Clear button logic
 const showClearButton = computed(() => {
-  return inputValue.value && !isDisabled.value && !isReadonly.value && slots.clearIcon !== undefined
+  return inputValue && !isDisabled && !isReadonly && slots.clearIcon !== undefined
 })
 
 const clearButtonClasses = computed(() => {
@@ -291,12 +291,12 @@ const computedAriaDescribedBy = computed(() => {
     ids.push(props.ariaDescribedBy)
   }
 
-  if (showHelperText.value && helperTextId.value) {
-    ids.push(helperTextId.value)
+  if (showHelperText && helperTextId) {
+    ids.push(helperTextId)
   }
 
-  if (showErrorMessage.value && errorMessageId.value) {
-    ids.push(errorMessageId.value)
+  if (showErrorMessage && errorMessageId) {
+    ids.push(errorMessageId)
   }
 
   return ids.length > 0 ? ids.join(' ') : undefined

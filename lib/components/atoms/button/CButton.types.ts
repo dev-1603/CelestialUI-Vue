@@ -1,4 +1,4 @@
-import type { Component } from 'vue'
+import type { Component, ComputedRef } from 'vue'
 import type { IconLibrary, IconType, IconSize, IconColor, MaterialIconVariant, FontAwesomeStyle } from '../icon/CIcon.types'
 import type { VNode } from 'vue'
 
@@ -141,15 +141,15 @@ export interface CButtonSlots {
 
 export interface UseButtonReturn {
   buttonComponent: Component | string
-  isDisabled: boolean
+  isDisabled: ComputedRef<boolean>
   handleClick: (event: MouseEvent) => void
   handleKeydown: (event: KeyboardEvent) => void
 }
 
 export interface UseButtonStylesReturn {
-  buttonClasses: string[]
-  iconClasses: string[]
-  textClasses: string[]
+  buttonClasses: ComputedRef<string[]>
+  iconClasses: ComputedRef<string[]>
+  textClasses: ComputedRef<string[]>
 }
 
 // Theme-specific button variants

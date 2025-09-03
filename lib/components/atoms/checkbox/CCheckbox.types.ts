@@ -1,5 +1,7 @@
 
 
+import type { ComputedRef } from 'vue'
+
 export interface CCheckboxProps {
   /** Checkbox checked state - mandatory */
   checked: boolean
@@ -74,13 +76,13 @@ export interface UseCheckboxReturn {
   inputProps: Record<string, any>
 
   /** Whether checkbox is checked */
-  isChecked: boolean
+  isChecked: ComputedRef<boolean>
 
   /** Whether checkbox is disabled */
-  isDisabled: boolean
+  isDisabled: ComputedRef<boolean>
 
   /** Whether checkbox is indeterminate */
-  isIndeterminate: boolean
+  isIndeterminate: ComputedRef<boolean>
 
   /** Handle change events */
   handleChange: (event: Event) => void
@@ -97,22 +99,22 @@ export interface UseCheckboxReturn {
 
 export interface UseCheckboxStylesReturn {
   /** Wrapper classes */
-  wrapperClasses: string[]
+  wrapperClasses: ComputedRef<string[]>
 
   /** Input classes */
-  inputClasses: string[]
+  inputClasses: ComputedRef<string[]>
 
   /** Checkbox box classes */
-  checkboxClasses: string[]
+  checkboxClasses: ComputedRef<string[]>
 
   /** Icon classes */
-  iconClasses: string[]
+  iconClasses: ComputedRef<string[]>
 
   /** Label classes */
-  labelClasses: string[]
+  labelClasses: ComputedRef<string[]>
 
   /** Description classes */
-  descriptionClasses: string[]
+  descriptionClasses: ComputedRef<string[]>
 }
 
 // Theme-specific checkbox variants

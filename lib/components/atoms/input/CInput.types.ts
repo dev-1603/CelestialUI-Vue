@@ -1,3 +1,5 @@
+import type { ComputedRef, Ref } from 'vue'
+
 export interface CInputProps {
   /** Input value - mandatory */
   value: string
@@ -166,22 +168,22 @@ export interface UseInputReturn {
   inputProps: Record<string, any>
 
   /** Current input value */
-  inputValue: string
+  inputValue: ComputedRef<string>
 
   /** Whether input is disabled */
-  isDisabled: boolean
+  isDisabled: ComputedRef<boolean>
 
   /** Whether input is readonly */
-  isReadonly: boolean
+  isReadonly: ComputedRef<boolean>
 
   /** Whether input is required */
-  isRequired: boolean
+  isRequired: ComputedRef<boolean>
 
   /** Whether input is invalid */
-  isInvalid: boolean
+  isInvalid: ComputedRef<boolean>
 
   /** Whether input is focused */
-  isFocused: boolean
+  isFocused: Ref<boolean>
 
   /** Handle input events */
   handleInput: (event: Event) => void
@@ -213,25 +215,25 @@ export interface UseInputReturn {
 
 export interface UseInputStylesReturn {
   /** Wrapper classes */
-  wrapperClasses: string[]
+  wrapperClasses: ComputedRef<string[]>
 
   /** Input field classes */
-  inputClasses: string[]
+  inputClasses: ComputedRef<string[]>
 
   /** Left element classes */
-  leftElementClasses: string[]
+  leftElementClasses: ComputedRef<string[]>
 
   /** Right element classes */
-  rightElementClasses: string[]
+  rightElementClasses: ComputedRef<string[]>
 
   /** Helper text classes */
-  helperTextClasses: string[]
+  helperTextClasses: ComputedRef<string[]>
 
   /** Error message classes */
-  errorMessageClasses: string[]
+  errorMessageClasses: ComputedRef<string[]>
 
   /** Input container classes */
-  inputContainerClasses: string[]
+  inputContainerClasses: ComputedRef<string[]>
 }
 
 // Theme-specific input variants

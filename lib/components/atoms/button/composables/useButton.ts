@@ -26,7 +26,7 @@ export function useButton(
    * Compute disabled state based on props
    */
   const isDisabled = computed(() => {
-    return props.disabled || props.loading
+    return Boolean(props.disabled || props.loading)
   })
 
   /**

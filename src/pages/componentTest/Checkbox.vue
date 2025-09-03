@@ -452,19 +452,19 @@
                   <CCheckbox
                     :checked="a11yStates.key1"
                     @change="handleA11yChange('key1', $event)"
-                    tab-index="0"
+                    :tab-index="0"
                     children="First (Tab order 1)"
                   />
                   <CCheckbox
                     :checked="a11yStates.key2"
                     @change="handleA11yChange('key2', $event)"
-                    tab-index="0"
+                    :tab-index="0"
                     children="Second (Tab order 2)"
                   />
                   <CCheckbox
                     :checked="a11yStates.key3"
                     @change="handleA11yChange('key3', $event)"
-                    tab-index="0"
+                    :tab-index="0"
                     children="Third (Tab order 3)"
                   />
                 </div>
@@ -718,7 +718,7 @@ const eventStates = reactive({
 
 // Performance testing
 const performanceCount = ref(20)
-const performanceCheckboxes = ref<Array<{checked: boolean, size: string, colorScheme: string}>>([])
+const performanceCheckboxes = ref<Array<{checked: boolean, size: 'sm' | 'md' | 'lg', colorScheme: string}>>([])
 
 // Select all computed properties
 const selectedItemsCount = computed(() =>

@@ -742,13 +742,13 @@ const isDark = ref(false)
 
 // Performance testing
 const performanceIconCount = ref(100)
-const performanceIcons = ref<Array<{name: string, library: string, type: string, color: string}>>([])
+const performanceIcons = ref<Array<{name: string, library: 'material' | 'fontawesome' | 'custom', type: 'font' | 'svg' | 'image', color: string}>>([])
 
 // Test configuration
 const testIconName = ref('star')
-const testIconType = ref('font')
-const testIconLibrary = ref('material')
-const testIconSize = ref('md')
+const testIconType = ref<'font' | 'svg' | 'image'>('font')
+const testIconLibrary = ref<'material' | 'fontawesome' | 'custom'>('material')
+const testIconSize = ref<'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl'>('md')
 const testIconColor = ref('inherit')
 
 // Interactive functions
@@ -766,9 +766,9 @@ const toggleTheme = () => {
 
 // Performance testing function
 const generatePerformanceIcons = () => {
-  const iconTypes = ['font', 'svg']
+  const iconTypes: Array<'font' | 'svg'> = ['font', 'svg']
   const iconNames = ['star', 'heart', 'home', 'settings']
-  const iconLibraries = ['material', 'fontawesome']
+  const iconLibraries: Array<'material' | 'fontawesome'> = ['material', 'fontawesome']
   const colors = ['red', 'blue', 'green', 'purple', 'orange', 'pink', 'yellow', 'gray']
 
   performanceIcons.value = []
