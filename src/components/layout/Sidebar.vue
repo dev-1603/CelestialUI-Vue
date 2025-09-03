@@ -23,22 +23,28 @@
               :variant="route.path === '/' ? 'primary' : 'ghost'"
               size="sm"
               left-icon="home"
-              class="font-medium"
+              class="font-medium py-2 items-center"
               @click="navigateTo('/')"
               full-width
               justify="start"
             >
+              <template #leftIcon>
+                <CIcon name="home" library="material" variant="filled" size="25px" />
+              </template>
               All Components
             </CButton>
             <CButton
               :variant="route.path === '/playground' ? 'primary' : 'ghost'"
               size="sm"
               left-icon="gamepad"
-              class="font-medium "
+              class="font-medium"
               @click="navigateTo('/playground')"
               full-width
               justify="start"
             >
+              <template #leftIcon>
+                <CIcon name="gamepad" library="material" variant="filled" size="25px" />
+              </template>
               Playground
             </CButton>
             <CButton
@@ -50,21 +56,29 @@
               full-width
               justify="start"
             >
+              <template #leftIcon>
+                <CIcon name="palette" library="material" variant="filled" size="25px" />
+              </template>
               Themes
             </CButton>
           </div>
         </div>
 
         <!-- Components by Category Card -->
-        <div class="mx-4 p-4 flex-1 min-h-0 flex flex-col min-w-0">
-          <h3 class="text-sm font-semibold text-text-primary mb-4 uppercase tracking-wider">
+        <div class=" flex-1 min-h-0 flex flex-col min-w-0">
+          <h3 class="text-sm font-semibold text-text-primary mb-4 uppercase tracking-wider px-4">
             Components by Category
           </h3>
 
-          <div class=" overflow-y-auto space-y-3 min-w-0 max-h-[820px]" style="min-height: 0;">
-            <div v-for="(components, category) in componentsByCategory" :key="category" class="space-y-2 flex-shrink-0">
+          <div class="flex-1 overflow-y-auto space-y-3 min-w-0 px-4">
+            <div
+              v-for="(components, category) in componentsByCategory"
+              :key="category"
+              class="space-y-2 flex-shrink-0"
+            >
+              <!-- Category Header -->
               <div
-                class="w-full p-3 rounded-lg hover:bg-background-hover transition-colors duration-200 cursor-pointer"
+                class="w-full p-3 rounded-lg hover:bg-background-hover transition-colors duration-200 cursor-pointer border border-transparent hover:border-border-light"
                 @click="toggleCategory(category)"
               >
                 <div class="flex items-center justify-between w-full min-w-0">
@@ -80,26 +94,41 @@
                     </div>
                   </div>
                   <div class="flex items-center gap-2 flex-shrink-0">
-                    <span class="bg-primary-100 text-primary-700 text-xs font-semibold px-2 py-1 rounded-full whitespace-nowrap" v-if="getCategoryStatsForCategory(category)">
+                    <span
+                      v-if="getCategoryStatsForCategory(category)"
+                      class="bg-primary-100 text-primary-700 text-xs font-semibold px-2 py-1 rounded-full whitespace-nowrap"
+                    >
                       {{ getCategoryStatsForCategory(category)?.implemented }}/{{ getCategoryStatsForCategory(category)?.total }}
                     </span>
-                    <i :class="`fas fa-chevron-${expandedCategories[category] ? 'up' : 'down'} text-xs text-text-secondary`" />
+                    <i
+                      :class="[
+                        'fas text-xs text-text-secondary transition-transform duration-200',
+                        expandedCategories[category] ? 'fa-chevron-up' : 'fa-chevron-down'
+                      ]"
+                    />
                   </div>
                 </div>
               </div>
 
-              <div v-if="expandedCategories[category]" class="ml-6 mt-3 border-l-2 border-border-light pl-3 max-h-80 overflow-y-auto">
-                <div class="space-y-1">
+              <!-- Category Content -->
+              <Transition
+                name="category-expand"
+                mode="out-in"
+              >
+                <div
+                  v-if="expandedCategories[category]"
+                  class="ml-6 mt-3 border-l-2 border-border-light pl-3 space-y-1"
+                >
                   <router-link
                     v-for="component in components"
                     :key="component.name"
-                    :to="component.docPath"
+                    :to="component.implemented ? component.docPath : ''"
                     :class="[
                       'flex items-center justify-between py-2 px-3 text-text-secondary no-underline rounded-md transition-all duration-200 hover:bg-background-hover group',
-                      route.path === component.docPath ? 'bg-primary-50 text-primary-600 font-semibold' : '',
-                      component.implemented ? '' : 'opacity-60 cursor-not-allowed'
+                      route.path === component.docPath ? 'bg-primary-50 text-primary-600 font-semibold border border-primary-200' : '',
+                      component.implemented ? 'hover:text-text-primary' : 'opacity-60 cursor-not-allowed'
                     ]"
-                    @click="$emit('close')"
+                    @click="component.implemented ? $emit('close') : undefined"
                   >
                     <div class="flex-1 min-w-0">
                       <div class="flex items-center gap-2 text-sm mb-1">
@@ -120,7 +149,7 @@
                       :href="`http://localhost:6006${component.storybookPath}`"
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="text-text-secondary text-xs p-1.5 rounded transition-all duration-200 opacity-0 group-hover:opacity-100"
+                      class="text-text-secondary text-xs p-1.5 rounded transition-all duration-200 opacity-0 group-hover:opacity-100 hover:bg-background-hover"
                       @click.stop
                       title="View in Storybook"
                     >
@@ -128,33 +157,31 @@
                     </a>
                   </router-link>
                 </div>
-              </div>
+              </Transition>
             </div>
           </div>
         </div>
 
         <!-- Progress Overview Card -->
-        <!-- <CCard :elevation="1" class="mx-4 mt-auto p-4 border-t border-border-base">
-          <template #header>
-            <h4 class="text-sm font-semibold text-text-primary mb-4">Progress Overview</h4>
-          </template>
+        <div class="mx-4 mt-auto p-4 border-t border-border-base bg-background-surface rounded-lg shadow-sm">
+          <h4 class="text-sm font-semibold text-text-primary mb-4">Progress Overview</h4>
           <div v-for="stat in categoryStats" :key="stat.category" class="flex justify-between items-center py-1 text-xs">
             <span class="text-text-secondary font-medium">{{ stat.category }}</span>
             <span class="text-text-primary font-semibold">
               {{ stat.implemented }}/{{ stat.total }}
             </span>
           </div>
-        </CCard> -->
+        </div>
       </div>
     </aside>
   </div>
 </template>
 
 <script setup lang="ts">
-// SIDEBAR COMPONENT LOGIC (COMMENTED FOR STRUCTURE ONLY)
 import { CButton } from '@lib/components/atoms/button'
+import { CIcon } from '@lib/components/atoms/icon'
 
-import { ref, computed, defineOptions } from 'vue'
+import { ref, computed, defineOptions, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { getComponentsByCategory, getCategoryStats } from '../../data/components'
 
@@ -173,10 +200,19 @@ interface Emits {
 const props = defineProps<Props>()
 const emit = defineEmits<Emits>()
 
-// All functionality commented out - showing structure only
 const route = useRoute()
 const router = useRouter()
+
+// Category expansion state management
 const expandedCategories = ref<Record<string, boolean>>({})
+
+// Initialize with all categories expanded by default
+onMounted(() => {
+  const categories = Object.keys(getComponentsByCategory())
+  categories.forEach(category => {
+    expandedCategories.value[category] = true
+  })
+})
 
 const categoryIcons = {
   'ATOMIC': 'atom',
@@ -184,7 +220,7 @@ const categoryIcons = {
   'ORGANISM': 'sitemap',
   'TEMPLATE': 'layer-group',
   'ADVANCED': 'cogs'
-}
+} as const
 
 const categoryDescriptions = {
   'ATOMIC': 'Basic building blocks',
@@ -192,11 +228,12 @@ const categoryDescriptions = {
   'ORGANISM': 'Complex components',
   'TEMPLATE': 'Page layouts',
   'ADVANCED': 'Advanced features'
-}
+} as const
 
 const componentsByCategory = computed(() => getComponentsByCategory())
 const categoryStats = computed(() => getCategoryStats())
 
+// Toggle category expansion with smooth animation
 const toggleCategory = (category: string) => {
   expandedCategories.value[category] = !expandedCategories.value[category]
 }
@@ -212,220 +249,87 @@ const getCategoryStatsForCategory = (category: string) => {
 </script>
 
 <style scoped>
-/* SIDEBAR STYLES (BASIC STRUCTURE) */
-
-.mobile-overlay {
-  position: fixed;
-  top: 4rem;
-  left: 0;
-  width: 100vw;
-  height: calc(100vh - 4rem);
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 40;
-  display: block;
-}
-
-@media (min-width: 768px) {
-  .mobile-overlay {
-    display: none;
-  }
-}
-
-.sidebar {
-  position: fixed;
-  top: 4rem;
-  left: 0;
-  width: 20rem;
-  height: calc(100vh - 4rem);
-  background: white;
-  border-right: 1px solid #e5e7eb;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  z-index: 50;
-  transform: translateX(-100%);
-  transition: transform 0.3s ease;
+/* Smooth transitions for category expansions */
+.category-expand-enter-active,
+.category-expand-leave-active {
+  transition: all 0.3s ease;
   overflow: hidden;
 }
 
-@media (min-width: 768px) {
-  .sidebar {
-    position: static;
-    transform: translateX(0);
+.category-expand-enter-from {
+  opacity: 0;
+  max-height: 0;
+  transform: translateY(-10px);
+}
+
+.category-expand-leave-to {
+  opacity: 0;
+  max-height: 0;
+  transform: translateY(-10px);
+}
+
+.category-expand-enter-to,
+.category-expand-leave-from {
+  opacity: 1;
+  max-height: 500px;
+  transform: translateY(0);
+}
+
+/* Custom scrollbar styling */
+.overflow-y-auto {
+  scrollbar-width: thin;
+  scrollbar-color: #d1d5db transparent;
+}
+
+.overflow-y-auto::-webkit-scrollbar {
+  width: 6px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  background-color: #d1d5db;
+  border-radius: 3px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background-color: #9ca3af;
+}
+
+/* Hover effects */
+.hover\:bg-background-hover:hover {
+  background-color: #f3f4f6;
+}
+
+.hover\:border-border-light:hover {
+  border-color: #e5e7eb;
+}
+
+/* Focus states for accessibility */
+.router-link-active:focus,
+.router-link-active:hover {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Smooth icon rotation for chevron */
+.fa-chevron-up,
+.fa-chevron-down {
+  transition: transform 0.2s ease;
+}
+
+/* Enhanced button states */
+.cursor-not-allowed {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .w-80 {
+    width: 100vw;
   }
-}
-
-.sidebar--open {
-  transform: translateX(0);
-}
-
-.sidebar--closed {
-  transform: translateX(-100%);
-}
-
-@media (min-width: 768px) {
-  .sidebar--closed {
-    transform: translateX(0);
-  }
-}
-
-.sidebar-content {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  padding: 1.5rem 0;
-  gap: 1rem;
-}
-
-.sidebar-section {
-  margin: 0 1rem;
-  padding: 1rem;
-  background: #f9fafb;
-  border-radius: 0.5rem;
-  border: 1px solid #e5e7eb;
-}
-
-.sidebar-section--flex {
-  flex: 1;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-.sidebar-section--footer {
-  margin-top: auto;
-  border-top: 1px solid #e5e7eb;
-  background: #f3f4f6;
-}
-
-.section-title {
-  margin: 0 0 1rem 0;
-  font-size: 0.875rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #374151;
-}
-
-.nav-links {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.nav-link {
-  display: flex;
-  align-items: center;
-  padding: 0.5rem 0.75rem;
-  text-decoration: none;
-  color: #6b7280;
-  font-weight: 500;
-  font-size: 0.875rem;
-  border-radius: 0.375rem;
-  transition: all 0.2s;
-}
-
-.nav-link:hover {
-  background: #e5e7eb;
-  color: #111827;
-}
-
-.categories-list {
-  flex: 1;
-  overflow-y: auto;
-  min-height: 0;
-  padding-right: 0.5rem;
-}
-
-.category-group {
-  margin-bottom: 0.75rem;
-}
-
-.category-header {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem;
-  background: white;
-  border-radius: 0.5rem;
-  border: 1px solid #e5e7eb;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.category-header:hover {
-  background: #f9fafb;
-}
-
-.category-icon {
-  font-size: 1.125rem;
-  width: 1.5rem;
-  height: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.category-info {
-  flex: 1;
-  min-width: 0;
-}
-
-.category-name {
-  font-weight: 600;
-  font-size: 0.875rem;
-  color: #111827;
-}
-
-.category-desc {
-  font-size: 0.75rem;
-  color: #6b7280;
-}
-
-.category-count {
-  background: #dbeafe;
-  color: #1d4ed8;
-  font-size: 0.75rem;
-  font-weight: 600;
-  padding: 0.125rem 0.5rem;
-  border-radius: 9999px;
-  white-space: nowrap;
-}
-
-.category-toggle {
-  font-size: 0.75rem;
-  color: #6b7280;
-}
-
-.progress-stats {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.stat-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.25rem 0;
-  font-size: 0.75rem;
-}
-
-.stat-item span:first-child {
-  color: #6b7280;
-  font-weight: 500;
-}
-
-.stat-item span:last-child {
-  color: #111827;
-  font-weight: 600;
-}
-
-/* Hide scrollbars */
-.categories-list {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.categories-list::-webkit-scrollbar {
-  display: none;
 }
 </style>

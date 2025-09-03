@@ -56,8 +56,29 @@
       aria-hidden="true"
     >
       <slot name="leftIcon">
-        <!-- Placeholder for icon system - replace with actual icon component -->
-        <span class="text-current">{{ leftIcon }}</span>
+        <CIcon
+          v-if="leftIcon || leftIconSvg || leftIconSrc"
+          :name="leftIcon"
+          :library="iconLibrary"
+          :type="iconType"
+          :size="computedLeftIconSize"
+          :color="computedLeftIconColor"
+          :variant="iconVariant"
+          :fa-style="iconFaStyle"
+          :svg="leftIconSvg"
+          :src="leftIconSrc"
+          :clickable="leftIconClickable"
+          :loading="loading"
+          :disabled="isDisabled"
+          :aria-label="leftIconAriaLabel"
+          :flip-x="leftIconFlipX"
+          :flip-y="leftIconFlipY"
+          :rotate="leftIconRotate"
+          :animation="leftIconAnimation"
+          @click="handleLeftIconClick"
+          @load="handleLeftIconLoad"
+          @error="handleLeftIconError"
+        />
       </slot>
     </span>
 
@@ -76,8 +97,29 @@
       aria-hidden="true"
     >
       <slot name="rightIcon">
-        <!-- Placeholder for icon system - replace with actual icon component -->
-        <span class="text-current">{{ rightIcon }}</span>
+        <CIcon
+          v-if="rightIcon || rightIconSvg || rightIconSrc"
+          :name="rightIcon"
+          :library="iconLibrary"
+          :type="iconType"
+          :size="computedRightIconSize"
+          :color="computedRightIconColor"
+          :variant="iconVariant"
+          :fa-style="iconFaStyle"
+          :svg="rightIconSvg"
+          :src="rightIconSrc"
+          :clickable="rightIconClickable"
+          :loading="false"
+          :disabled="isDisabled"
+          :aria-label="rightIconAriaLabel"
+          :flip-x="rightIconFlipX"
+          :flip-y="rightIconFlipY"
+          :rotate="rightIconRotate"
+          :animation="rightIconAnimation"
+          @click="handleRightIconClick"
+          @load="handleRightIconLoad"
+          @error="handleRightIconError"
+        />
       </slot>
     </span>
   </component>
@@ -85,6 +127,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import CIcon from '../icon/CIcon.vue'
 import type { CButtonProps, CButtonEmits } from './CButton.types'
 import { useButton, useButtonStyles } from './composables'
 
@@ -103,12 +146,20 @@ const props = withDefaults(defineProps<CButtonProps>(), {
   disabled: false,
   loading: false,
   fullWidth: false,
-  rounded: false
+  rounded: false,
+  iconLibrary: undefined,
+  iconType: undefined,
+  iconSize: undefined,
+  iconColor: undefined,
+  iconVariant: undefined,
+  iconFaStyle: undefined,
+  leftIconClickable: false,
+  rightIconClickable: false
 })
 
 const emit = defineEmits<CButtonEmits>()
 
-// Use composables
+// Composables
 const {
   buttonComponent,
   isDisabled,
@@ -122,12 +173,80 @@ const {
   textClasses
 } = useButtonStyles(props)
 
-// Computed properties for accessibility
+// Computed properties for icon sizing and color
+const computedLeftIconSize = computed(() => {
+  return props.iconSize || (() => {
+    switch (props.size) {
+      case 'xs': return 'sm'
+      case 'sm': return 'sm'
+      case 'md': return 'md'
+      case 'lg': return 'lg'
+      case 'xl': return 'xl'
+      default: return 'md'
+    }
+  })()
+})
+
+const computedRightIconSize = computed(() => {
+  return props.iconSize || (() => {
+    switch (props.size) {
+      case 'xs': return 'sm'
+      case 'sm': return 'sm'
+      case 'md': return 'md'
+      case 'lg': return 'lg'
+      case 'xl': return 'xl'
+      default: return 'md'
+    }
+  })()
+})
+
+const computedLeftIconColor = computed(() => {
+  return props.iconColor || (() => {
+    if (props.disabled) return 'current'
+    if (props.variant === 'outline' || props.variant === 'ghost') return 'current'
+    return 'inherit'
+  })()
+})
+
+const computedRightIconColor = computed(() => {
+  return props.iconColor || (() => {
+    if (props.disabled) return 'current'
+    if (props.variant === 'outline' || props.variant === 'ghost') return 'current'
+    return 'inherit'
+  })()
+})
+
+// Computed aria label
 const computedAriaLabel = computed(() => {
   if (props.ariaLabel) return props.ariaLabel
   if (props.loading) return 'Loading'
   return undefined
 })
+
+// Icon event handlers
+const handleLeftIconClick = (event: MouseEvent) => {
+  emit('leftIconClick', event)
+}
+
+const handleLeftIconLoad = (event: Event) => {
+  emit('leftIconLoad', event)
+}
+
+const handleLeftIconError = (event: Event) => {
+  emit('leftIconError', event)
+}
+
+const handleRightIconClick = (event: MouseEvent) => {
+  emit('rightIconClick', event)
+}
+
+const handleRightIconLoad = (event: Event) => {
+  emit('rightIconLoad', event)
+}
+
+const handleRightIconError = (event: Event) => {
+  emit('rightIconError', event)
+}
 </script>
 
 <style scoped>

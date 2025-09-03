@@ -1,4 +1,6 @@
 import type { Component } from 'vue'
+import type { IconLibrary, IconType, IconSize, IconColor, MaterialIconVariant, FontAwesomeStyle } from '../icon/CIcon.types'
+import type { VNode } from 'vue'
 
 export interface CButtonProps {
   /** Button content - explicit children prop */
@@ -25,13 +27,79 @@ export interface CButtonProps {
   /** Right icon name */
   rightIcon?: string
 
+  /** Icon library to use for both left and right icons */
+  iconLibrary?: IconLibrary
+
+  /** Icon type for both left and right icons */
+  iconType?: IconType
+
+  /** Icon size override for both left and right icons */
+  iconSize?: IconSize | number | string
+
+  /** Icon color override for both left and right icons */
+  iconColor?: IconColor | string
+
+  /** Material Icons variant for both left and right icons */
+  iconVariant?: MaterialIconVariant
+
+  /** Font Awesome style for both left and right icons */
+  iconFaStyle?: FontAwesomeStyle
+
+  /** Custom SVG content for left icon */
+  leftIconSvg?: string
+
+  /** Custom SVG content for right icon */
+  rightIconSvg?: string
+
+  /** Image/SVG source URL for left icon */
+  leftIconSrc?: string
+
+  /** Image/SVG source URL for right icon */
+  rightIconSrc?: string
+
+  /** Whether left icon is clickable */
+  leftIconClickable?: boolean
+
+  /** Whether right icon is clickable */
+  rightIconClickable?: boolean
+
+  /** Left icon ARIA label */
+  leftIconAriaLabel?: string
+
+  /** Right icon ARIA label */
+  rightIconAriaLabel?: string
+
+  /** Whether to flip left icon horizontally */
+  leftIconFlipX?: boolean
+
+  /** Whether to flip right icon horizontally */
+  rightIconFlipX?: boolean
+
+  /** Whether to flip left icon vertically */
+  leftIconFlipY?: boolean
+
+  /** Whether to flip right icon vertically */
+  rightIconFlipY?: boolean
+
+  /** Left icon rotation angle in degrees */
+  leftIconRotate?: number
+
+  /** Right icon rotation angle in degrees */
+  rightIconRotate?: number
+
+  /** Left icon animation type */
+  leftIconAnimation?: 'spin' | 'pulse' | 'bounce' | 'fade'
+
+  /** Right icon animation type */
+  rightIconAnimation?: 'spin' | 'pulse' | 'bounce' | 'fade'
+
   /** Link URL (makes button behave as link) */
   href?: string
 
   /** Link target */
   target?: '_blank' | '_self' | '_parent' | '_top'
 
-    /** Button type for forms */
+  /** Button type for forms */
   type?: 'button' | 'submit' | 'reset'
 
   /** Polymorphic component support */
@@ -56,13 +124,19 @@ export interface CButtonEmits {
   (e: 'blur', event: FocusEvent): void
   (e: 'mouseenter', event: MouseEvent): void
   (e: 'mouseleave', event: MouseEvent): void
+  (e: 'leftIconClick', event: MouseEvent): void
+  (e: 'rightIconClick', event: MouseEvent): void
+  (e: 'leftIconLoad', event: Event): void
+  (e: 'rightIconLoad', event: Event): void
+  (e: 'leftIconError', event: Event): void
+  (e: 'rightIconError', event: Event): void
 }
 
 export interface CButtonSlots {
-  default(): any
-  leftIcon(): any
-  rightIcon(): any
-  loadingSpinner(): any
+  default(): VNode | VNode[] | undefined
+  leftIcon(): VNode | VNode[] | undefined
+  rightIcon(): VNode | VNode[] | undefined
+  loadingSpinner(): VNode | VNode[] | undefined
 }
 
 export interface UseButtonReturn {
