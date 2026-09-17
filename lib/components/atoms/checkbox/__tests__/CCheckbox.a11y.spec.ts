@@ -1,21 +1,29 @@
-import { describe, it, expect } from 'vitest'
-import { mount } from '@vue/test-utils'
-import { axe, toHaveNoViolations } from 'jest-axe'
-import CCheckbox from '../CCheckbox.vue'
+import { describe, it, expect, afterEach } from "vitest";
+import { mount } from "@vue/test-utils";
+import { axe } from 'vitest-axe';
+import CCheckbox from "../CCheckbox.vue";
 import type { CCheckboxProps } from '../CCheckbox.types'
 
-// Extend expect to include accessibility matchers
-expect.extend(toHaveNoViolations)
+let wrappers: any[] = []
+
+afterEach(() => {
+  wrappers.forEach(w => w.unmount())
+  wrappers = []
+  document.body.innerHTML = ''
+})
 
 describe('CCheckbox Accessibility', () => {
   // Helper function to create wrapper
   const createWrapper = (props: Partial<CCheckboxProps> = {}) => {
-    return mount(CCheckbox, {
+    const w = mount(CCheckbox, {
       props: {
         checked: false,
         ...props
-      } as CCheckboxProps
+      } as CCheckboxProps,
+      attachTo: document.body
     })
+    wrappers.push(w)
+    return w
   }
 
   describe('Basic accessibility', () => {
@@ -124,7 +132,7 @@ describe('CCheckbox Accessibility', () => {
       })
 
       const input = wrapper.find('input[type="checkbox"]')
-      expect(input.attributes('aria-checked')).toBe('true')
+      expect(input.element.checked).toBe(true)
     })
 
     it('should announce unchecked state', () => {
@@ -134,7 +142,7 @@ describe('CCheckbox Accessibility', () => {
       })
 
       const input = wrapper.find('input[type="checkbox"]')
-      expect(input.attributes('aria-checked')).toBe('false')
+      expect(input.element.checked).toBe(false)
     })
 
     it('should announce mixed state when indeterminate', () => {
@@ -144,7 +152,7 @@ describe('CCheckbox Accessibility', () => {
       })
 
       const input = wrapper.find('input[type="checkbox"]')
-      expect(input.attributes('aria-checked')).toBe('mixed')
+      expect(input.element.indeterminate).toBe(true)
     })
 
     it('should associate with description', () => {
@@ -182,8 +190,10 @@ describe('CCheckbox Accessibility', () => {
         slots: {
           default: 'Main label',
           description: 'Additional description text'
-        }
+        },
+        attachTo: document.body
       })
+      wrappers.push(wrapper)
 
       const results = await axe(wrapper.element)
       expect(results).toHaveNoViolations()
@@ -254,8 +264,8 @@ describe('CCheckbox Accessibility', () => {
           children: `${colorScheme} colored checkbox`
         })
 
-        const results = await axe(wrapper.element)
-        expect(results).toHaveNoViolations()
+      const results = await axe(wrapper.element)
+      expect(results).toHaveNoViolations()
       }
     })
 
@@ -269,8 +279,8 @@ describe('CCheckbox Accessibility', () => {
           children: `${size} sized checkbox`
         })
 
-        const results = await axe(wrapper.element)
-        expect(results).toHaveNoViolations()
+      const results = await axe(wrapper.element)
+      expect(results).toHaveNoViolations()
       }
     })
   })

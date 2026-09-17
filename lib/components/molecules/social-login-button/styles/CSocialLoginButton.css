@@ -1,0 +1,62 @@
+.cui-social-btn {
+  width: 100%;
+  justify-content: center;
+}
+
+.cui-social-btn.cui-social-btn--icon-only {
+  width: auto;
+  aspect-ratio: 1;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.cui-social-btn.cui-social-btn--monochrome .cui-social-icon {
+  color: currentColor;
+}
+
+/* Brand Colors for Icons in Outline variant */
+.cui-social-google { color: #DB4437; }
+.cui-social-github { color: #333333; }
+.cui-social-apple { color: #000000; }
+.cui-social-facebook { color: #4267B2; }
+.cui-social-twitter { color: #1DA1F2; }
+.cui-social-microsoft { color: #00A4EF; }
+
+/* Dark mode adjustments for outline icons */
+@media (prefers-color-scheme: dark) {
+  .cui-social-github { color: #ffffff; }
+  .cui-social-apple { color: #ffffff; }
+}
+
+/* Solid Variants */
+.cui-social-btn.cui-btn--solid.cui-social-btn--google {
+  background-color: #DB4437;
+  color: white;
+  border-color: #DB4437;
+}
+.cui-social-btn.cui-btn--solid.cui-social-btn--google:hover { background-color: #C13527; }
+.cui-social-btn.cui-btn--solid.cui-social-btn--google .cui-social-google { color: white; }
+
+.cui-social-btn.cui-btn--solid.cui-social-btn--github {
+  background-color: #333333;
+  color: white;
+  border-color: #333333;
+}
+.cui-social-btn.cui-btn--solid.cui-social-btn--github:hover { background-color: #1a1a1a; }
+.cui-social-btn.cui-btn--solid.cui-social-btn--github .cui-social-github { color: white; }
+
+.cui-social-btn.cui-btn--solid.cui-social-btn--apple {
+  background-color: #000000;
+  color: white;
+  border-color: #000000;
+}
+.cui-social-btn.cui-btn--solid.cui-social-btn--apple:hover { background-color: #1a1a1a; }
+.cui-social-btn.cui-btn--solid.cui-social-btn--apple .cui-social-apple { color: white; }
+
+.cui-social-btn.cui-btn--solid.cui-social-btn--facebook {
+  background-color: #4267B2;
+  color: white;
+  border-color: #4267B2;
+}
+.cui-social-btn.cui-btn--solid.cui-social-btn--facebook:hover { background-color: #365899; }
+.cui-social-btn.cui-btn--solid.cui-social-btn--facebook .cui-social-facebook { color: white; }

@@ -1,21 +1,30 @@
-import { describe, it, expect } from 'vitest'
-import { mount } from '@vue/test-utils'
-import { axe, toHaveNoViolations } from 'jest-axe'
-import CInput from '../CInput.vue'
+
+import { describe, it, expect, afterEach } from "vitest";
+import { mount } from "@vue/test-utils";
+import { axe } from 'vitest-axe';
+import CInput from "../CInput.vue";
 import type { CInputProps } from '../CInput.types'
 
-// Extend expect to include accessibility matchers
-expect.extend(toHaveNoViolations)
+let wrappers: any[] = []
+
+afterEach(() => {
+  wrappers.forEach(w => w.unmount())
+  wrappers = []
+  document.body.innerHTML = ''
+})
 
 describe('CInput Accessibility', () => {
   // Helper function to create wrapper
   const createWrapper = (props: Partial<CInputProps> = {}) => {
-    return mount(CInput, {
+    const w = mount(CInput, {
       props: {
         value: '',
         ...props
-      } as CInputProps
+      } as CInputProps,
+      attachTo: document.body
     })
+    wrappers.push(w)
+    return w
   }
 
   describe('Basic accessibility', () => {
@@ -29,7 +38,7 @@ describe('CInput Accessibility', () => {
     })
 
     it('should not have violations with label', async () => {
-      const wrapper = mount('div', {
+      const wrapper = mount({
         template: `
           <div>
             <label for="email-input">Email Address</label>
@@ -42,7 +51,8 @@ describe('CInput Accessibility', () => {
           </div>
         `,
         components: { CInput }
-      })
+      }, { attachTo: document.body })
+      wrappers.push(wrapper)
 
       const results = await axe(wrapper.element)
       expect(results).toHaveNoViolations()
@@ -241,7 +251,7 @@ describe('CInput Accessibility', () => {
 
   describe('Form integration accessibility', () => {
     it('should work with form labels', async () => {
-      const wrapper = mount('form', {
+      const wrapper = mount({
         template: `
           <form>
             <label for="username">Username</label>
@@ -254,7 +264,8 @@ describe('CInput Accessibility', () => {
           </form>
         `,
         components: { CInput }
-      })
+      }, { attachTo: document.body })
+      wrappers.push(wrapper)
 
       const results = await axe(wrapper.element)
       expect(results).toHaveNoViolations()
@@ -364,8 +375,10 @@ describe('CInput Accessibility', () => {
         slots: {
           leftElement: '<span>$</span>',
           rightElement: '<span>USD</span>'
-        }
+        },
+        attachTo: document.body
       })
+      wrappers.push(wrapper)
 
       const results = await axe(wrapper.element)
       expect(results).toHaveNoViolations()
@@ -380,8 +393,10 @@ describe('CInput Accessibility', () => {
         slots: {
           prepend: '<span>https://</span>',
           append: '<span>.com</span>'
-        }
+        },
+        attachTo: document.body
       })
+      wrappers.push(wrapper)
 
       const results = await axe(wrapper.element)
       expect(results).toHaveNoViolations()

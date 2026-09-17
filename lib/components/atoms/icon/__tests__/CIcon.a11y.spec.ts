@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
+import { axe } from 'vitest-axe'
 import CIcon from '../CIcon.vue'
 import type { CIconProps } from '../CIcon.types'
 
@@ -11,6 +12,18 @@ describe('CIcon Accessibility', () => {
     name: 'star',
     size: 'md'
   }
+
+  it('should not have accessibility violations', async () => {
+    const wrapper = mount(CIcon, {
+      props: defaultProps,
+      attachTo: document.body,
+    })
+
+    const results = await axe(wrapper.element)
+    expect(results).toHaveNoViolations()
+
+    wrapper.unmount()
+  })
 
   describe('ARIA Attributes', () => {
     it('has proper role attribute for decorative icons', () => {
@@ -85,7 +98,7 @@ describe('CIcon Accessibility', () => {
         }
       })
 
-      expect(wrapper.attributes('aria-hidden')).toBeFalsy()
+      expect(wrapper.attributes('aria-hidden')).toBe('false')
     })
   })
 
@@ -136,7 +149,7 @@ describe('CIcon Accessibility', () => {
         }
       })
 
-      expect(wrapper.attributes('tabindex')).toBeDefined()
+      expect(wrapper.element.tagName.toLowerCase()).toBe('button')
     })
 
     it('is not focusable when disabled', () => {
@@ -159,8 +172,8 @@ describe('CIcon Accessibility', () => {
         }
       })
 
-      await wrapper.trigger('keydown.enter')
-      expect(wrapper.emitted('click')).toBeTruthy()
+      // Native button handles keyboard activation
+      expect(wrapper.element.tagName.toLowerCase()).toBe('button')
     })
 
     it('supports space key activation when clickable', async () => {
@@ -171,8 +184,8 @@ describe('CIcon Accessibility', () => {
         }
       })
 
-      await wrapper.trigger('keydown.space')
-      expect(wrapper.emitted('click')).toBeTruthy()
+      // Native button handles keyboard activation
+      expect(wrapper.element.tagName.toLowerCase()).toBe('button')
     })
   })
 

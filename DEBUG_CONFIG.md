@@ -199,14 +199,14 @@ pnpm test:unit --watch
 
 ### E2E Test Debugging
 ```bash
-# Open Cypress in debug mode
-pnpm test:e2e:dev
+# Playwright UI
+pnpm test:e2e:ui
 
-# Run specific E2E test
-pnpm cypress run --spec "cypress/e2e/button.cy.ts"
+# Chromium smoke only
+pnpm test:e2e
 
-# Run E2E tests in headed mode
-pnpm cypress run --headed
+# All browsers
+pnpm test:e2e:full
 ```
 
 ## 🔧 Debug Utilities & Helpers

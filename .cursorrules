@@ -1,0 +1,19 @@
+# CelestialUI-Vue — Cursor Rules Router
+
+This project uses modular AI rule files located in `.cursor/rules/`. Before writing or modifying code, check and apply the matching modular rule files:
+
+- **Core Standards & Quality Gates**: `.cursor/rules/celestial-core.mdc` (Always Active)
+  - Stack: Vue 3 `<script setup lang="ts">`, TypeScript, Tailwind CSS + Custom Properties.
+  - Personas: Architect, Frontend, QA, DevOps/CI, Reviewer.
+  - Dual-Linter Division: `oxlint` (Speed Layer) vs `eslint` (Authoritative CI Gateway).
+  - SonarQube Quality Gates (Warning-Only Policy): Complexity <= 8, Zero Duplication.
+  - Conventional Commits.
+
+- **Component Architecture & WCAG 2.2 AA**: `.cursor/rules/component-standards.mdc` (Globs: `lib/components/**`, `lib/composables/**`)
+  - Deep folder structure: `C<Name>.vue`, `.types.ts`, `composables/`, `styles/`, `__tests__/`, `stories/`, `index.ts`, `README.md`.
+  - WCAG 2.2 AA Accessibility & ARIA Telemetry.
+  - Public API & Tree-Shakable Barrel Exports.
+
+- **Testing Strategy**: `.cursor/rules/testing-strategy.mdc` (Globs: `**/{__tests__,e2e,stories}/**`, `lib/**`)
+  - 5-Tier Testing Pyramid: Unit (JSDOM), Browser Mode, Storybook (test-runner/a11y), Lost Pixel Visual Regression, Playwright E2E.
+  - Canonical Verification Commands: `pnpm test:ci`, `pnpm lint`, `pnpm type-check:lib`.

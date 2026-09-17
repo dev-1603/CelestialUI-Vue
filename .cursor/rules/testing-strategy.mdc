@@ -1,0 +1,105 @@
+---
+description: CelestialUI-Vue 5-tier testing pyramid, test placement, authoring guidelines, and verification commands.
+globs: ["**/{__tests__,e2e,stories}/**", "lib/**"]
+alwaysApply: false
+---
+
+# Testing Strategy & Quality Assurance Rules
+
+## 1. The 5-Tier Testing Pyramid
+CelestialUI-Vue uses a multi-layered testing pyramid. Every component and utility must be accompanied by appropriate test coverage across the applicable tiers.
+
+```
+                    ▲
+                   / \
+                  / E2E \                Tier 5: Playwright (e2e/)
+                 /_______\
+                /         \
+               /  VISUAL   \             Tier 4: Lost Pixel (.lostpixel/)
+              /_____________\
+             /   STORYBOOK   \           Tier 3: Storybook Test-Runner + a11y
+            /_________________\
+           /   BROWSER MODE    \         Tier 2: Vitest Browser Mode (*.browser.spec.ts)
+          /_____________________\
+         /      UNIT / JSDOM     \       Tier 1: Vitest + VTU (*.spec.ts)
+        /_________________________\
+```
+
+---
+
+## 2. Test Tiers Breakdown & Placement
+
+### Tier 1: Unit & Logic Tests (JSDOM)
+- **File Pattern**: `lib/components/**/__tests__/C<ComponentName>.spec.ts` and `lib/utils/**/__tests__/*.spec.ts`
+- **Runner**: Vitest (`--project unit`, JSDOM environment) + `@vue/test-utils` + `vitest-axe`
+- **Scope**: Props rendering, slot rendering, event emission payloads, composable state changes, conditional DOM structures.
+- **Commands**:
+  - `pnpm test:unit` (run all unit tests)
+  - `pnpm test:unit:watch` (interactive watch mode)
+  - `pnpm test:coverage` (generate V8 coverage report in `coverage/lcov.info`)
+
+### Tier 2: Real Component Browser Tests
+- **File Pattern**: `lib/components/**/__tests__/C<ComponentName>.browser.spec.ts`
+- **Runner**: Vitest Browser Mode (`--project browser`) powered by `@vitest/browser-playwright` with Chromium instance.
+- **Scope**: Real browser DOM layout, computed dimensions (`getBoundingClientRect`), focus rings, real keyboard interactions, browser-native event dispatching.
+- **Command**: `pnpm test:browser`
+
+### Tier 3: Storybook Component Stories & Interaction / A11y Tests
+- **File Pattern**: `lib/components/**/stories/C<ComponentName>.stories.ts`
+- **Runner**: Storybook 10 + `@storybook/vue3-vite` + `@storybook/addon-a11y` + `@storybook/test-runner` (`test-storybook`)
+- **Scope**: Visual variant documentation, theme switching (`light`, `dark`, `celestial`), interactive play functions using `@storybook/test`, automated axe-core a11y checks.
+- **Commands**:
+  - `pnpm storybook` (local development on port 6006)
+  - `pnpm test:storybook` (runs test-runner against static build)
+  - `pnpm test:a11y` (alias for storybook a11y test suite)
+
+### Tier 4: Visual Regression Testing
+- **Location**: `.lostpixel/baseline/` (Git-tracked baseline screenshots)
+- **Configuration**: `lostpixel.config.ts`
+- **Runner**: Lost Pixel against static Storybook build (`storybook-static`). Chromatic is maintained as a docs-only fallback.
+- **Scope**: Pixel-level regression detection on critical component smoke stories.
+- **Commands**:
+  - `pnpm test:visual` (compare current against baseline)
+  - `pnpm test:visual:update` (update baseline snapshots)
+
+### Tier 5: End-to-End User Journey Tests
+- **File Pattern**: `e2e/*.spec.ts`
+- **Runner**: Playwright Test (`playwright.config.ts`, Chromium / Firefox / WebKit)
+- **Scope**: End-to-end user journeys through the showcase/demo application running against the Vite preview server (`http://localhost:4173`).
+- **Commands**:
+  - `pnpm test:e2e` (Chromium run)
+  - `pnpm test:e2e:full` (cross-browser: Chromium, Firefox, WebKit)
+  - `pnpm test:e2e:ui` (Playwright interactive UI mode)
+
+---
+
+## 3. Canonical CI Verification Suite
+Before any merge or PR submission, code must pass the complete CI verification pipeline:
+```bash
+# Run full CI suite: lint -> type-check:lib -> test:unit -> test:browser
+pnpm test:ci
+
+# Run dual-linter check: oxlint (speed) + eslint (authoritative)
+pnpm lint
+
+# Validate TypeScript declarations for library build
+pnpm type-check:lib
+```
+
+---
+
+## 4. Test Authoring Best Practices
+- **AAA Pattern**: Structure tests into distinct **Arrange**, **Act**, and **Assert** phases.
+- **Semantic Assertions**: Avoid brittle text matching; query elements via accessibility roles or `data-testid` attributes.
+- **Accessibility Checks**: Every component unit test suite should include a baseline axe verification:
+  ```typescript
+  import { axe, toHaveNoViolations } from 'vitest-axe'
+  expect.extend(toHaveNoViolations)
+
+  it('has no accessibility violations', async () => {
+    const wrapper = mount(CButton, { props: { label: 'Submit' } })
+    const results = await axe(wrapper.element)
+    expect(results).toHaveNoViolations()
+  })
+  ```
+- **State Isolation**: Always clean up timers, event listeners, and localStorage mocks between test runs.

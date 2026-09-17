@@ -1,0 +1,228 @@
+/* Base avatar styles */
+.celestial-avatar {
+  /* Layout */
+  @apply relative inline-flex items-center justify-center;
+
+  /* Default styling */
+  @apply bg-gray-200 text-gray-600 dark:bg-gray-700 dark:text-gray-300;
+
+  /* Transitions */
+  @apply transition-all duration-200 ease-in-out;
+
+  /* Focus styles for clickable avatars */
+  @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500;
+
+  /* Prevent text selection */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+
+  /* Ensure proper aspect ratio */
+  aspect-ratio: 1 / 1;
+}
+
+/* Size variants */
+.celestial-avatar--xs {
+  @apply w-6 h-6 text-xs;
+  min-width: 1.5rem; /* 24px */
+  min-height: 1.5rem; /* 24px */
+}
+
+.celestial-avatar--sm {
+  @apply w-8 h-8 text-sm;
+  min-width: 2rem; /* 32px */
+  min-height: 2rem; /* 32px */
+}
+
+.celestial-avatar--md {
+  @apply w-10 h-10 text-base;
+  min-width: 2.5rem; /* 40px */
+  min-height: 2.5rem; /* 40px */
+}
+
+.celestial-avatar--lg {
+  @apply w-12 h-12 text-lg;
+  min-width: 3rem; /* 48px */
+  min-height: 3rem; /* 48px */
+}
+
+.celestial-avatar--xl {
+  @apply w-16 h-16 text-xl;
+  min-width: 4rem; /* 64px */
+  min-height: 4rem; /* 64px */
+}
+
+/* Rounded variant */
+.celestial-avatar--rounded {
+  @apply rounded-full;
+}
+
+/* Clickable state */
+.celestial-avatar--clickable {
+  @apply cursor-pointer;
+}
+
+.celestial-avatar--clickable:hover {
+  @apply transform scale-105;
+}
+
+.celestial-avatar--clickable:active {
+  @apply transform scale-95;
+}
+
+/* Disabled state */
+.celestial-avatar--disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+.celestial-avatar--disabled:hover {
+  @apply transform-none;
+}
+
+/* Loading state */
+.celestial-avatar--loading {
+  @apply animate-pulse;
+}
+
+/* Avatar image */
+.celestial-avatar__image {
+  @apply w-full h-full object-cover;
+  display: block;
+  border-radius: inherit;
+}
+
+/* Fallback content */
+.celestial-avatar__fallback {
+  @apply w-full h-full flex items-center justify-center font-medium;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: inherit;
+}
+
+/* Badge positioning */
+.celestial-avatar__badge {
+  @apply absolute top-0 right-0 transform translate-x-1 -translate-y-1;
+  z-index: 10;
+}
+
+/* Status indicator dot (Shadcn/Radix style overlay) */
+.celestial-avatar__status {
+  @apply absolute bottom-0 right-0 rounded-full ring-2 ring-white dark:ring-gray-900 transform translate-x-0.5 translate-y-0.5;
+  z-index: 10;
+}
+
+/* Size-specific indicator dimensions */
+.celestial-avatar--xs .celestial-avatar__status {
+  @apply w-2 h-2 ring-1;
+}
+
+.celestial-avatar--sm .celestial-avatar__status {
+  @apply w-2.5 h-2.5 ring-1;
+}
+
+.celestial-avatar--md .celestial-avatar__status {
+  @apply w-3 h-3 ring-2;
+}
+
+.celestial-avatar--lg .celestial-avatar__status {
+  @apply w-3.5 h-3.5 ring-2;
+}
+
+.celestial-avatar--xl .celestial-avatar__status {
+  @apply w-4 h-4 ring-2;
+}
+
+/* Status variants */
+.celestial-avatar__status--online {
+  @apply bg-emerald-500;
+}
+
+.celestial-avatar__status--offline {
+  @apply bg-gray-400;
+}
+
+.celestial-avatar__status--away {
+  @apply bg-amber-500;
+}
+
+.celestial-avatar__status--busy {
+  @apply bg-rose-500;
+}
+
+/* Loading spinner */
+.celestial-avatar__loading {
+  @apply absolute inset-0 flex items-center justify-center;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.celestial-avatar__spinner {
+  @apply w-4 h-4 border-2 border-gray-300 border-t-blue-500 rounded-full animate-spin;
+}
+
+/* Error state */
+.celestial-avatar--error {
+  @apply bg-red-100 text-red-600;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .celestial-avatar {
+    @apply bg-gray-700 text-gray-300;
+  }
+
+  .celestial-avatar--bordered {
+    @apply border-gray-600;
+  }
+
+  .celestial-avatar--error {
+    @apply bg-red-900 text-red-300;
+  }
+
+  .celestial-avatar__loading {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  .celestial-avatar__spinner {
+    @apply border-gray-600 border-t-blue-400;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .celestial-avatar {
+    @apply border border-gray-900;
+  }
+
+  .celestial-avatar--bordered {
+    @apply border-2 border-gray-900;
+  }
+
+  .celestial-avatar__status {
+    @apply border-gray-900;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .celestial-avatar {
+    @apply transition-none;
+  }
+
+  .celestial-avatar--clickable:hover {
+    @apply transform-none;
+  }
+
+  .celestial-avatar--clickable:active {
+    @apply transform-none;
+  }
+
+  .celestial-avatar--loading {
+    @apply animate-none;
+  }
+
+  .celestial-avatar__spinner {
+    @apply animate-none;
+  }
+}

@@ -11,11 +11,17 @@ node_modules
 .DS_Store
 dist
 dist-ssr
+storybook-static
 coverage
 *.local
 
-/cypress/videos/
-/cypress/screenshots/
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+.lostpixel/*
+.vitest-attachments/*
+
 
 # Editor directories and files
 .vscode/*

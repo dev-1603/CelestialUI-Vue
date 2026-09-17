@@ -1,17 +1,7 @@
 import { mount } from '@vue/test-utils'
 import { describe, it, expect } from 'vitest'
+import { axe } from 'vitest-axe'
 import CButton from '../CButton.vue'
-
-// Mock axe for accessibility testing
-// Note: In a real implementation, you would install and configure jest-axe or vitest-axe
-const mockAxe = {
-  async run(_element: Element) {
-    // Mock implementation - in reality this would run accessibility checks
-    return {
-      violations: []
-    }
-  }
-}
 
 describe('CButton Accessibility', () => {
   it('should not have accessibility violations', async () => {
@@ -21,8 +11,8 @@ describe('CButton Accessibility', () => {
       attachTo: document.body
     })
 
-    const results = await mockAxe.run(wrapper.element)
-    expect(results.violations).toHaveLength(0)
+    const results = await axe(wrapper.element)
+    expect(results).toHaveNoViolations()
 
     wrapper.unmount()
   })

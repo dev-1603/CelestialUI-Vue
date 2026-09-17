@@ -57,7 +57,7 @@ const config: StorybookConfig = {
     '@storybook/addon-outline',
     '@storybook/addon-interactions',
     '@storybook/addon-links',
-    '@chromatic-com/storybook',
+    '@storybook/addon-a11y',
     // Custom addons
     './addons/theme-switcher/register.js',
     './addons/design-tokens/register.js',

@@ -1,0 +1,238 @@
+/* Base progress styles */
+.celestial-progress {
+  /* Layout */
+  @apply w-full;
+
+  /* Typography */
+  @apply text-sm;
+
+  /* Spacing */
+  @apply space-y-1;
+
+  /* Default (Light) Theme Variables */
+  --celestial-progress-bg: var(--cui-color-gray-200, #e5e7eb);
+  --celestial-progress-fill: var(--cui-color-primary-500, #3b82f6);
+  --celestial-progress-text: var(--cui-color-text-secondary, #4b5563);
+  --celestial-progress-label: var(--cui-color-text-primary, #111827);
+  --celestial-progress-border-radius: 9999px;
+  --celestial-progress-transition: 300ms ease-in-out;
+}
+
+/* Dark mode theme custom properties */
+[data-theme="dark"] .celestial-progress,
+.dark .celestial-progress,
+.cui-dark .celestial-progress,
+.celestial-progress--dark {
+  --celestial-progress-bg: var(--cui-color-gray-700, #374151);
+  --celestial-progress-fill: var(--cui-color-primary-400, #60a5fa);
+  --celestial-progress-text: var(--cui-color-text-secondary, #d1d5db);
+  --celestial-progress-label: var(--cui-color-text-primary, #f9fafb);
+}
+
+/* Celestial theme custom properties */
+[data-theme="celestial"] .celestial-progress {
+  --celestial-progress-bg: rgba(255, 255, 255, 0.15);
+  --celestial-progress-fill: #a78bfa;
+  --celestial-progress-text: #cbd5e1;
+  --celestial-progress-label: #f8fafc;
+}
+
+/* Progress bar container */
+.celestial-progress__bar {
+  /* Layout */
+  @apply relative w-full overflow-hidden;
+
+  /* Background */
+  background-color: var(--celestial-progress-bg, #e5e7eb);
+
+  /* Border radius */
+  border-radius: var(--celestial-progress-border-radius, 9999px);
+
+  /* Transitions */
+  transition: all var(--celestial-progress-transition, 300ms ease-in-out);
+}
+
+/* Progress fill */
+.celestial-progress__fill {
+  /* Layout */
+  @apply h-full;
+
+  /* Background */
+  background-color: var(--celestial-progress-fill, #3b82f6);
+
+  /* Transitions */
+  transition: all var(--celestial-progress-transition, 300ms ease-in-out);
+
+  /* Border radius */
+  border-radius: var(--celestial-progress-border-radius, 9999px);
+
+  /* Positioning */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Color scheme variants */
+.celestial-progress__fill--primary,
+.celestial-progress__fill--blue {
+  @apply bg-blue-500;
+}
+
+.celestial-progress__fill--secondary {
+  @apply bg-gray-500;
+}
+
+.celestial-progress__fill--success,
+.celestial-progress__fill--green {
+  @apply bg-emerald-500;
+}
+
+.celestial-progress__fill--warning,
+.celestial-progress__fill--amber,
+.celestial-progress__fill--yellow {
+  @apply bg-amber-500;
+}
+
+.celestial-progress__fill--danger,
+.celestial-progress__fill--error,
+.celestial-progress__fill--red {
+  @apply bg-rose-500;
+}
+
+.celestial-progress__fill--info,
+.celestial-progress__fill--cyan {
+  @apply bg-cyan-500;
+}
+
+.celestial-progress__fill--purple {
+  @apply bg-purple-500;
+}
+
+/* Size variants */
+.celestial-progress--sm .celestial-progress__bar {
+  @apply h-2;
+}
+
+.celestial-progress--md .celestial-progress__bar {
+  @apply h-3;
+}
+
+.celestial-progress--lg .celestial-progress__bar {
+  @apply h-4;
+}
+
+/* Text styles */
+.celestial-progress__text {
+  color: var(--celestial-progress-text, #4b5563);
+  @apply font-medium text-right;
+}
+
+.celestial-progress__text--sm {
+  @apply text-xs;
+}
+
+.celestial-progress__text--md {
+  @apply text-sm;
+}
+
+.celestial-progress__text--lg {
+  @apply text-base;
+}
+
+/* Label styles */
+.celestial-progress__label {
+  color: var(--celestial-progress-label, #111827);
+  @apply font-medium block;
+}
+
+.celestial-progress__label--sm {
+  @apply text-sm;
+}
+
+.celestial-progress__label--md {
+  @apply text-base;
+}
+
+.celestial-progress__label--lg {
+  @apply text-lg;
+}
+
+/* Striped variant */
+.celestial-progress__bar--striped .celestial-progress__fill {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 1rem 1rem;
+}
+
+/* Animated striped variant */
+.celestial-progress__bar--animated .celestial-progress__fill {
+  animation: celestial-progress-stripes 1s linear infinite;
+}
+
+@keyframes celestial-progress-stripes {
+  0% {
+    background-position: 1rem 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+/* Indeterminate variant */
+.celestial-progress__bar--indeterminate .celestial-progress__fill {
+  @apply w-1/3;
+  animation: celestial-progress-indeterminate 1.5s ease-in-out infinite;
+}
+
+@keyframes celestial-progress-indeterminate {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(300%);
+  }
+}
+
+/* Focus styles for accessibility */
+.celestial-progress__bar:focus-within {
+  @apply ring-2 ring-blue-500 ring-offset-2;
+  @apply outline-none;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .celestial-progress__bar {
+    @apply border border-gray-400 dark:border-gray-600;
+  }
+
+  .celestial-progress__fill {
+    @apply bg-blue-600;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .celestial-progress__fill {
+    @apply transition-none;
+  }
+
+  .celestial-progress__bar--animated .celestial-progress__fill {
+    animation: none;
+  }
+
+  .celestial-progress__bar--indeterminate .celestial-progress__fill {
+    animation: none;
+    @apply w-full;
+  }
+}
+

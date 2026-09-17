@@ -322,7 +322,7 @@ export const inputApiData = {
   :value="password"
   type="password"
   :min-length="8"
-  pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)"
+  pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*d)"
   helper-text="8+ chars, uppercase, lowercase, number"
 />`
     },

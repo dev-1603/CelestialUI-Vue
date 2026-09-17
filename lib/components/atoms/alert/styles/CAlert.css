@@ -1,0 +1,387 @@
+/**
+ * CAlert Component Styles
+ * 
+ * Responsive, accessible alert component with multiple variants and states.
+ * Uses CSS custom properties for easy theming and customization.
+ * 
+ * Usage:
+ * Import this file in your component or include it in your build process.
+ * 
+ * Custom Properties:
+ * --celestial-alert-bg: Background color
+ * --celestial-alert-color: Text color
+ * --celestial-alert-border: Border color
+ * --celestial-alert-radius: Border radius
+ * --celestial-alert-padding: Internal padding
+ * --celestial-alert-shadow: Box shadow
+ * --celestial-alert-icon-size: Icon size
+ * --celestial-alert-close-size: Close button size
+ */
+
+/* Base alert styles */
+.celestial-alert {
+  /* Layout */
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  width: 100%;
+  position: relative;
+
+  /* Spacing */
+  padding: var(--celestial-alert-padding, 1rem);
+  margin-bottom: 1rem;
+
+  /* Visual */
+  border-radius: var(--celestial-alert-radius, 0.375rem);
+  border: 1px solid transparent;
+  background-color: var(--celestial-alert-bg, #f8fafc);
+  color: var(--celestial-alert-color, #1e293b);
+
+  /* Typography */
+  font-size: 0.875rem;
+  line-height: 1.5;
+
+  /* Transitions */
+  transition: all 0.2s ease-in-out;
+
+  /* Focus styles for accessibility */
+  outline: none;
+}
+
+.celestial-alert:focus-within {
+  outline: 2px solid var(--celestial-alert-focus-color, #3b82f6);
+  outline-offset: 2px;
+}
+
+/* Alert content layout */
+.celestial-alert__content {
+  flex: 1;
+  min-width: 0; /* Allow content to shrink */
+}
+
+.celestial-alert__content--with-title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* Alert title */
+.celestial-alert__title {
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1.25;
+  margin: 0;
+  color: inherit;
+}
+
+/* Alert icon */
+.celestial-alert__icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--celestial-alert-icon-size, 1.25rem);
+  height: var(--celestial-alert-icon-size, 1.25rem);
+  margin-top: 0.125rem; /* Align with first line of text */
+}
+
+.celestial-alert__icon--hidden {
+  display: none;
+}
+
+/* Close button */
+.celestial-alert__close {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--celestial-alert-close-size, 1.5rem);
+  height: var(--celestial-alert-close-size, 1.5rem);
+  margin-top: -0.25rem;
+  margin-right: -0.25rem;
+
+  /* Button reset */
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+
+  /* Visual */
+  border-radius: 0.25rem;
+  color: currentColor;
+  opacity: 0.7;
+
+  /* Transitions */
+  transition:
+    opacity 0.2s ease-in-out,
+    background-color 0.2s ease-in-out;
+}
+
+.celestial-alert__close:hover {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.celestial-alert__close:focus {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.celestial-alert__close--hidden {
+  display: none;
+}
+
+/* Progress bar */
+.celestial-alert__progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 var(--celestial-alert-radius, 0.375rem) var(--celestial-alert-radius, 0.375rem);
+  overflow: hidden;
+}
+
+.celestial-alert__progress::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: var(--progress-width, 0%);
+  background-color: currentColor;
+  opacity: 0.3;
+  transition: width 0.1s linear;
+}
+
+.celestial-alert__progress--hidden {
+  display: none;
+}
+
+/* Action slot */
+.celestial-alert__action {
+  flex-shrink: 0;
+  margin-left: 0.75rem;
+}
+
+/* Size variants */
+.celestial-alert--sm {
+  --celestial-alert-padding: 0.75rem;
+  --celestial-alert-icon-size: 1rem;
+  --celestial-alert-close-size: 1.25rem;
+  font-size: 0.8125rem;
+  gap: 0.5rem;
+}
+
+.celestial-alert--md {
+  --celestial-alert-padding: 1rem;
+  --celestial-alert-icon-size: 1.25rem;
+  --celestial-alert-close-size: 1.5rem;
+  font-size: 0.875rem;
+  gap: 0.75rem;
+}
+
+.celestial-alert--lg {
+  --celestial-alert-padding: 1.25rem;
+  --celestial-alert-icon-size: 1.5rem;
+  --celestial-alert-close-size: 1.75rem;
+  font-size: 1rem;
+  gap: 1rem;
+}
+
+/* Type variants */
+.celestial-alert--info {
+  --celestial-alert-bg: #eff6ff;
+  --celestial-alert-color: #1e40af;
+  --celestial-alert-border: #bfdbfe;
+  --celestial-alert-focus-color: #3b82f6;
+}
+
+.celestial-alert--success {
+  --celestial-alert-bg: #f0fdf4;
+  --celestial-alert-color: #166534;
+  --celestial-alert-border: #bbf7d0;
+  --celestial-alert-focus-color: #22c55e;
+}
+
+.celestial-alert--warning {
+  --celestial-alert-bg: #fffbeb;
+  --celestial-alert-color: #92400e;
+  --celestial-alert-border: #fed7aa;
+  --celestial-alert-focus-color: #f59e0b;
+}
+
+.celestial-alert--error {
+  --celestial-alert-bg: #fef2f2;
+  --celestial-alert-color: #dc2626;
+  --celestial-alert-border: #fecaca;
+  --celestial-alert-focus-color: #ef4444;
+}
+
+/* State variants */
+.celestial-alert--loading {
+  position: relative;
+  pointer-events: none;
+}
+
+.celestial-alert--loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: celestial-alert-shimmer 1.5s infinite;
+}
+
+@keyframes celestial-alert-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Visual variants */
+.celestial-alert--bordered {
+  border-color: var(--celestial-alert-border, currentColor);
+  border-opacity: 0.2;
+}
+
+.celestial-alert--shadowed {
+  box-shadow: var(
+    --celestial-alert-shadow,
+    0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 1px 2px 0 rgba(0, 0, 0, 0.06)
+  );
+}
+
+/* Animation variants */
+.celestial-alert--fade {
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: celestial-alert-fade-in 0.3s ease-out forwards;
+}
+
+.celestial-alert--slide {
+  opacity: 0;
+  transform: translateX(-100%);
+  animation: celestial-alert-slide-in 0.3s ease-out forwards;
+}
+
+.celestial-alert--scale {
+  opacity: 0;
+  transform: scale(0.95);
+  animation: celestial-alert-scale-in 0.2s ease-out forwards;
+}
+
+@keyframes celestial-alert-fade-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes celestial-alert-slide-in {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes celestial-alert-scale-in {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+  .celestial-alert {
+    --celestial-alert-padding: 0.875rem;
+    gap: 0.625rem;
+  }
+
+  .celestial-alert--sm {
+    --celestial-alert-padding: 0.625rem;
+    gap: 0.5rem;
+  }
+
+  .celestial-alert--lg {
+    --celestial-alert-padding: 1rem;
+    gap: 0.75rem;
+  }
+
+  .celestial-alert__action {
+    margin-left: 0.5rem;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .celestial-alert {
+    border-width: 2px;
+  }
+
+  .celestial-alert--bordered {
+    border-width: 2px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .celestial-alert {
+    transition: none;
+  }
+
+  .celestial-alert--fade,
+  .celestial-alert--slide,
+  .celestial-alert--scale {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .celestial-alert--loading::after {
+    animation: none;
+  }
+
+  .celestial-alert__progress::before {
+    transition: none;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .celestial-alert--info {
+    --celestial-alert-bg: #1e3a8a;
+    --celestial-alert-color: #dbeafe;
+    --celestial-alert-border: #1e40af;
+  }
+
+  .celestial-alert--success {
+    --celestial-alert-bg: #14532d;
+    --celestial-alert-color: #dcfce7;
+    --celestial-alert-border: #166534;
+  }
+
+  .celestial-alert--warning {
+    --celestial-alert-bg: #78350f;
+    --celestial-alert-color: #fef3c7;
+    --celestial-alert-border: #92400e;
+  }
+
+  .celestial-alert--error {
+    --celestial-alert-bg: #7f1d1d;
+    --celestial-alert-color: #fee2e2;
+    --celestial-alert-border: #dc2626;
+  }
+
+  .celestial-alert__close:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}

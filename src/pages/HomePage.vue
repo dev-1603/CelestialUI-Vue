@@ -69,19 +69,21 @@
 <script setup lang="ts">
 // HOMEPAGE COMPONENT LOGIC (COMMENTED FOR STRUCTURE ONLY)
 
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import './HomePage.css'
 
-// Basic demo data for structure display
-const totalImplemented = ref(3)
-const totalComponents = ref(10)
+import { getComponentsByCategory, getCategoryStats } from '../data/components'
 
-// All complex functionality commented out - showing structure only
-// import { getComponentsByCategory, getCategoryStats } from '../data/components'
-// const componentsByCategory = computed(() => getComponentsByCategory())
-// const categoryStats = computed(() => getCategoryStats())
-// const totalImplemented = computed(() => /* calculation logic */)
-// const totalComponents = computed(() => /* calculation logic */)
+const componentsByCategory = computed(() => getComponentsByCategory())
+const categoryStats = computed(() => getCategoryStats())
+
+const totalImplemented = computed(() => 
+  categoryStats.value.reduce((acc, stat) => acc + stat.implemented, 0)
+)
+const totalComponents = computed(() => 
+  categoryStats.value.reduce((acc, stat) => acc + stat.total, 0)
+)
+
 // const categoryDescriptions = { /* category descriptions */ }
 // const getCategoryStatsForCategory = (category: string) => { /* stats logic */ }
 

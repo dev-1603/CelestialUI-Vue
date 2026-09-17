@@ -22,28 +22,64 @@
           </router-link>
           <router-link
             to="/playground/atomic/button"
-            class="px-4 py-2 rounded-lg bg-green-500 text-white hover:bg-green-600 transition-colors"
+            class="px-4 py-2 rounded-lg bg-blue-500 text-white hover:bg-blue-600 transition-colors"
           >
-            Button Test →
+            Button →
           </router-link>
           <router-link
             to="/playground/atomic/icon"
             class="px-4 py-2 rounded-lg bg-purple-500 text-white hover:bg-purple-600 transition-colors"
           >
-            Icon Test →
+            Icon →
           </router-link>
-                  <router-link
-          to="/playground/atomic/checkbox"
-          class="px-4 py-2 rounded-lg bg-orange-500 text-white hover:bg-orange-600 transition-colors"
-        >
-          Checkbox Test →
-        </router-link>
-        <router-link
-          to="/playground/atomic/input"
-          class="px-4 py-2 rounded-lg bg-green-500 text-white hover:bg-green-600 transition-colors"
-        >
-          Input Test →
-        </router-link>
+          <router-link
+            to="/playground/atomic/checkbox"
+            class="px-4 py-2 rounded-lg bg-orange-500 text-white hover:bg-orange-600 transition-colors"
+          >
+            Checkbox →
+          </router-link>
+          <router-link
+            to="/playground/atomic/input"
+            class="px-4 py-2 rounded-lg bg-green-500 text-white hover:bg-green-600 transition-colors"
+          >
+            Input →
+          </router-link>
+          <router-link
+            to="/playground/atomic/alert"
+            class="px-4 py-2 rounded-lg bg-red-500 text-white hover:bg-red-600 transition-colors"
+          >
+            Alert →
+          </router-link>
+          <router-link
+            to="/playground/atomic/avatar"
+            class="px-4 py-2 rounded-lg bg-indigo-500 text-white hover:bg-indigo-600 transition-colors"
+          >
+            Avatar →
+          </router-link>
+          <router-link
+            to="/playground/atomic/breadcrumb"
+            class="px-4 py-2 rounded-lg bg-yellow-500 text-white hover:bg-yellow-600 transition-colors"
+          >
+            Breadcrumb →
+          </router-link>
+          <router-link
+            to="/playground/atomic/card"
+            class="px-4 py-2 rounded-lg bg-pink-500 text-white hover:bg-pink-600 transition-colors"
+          >
+            Card →
+          </router-link>
+          <router-link
+            to="/playground/atomic/progress"
+            class="px-4 py-2 rounded-lg bg-teal-500 text-white hover:bg-teal-600 transition-colors"
+          >
+            Progress →
+          </router-link>
+          <router-link
+            to="/playground/atomic/switch"
+            class="px-4 py-2 rounded-lg bg-cyan-500 text-white hover:bg-cyan-600 transition-colors"
+          >
+            Switch →
+          </router-link>
         </div>
       </nav>
 
@@ -54,7 +90,7 @@
           <h2 class="text-xl font-semibold mb-4 text-gray-800 dark:text-white">
             Available Component Tests
           </h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             <!-- Button Test Card -->
             <router-link
               to="/playground/atomic/button"
@@ -64,10 +100,10 @@
                 <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
                   <span class="text-white text-sm font-bold">B</span>
                 </div>
-                <h3 class="font-semibold text-blue-800 dark:text-blue-200">Button Component</h3>
+                <h3 class="font-semibold text-blue-800 dark:text-blue-200">Button</h3>
               </div>
               <p class="text-sm text-blue-600 dark:text-blue-300">
-                Test button variants, sizes, states, and interactions
+                Variants, sizes, states, and interactions
               </p>
               <div class="mt-2 text-xs text-blue-500 dark:text-blue-400 group-hover:text-blue-600">
                 Click to test →
@@ -83,10 +119,10 @@
                 <div class="w-8 h-8 bg-purple-500 rounded-lg flex items-center justify-center">
                   <span class="text-white text-sm font-bold">I</span>
                 </div>
-                <h3 class="font-semibold text-purple-800 dark:text-purple-200">Icon Component</h3>
+                <h3 class="font-semibold text-purple-800 dark:text-purple-200">Icon</h3>
               </div>
               <p class="text-sm text-purple-600 dark:text-purple-300">
-                Test icon libraries, sizes, colors, and animations
+                Libraries, sizes, colors, and animations
               </p>
               <div class="mt-2 text-xs text-purple-500 dark:text-purple-400 group-hover:text-purple-600">
                 Click to test →
@@ -94,57 +130,156 @@
             </router-link>
 
             <!-- Checkbox Test Card -->
-                    <router-link
-          to="/playground/atomic/checkbox"
-          class="group block p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg border border-orange-200 dark:border-orange-700 hover:bg-orange-100 dark:hover:bg-orange-900/30 transition-colors"
-        >
-          <div class="flex items-center gap-3 mb-2">
-            <div class="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center">
-              <span class="text-white text-sm font-bold">☑</span>
-            </div>
-            <h3 class="font-semibold text-orange-800 dark:text-orange-200">Checkbox Component</h3>
-          </div>
-          <p class="text-sm text-orange-600 dark:text-orange-300">
-            Test checkbox states, sizes, colors, and form integration
-          </p>
-          <div class="mt-2 text-xs text-orange-500 dark:text-orange-400 group-hover:text-orange-600">
-            Click to test →
-          </div>
-        </router-link>
-
-        <router-link
-          to="/playground/atomic/input"
-          class="group block p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-700 hover:bg-green-100 dark:hover:bg-green-900/30 transition-colors"
-        >
-          <div class="flex items-center gap-3 mb-2">
-            <div class="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center">
-              <span class="text-white text-sm font-bold">📝</span>
-            </div>
-            <h3 class="font-semibold text-green-800 dark:text-green-200">Input Component</h3>
-          </div>
-          <p class="text-sm text-green-600 dark:text-green-300">
-            Test input types, validation, debouncing, and headless usage
-          </p>
-          <div class="mt-2 text-xs text-green-500 dark:text-green-400 group-hover:text-green-600">
-            Click to test →
-          </div>
-        </router-link>
-
-            <!-- Coming Soon Card -->
-            <div class="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg border border-gray-200 dark:border-gray-600 opacity-60">
+            <router-link
+              to="/playground/atomic/checkbox"
+              class="group block p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg border border-orange-200 dark:border-orange-700 hover:bg-orange-100 dark:hover:bg-orange-900/30 transition-colors"
+            >
               <div class="flex items-center gap-3 mb-2">
-                <div class="w-8 h-8 bg-gray-400 rounded-lg flex items-center justify-center">
-                  <span class="text-white text-sm font-bold">+</span>
+                <div class="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center">
+                  <span class="text-white text-sm font-bold">☑</span>
                 </div>
-                <h3 class="font-semibold text-gray-600 dark:text-gray-300">More Components</h3>
+                <h3 class="font-semibold text-orange-800 dark:text-orange-200">Checkbox</h3>
               </div>
-              <p class="text-sm text-gray-500 dark:text-gray-400">
-                Additional component tests coming soon
+              <p class="text-sm text-orange-600 dark:text-orange-300">
+                States, sizes, colors, and form integration
               </p>
-              <div class="mt-2 text-xs text-gray-400">
-                Coming soon...
+              <div class="mt-2 text-xs text-orange-500 dark:text-orange-400 group-hover:text-orange-600">
+                Click to test →
               </div>
-            </div>
+            </router-link>
+
+            <!-- Input Test Card -->
+            <router-link
+              to="/playground/atomic/input"
+              class="group block p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-700 hover:bg-green-100 dark:hover:bg-green-900/30 transition-colors"
+            >
+              <div class="flex items-center gap-3 mb-2">
+                <div class="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center">
+                  <span class="text-white text-sm font-bold">📝</span>
+                </div>
+                <h3 class="font-semibold text-green-800 dark:text-green-200">Input</h3>
+              </div>
+              <p class="text-sm text-green-600 dark:text-green-300">
+                Types, validation, debouncing, and headless usage
+              </p>
+              <div class="mt-2 text-xs text-green-500 dark:text-green-400 group-hover:text-green-600">
+                Click to test →
+              </div>
+            </router-link>
+
+            <!-- Alert Test Card -->
+            <router-link
+              to="/playground/atomic/alert"
+              class="group block p-4 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-700 hover:bg-red-100 dark:hover:bg-red-900/30 transition-colors"
+            >
+              <div class="flex items-center gap-3 mb-2">
+                <div class="w-8 h-8 bg-red-500 rounded-lg flex items-center justify-center">
+                  <span class="text-white text-sm font-bold">⚠</span>
+                </div>
+                <h3 class="font-semibold text-red-800 dark:text-red-200">Alert</h3>
+              </div>
+              <p class="text-sm text-red-600 dark:text-red-300">
+                Variants, sizes, closable, and accessibility
+              </p>
+              <div class="mt-2 text-xs text-red-500 dark:text-red-400 group-hover:text-red-600">
+                Click to test →
+              </div>
+            </router-link>
+
+            <!-- Avatar Test Card -->
+            <router-link
+              to="/playground/atomic/avatar"
+              class="group block p-4 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg border border-indigo-200 dark:border-indigo-700 hover:bg-indigo-100 dark:hover:bg-indigo-900/30 transition-colors"
+            >
+              <div class="flex items-center gap-3 mb-2">
+                <div class="w-8 h-8 bg-indigo-500 rounded-lg flex items-center justify-center">
+                  <span class="text-white text-sm font-bold">👤</span>
+                </div>
+                <h3 class="font-semibold text-indigo-800 dark:text-indigo-200">Avatar</h3>
+              </div>
+              <p class="text-sm text-indigo-600 dark:text-indigo-300">
+                Sizes, sources, fallbacks, and online status
+              </p>
+              <div class="mt-2 text-xs text-indigo-500 dark:text-indigo-400 group-hover:text-indigo-600">
+                Click to test →
+              </div>
+            </router-link>
+
+            <!-- Breadcrumb Test Card -->
+            <router-link
+              to="/playground/atomic/breadcrumb"
+              class="group block p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg border border-yellow-200 dark:border-yellow-700 hover:bg-yellow-100 dark:hover:bg-yellow-900/30 transition-colors"
+            >
+              <div class="flex items-center gap-3 mb-2">
+                <div class="w-8 h-8 bg-yellow-500 rounded-lg flex items-center justify-center">
+                  <span class="text-white text-sm font-bold">🧭</span>
+                </div>
+                <h3 class="font-semibold text-yellow-800 dark:text-yellow-200">Breadcrumb</h3>
+              </div>
+              <p class="text-sm text-yellow-600 dark:text-yellow-300">
+                Navigation, truncation, and custom separators
+              </p>
+              <div class="mt-2 text-xs text-yellow-500 dark:text-yellow-400 group-hover:text-yellow-600">
+                Click to test →
+              </div>
+            </router-link>
+
+            <!-- Card Test Card -->
+            <router-link
+              to="/playground/atomic/card"
+              class="group block p-4 bg-pink-50 dark:bg-pink-900/20 rounded-lg border border-pink-200 dark:border-pink-700 hover:bg-pink-100 dark:hover:bg-pink-900/30 transition-colors"
+            >
+              <div class="flex items-center gap-3 mb-2">
+                <div class="w-8 h-8 bg-pink-500 rounded-lg flex items-center justify-center">
+                  <span class="text-white text-sm font-bold">📄</span>
+                </div>
+                <h3 class="font-semibold text-pink-800 dark:text-pink-200">Card</h3>
+              </div>
+              <p class="text-sm text-pink-600 dark:text-pink-300">
+                Layouts, variants, elevations, and content regions
+              </p>
+              <div class="mt-2 text-xs text-pink-500 dark:text-pink-400 group-hover:text-pink-600">
+                Click to test →
+              </div>
+            </router-link>
+
+            <!-- Progress Test Card -->
+            <router-link
+              to="/playground/atomic/progress"
+              class="group block p-4 bg-teal-50 dark:bg-teal-900/20 rounded-lg border border-teal-200 dark:border-teal-700 hover:bg-teal-100 dark:hover:bg-teal-900/30 transition-colors"
+            >
+              <div class="flex items-center gap-3 mb-2">
+                <div class="w-8 h-8 bg-teal-500 rounded-lg flex items-center justify-center">
+                  <span class="text-white text-sm font-bold">📊</span>
+                </div>
+                <h3 class="font-semibold text-teal-800 dark:text-teal-200">Progress</h3>
+              </div>
+              <p class="text-sm text-teal-600 dark:text-teal-300">
+                Types, animations, colors, and indeterminate states
+              </p>
+              <div class="mt-2 text-xs text-teal-500 dark:text-teal-400 group-hover:text-teal-600">
+                Click to test →
+              </div>
+            </router-link>
+
+            <!-- Switch Test Card -->
+            <router-link
+              to="/playground/atomic/switch"
+              class="group block p-4 bg-cyan-50 dark:bg-cyan-900/20 rounded-lg border border-cyan-200 dark:border-cyan-700 hover:bg-cyan-100 dark:hover:bg-cyan-900/30 transition-colors"
+            >
+              <div class="flex items-center gap-3 mb-2">
+                <div class="w-8 h-8 bg-cyan-500 rounded-lg flex items-center justify-center">
+                  <span class="text-white text-sm font-bold">🔄</span>
+                </div>
+                <h3 class="font-semibold text-cyan-800 dark:text-cyan-200">Switch</h3>
+              </div>
+              <p class="text-sm text-cyan-600 dark:text-cyan-300">
+                States, sizes, colors, and form integration
+              </p>
+              <div class="mt-2 text-xs text-cyan-500 dark:text-cyan-400 group-hover:text-cyan-600">
+                Click to test →
+              </div>
+            </router-link>
           </div>
         </section>
 
@@ -210,24 +345,58 @@
                 <tbody>
                   <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      Table
+                      Alert
                     </th>
-                    <td class="px-6 py-4">Pending</td>
-                    <td class="px-6 py-4">Not Tested</td>
+                    <td class="px-6 py-4">
+                      <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">Ready</span>
+                    </td>
+                    <td class="px-6 py-4">
+                      <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">Tested</span>
+                    </td>
+                  </tr>
+                  <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                      Avatar
+                    </th>
+                    <td class="px-6 py-4">
+                      <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">Ready</span>
+                    </td>
+                    <td class="px-6 py-4">
+                      <span class="px-2 py-1 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800">In Progress</span>
+                    </td>
                   </tr>
                   <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                       Card
                     </th>
-                    <td class="px-6 py-4">Pending</td>
-                    <td class="px-6 py-4">Not Tested</td>
+                    <td class="px-6 py-4">
+                      <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">Ready</span>
+                    </td>
+                    <td class="px-6 py-4">
+                      <span class="px-2 py-1 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800">In Progress</span>
+                    </td>
+                  </tr>
+                  <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                      Progress
+                    </th>
+                    <td class="px-6 py-4">
+                      <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">Ready</span>
+                    </td>
+                    <td class="px-6 py-4">
+                      <span class="px-2 py-1 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800">In Progress</span>
+                    </td>
                   </tr>
                   <tr class="bg-white dark:bg-gray-800">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                       Badge
                     </th>
-                    <td class="px-6 py-4">Pending</td>
-                    <td class="px-6 py-4">Not Tested</td>
+                    <td class="px-6 py-4">
+                      <span class="px-2 py-1 text-xs font-semibold rounded-full bg-gray-100 text-gray-800">Pending</span>
+                    </td>
+                    <td class="px-6 py-4">
+                      <span class="px-2 py-1 text-xs font-semibold rounded-full bg-gray-100 text-gray-800">Not Tested</span>
+                    </td>
                   </tr>
                 </tbody>
               </table>

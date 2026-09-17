@@ -167,6 +167,14 @@
   --cui-ease-in: cubic-bezier(0.4, 0, 1, 1);
   --cui-ease-out: cubic-bezier(0, 0, 0.2, 1);
   --cui-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Semantic Aliases */
+  --primary: var(--cui-color-primary-500);
+  --background: var(--cui-color-background-base);
+  --surface: var(--cui-color-background-surface);
+  --border: var(--cui-color-border-base);
+  --error: var(--cui-color-danger-500);
+  --radius: var(--cui-radius-base);
 }
 
 /* Dark theme */

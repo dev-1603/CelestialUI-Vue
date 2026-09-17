@@ -396,7 +396,7 @@
             </div>
 
             <!-- Individual Items -->
-            <div class="space-y-2 ml-6">
+            <div class="flex flex-col space-y-2.5 ml-6">
               <CCheckbox
                 v-for="item in selectAllItems"
                 :key="item.id"

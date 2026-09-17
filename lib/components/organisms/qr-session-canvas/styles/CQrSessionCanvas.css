@@ -1,0 +1,63 @@
+.cui-qr-canvas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.cui-qr-canvas-display {
+  position: relative;
+  margin: 0 auto;
+  width: 200px;
+  height: 200px;
+  background-color: var(--cui-surface, #ffffff);
+  border-radius: var(--cui-radius-lg, 8px);
+  padding: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--cui-border, #e2e8f0);
+}
+
+.cui-qr-canvas-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.cui-qr-canvas-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  border-radius: var(--cui-radius-lg, 8px);
+  backdrop-filter: blur(2px);
+}
+
+.cui-qr-canvas-icon-scanned { color: var(--cui-success, #38a169); }
+.cui-qr-canvas-icon-expired { color: var(--cui-warning, #dd6b20); }
+.cui-qr-canvas-icon-error { color: var(--cui-danger, #e53e3e); }
+
+.cui-qr-canvas-message {
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--cui-text-primary, #1a202c);
+  font-weight: 500;
+  max-width: 80%;
+}
+
+.cui-qr-canvas-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+}

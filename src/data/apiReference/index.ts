@@ -5,6 +5,12 @@ export { buttonApiData } from './ButtonApiData'
 export { iconApiData } from './IconApiData'
 export { checkboxApiData } from './CheckboxApiData'
 export { inputApiData } from './InputApiData'
+export { alertApiData } from './AlertApiData'
+export { avatarApiData } from './AvatarApiData'
+export { breadcrumbApiData } from './BreadcrumbApiData'
+export { cardApiData } from './CardApiData'
+export { progressApiData } from './ProgressApiData'
+export { switchApiData } from './SwitchApiData'
 
 // Types for API Reference component
 export interface PropDefinition {

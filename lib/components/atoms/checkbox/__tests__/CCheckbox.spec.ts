@@ -63,7 +63,7 @@ describe('CCheckbox', () => {
       const wrapper = createWrapper({ indeterminate: true })
       expect(wrapper.classes()).toContain('celestial-checkbox--indeterminate')
       const input = wrapper.find('input[type="checkbox"]')
-      expect(input.attributes('aria-checked')).toBe('mixed')
+      expect(input.element.indeterminate).toBe(true)
     })
 
     it('handles size prop', () => {
@@ -127,7 +127,7 @@ describe('CCheckbox', () => {
       })
 
       const input = wrapper.find('input[type="checkbox"]')
-      await input.trigger('change')
+      await input.setValue(true)
 
       expect(wrapper.emitted('change')).toBeTruthy()
       expect(wrapper.emitted('change')?.[0]).toEqual([true, expect.any(Event)])
@@ -184,7 +184,7 @@ describe('CCheckbox', () => {
       })
 
       const input = wrapper.find('input[type="checkbox"]')
-      expect(input.attributes('aria-checked')).toBe('true')
+      expect(input.element.checked).toBe(true)
       expect(input.attributes('aria-describedby')).toBe('help-text')
     })
 
@@ -194,7 +194,7 @@ describe('CCheckbox', () => {
       })
 
       const input = wrapper.find('input[type="checkbox"]')
-      expect(input.attributes('aria-checked')).toBe('mixed')
+      expect(input.element.indeterminate).toBe(true)
     })
 
     it('associates label with input via for/id', () => {

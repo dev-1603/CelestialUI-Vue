@@ -1,0 +1,17 @@
+.cui-countdown {
+  display: inline-flex;
+  align-items: center;
+  font-family: monospace;
+  font-size: 1rem;
+  color: var(--cui-text-primary, #1a202c);
+  background-color: var(--cui-surface, #ffffff);
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--cui-radius-sm, 4px);
+  border: 1px solid var(--cui-border, #e2e8f0);
+}
+
+.cui-countdown--disabled {
+  opacity: 0.6;
+  background-color: var(--cui-background-alt, #f7fafc);
+  color: var(--cui-text-secondary, #718096);
+}

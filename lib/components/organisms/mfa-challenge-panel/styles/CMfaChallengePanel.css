@@ -1,0 +1,75 @@
+.cui-mfa-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.cui-mfa-panel-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cui-mfa-panel-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--cui-text-primary, #1a202c);
+  margin: 0;
+}
+
+.cui-mfa-panel-desc {
+  font-size: 0.875rem;
+  color: var(--cui-text-secondary, #4b5563);
+  margin: 0;
+}
+
+.cui-mfa-panel-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cui-mfa-panel-error {
+  font-size: 0.875rem;
+  color: var(--cui-danger, #e53e3e);
+  text-align: center;
+}
+
+.cui-mfa-panel-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.cui-mfa-panel-resend {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.cui-mfa-panel-resend-text {
+  color: var(--cui-text-secondary, #718096);
+}
+
+.cui-mfa-panel-resend-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: var(--cui-primary, #3182ce);
+  font-weight: 500;
+  cursor: pointer;
+}
+.cui-mfa-panel-resend-btn:hover:not(:disabled) {
+  text-decoration: underline;
+}
+.cui-mfa-panel-resend-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  color: var(--cui-text-secondary, #718096);
+}

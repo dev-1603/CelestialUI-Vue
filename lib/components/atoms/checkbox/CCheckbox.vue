@@ -7,6 +7,7 @@
     <input
       :class="inputClasses"
       v-bind="inputProps"
+      :indeterminate.prop="isIndeterminate"
       @change="handleChange"
       @focus="handleFocus"
       @blur="handleBlur"

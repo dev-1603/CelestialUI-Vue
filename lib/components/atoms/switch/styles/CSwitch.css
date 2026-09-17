@@ -1,0 +1,294 @@
+/**
+ * @fileoverview CSwitch component styles
+ * 
+ * This file contains the minimal but extensible CSS for the CSwitch component.
+ * It uses CSS custom properties for easy theming and customization.
+ * 
+ * Custom Properties:
+ * - --switch-width: Width of the switch track
+ * - --switch-height: Height of the switch track  
+ * - --thumb-size: Size of the switch thumb
+ * - --thumb-offset: Offset of the thumb from track edges
+ * - --color-on: Color when switch is on
+ * - --color-off: Color when switch is off
+ * - --color-thumb: Color of the switch thumb
+ * - --animation-duration: Duration of transition animations
+ * 
+ * @example
+ * ```css
+ * .custom-switch {
+ *   --color-on: #10b981;
+ *   --color-off: #e5e7eb;
+ *   --animation-duration: 300ms;
+ * }
+ * ```
+ * 
+ * @author CelestialUI Team
+ * @version 1.0.0
+ */
+
+/* Switch Container */
+.c-switch {
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+
+  /* Sizing */
+  width: var(--switch-width, 44px);
+  height: var(--switch-height, 24px);
+
+  /* Interaction */
+  cursor: pointer;
+  user-select: none;
+
+  /* Accessibility */
+  outline: none;
+
+  /* Transitions */
+  transition: all var(--animation-duration, 200ms) ease-in-out;
+}
+
+/* Switch Track */
+.c-switch__track {
+  /* Layout */
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  /* Styling */
+  background-color: var(--color-off, #d1d5db);
+  border-radius: 9999px;
+
+  /* Transitions */
+  transition: background-color var(--animation-duration, 200ms) ease-in-out;
+
+  /* Focus ring container */
+  box-shadow: 0 0 0 0 transparent;
+}
+
+/* Switch Thumb */
+.c-switch__thumb {
+  /* Layout */
+  position: absolute;
+  top: var(--thumb-offset, 2px);
+  left: var(--thumb-offset, 2px);
+
+  /* Sizing */
+  width: var(--thumb-size, 20px);
+  height: var(--thumb-size, 20px);
+
+  /* Styling */
+  background-color: var(--color-thumb, #ffffff);
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  /* Transitions */
+  transition:
+    transform var(--animation-duration, 200ms) ease-in-out,
+    box-shadow var(--animation-duration, 200ms) ease-in-out;
+}
+
+/* Size Variants */
+.c-switch--sm {
+  --switch-width: 32px;
+  --switch-height: 18px;
+  --thumb-size: 14px;
+  --thumb-offset: 2px;
+}
+
+.c-switch--md {
+  --switch-width: 44px;
+  --switch-height: 24px;
+  --thumb-size: 20px;
+  --thumb-offset: 2px;
+}
+
+.c-switch--lg {
+  --switch-width: 56px;
+  --switch-height: 30px;
+  --thumb-size: 26px;
+  --thumb-offset: 2px;
+}
+
+/* State: On */
+.c-switch--on .c-switch__track {
+  background-color: var(--color-on, #3b82f6);
+}
+
+.c-switch--on .c-switch__thumb {
+  transform: translateX(
+    calc(var(--switch-width, 44px) - var(--thumb-size, 20px) - var(--thumb-offset, 2px) * 2)
+  );
+}
+
+/* State: Disabled */
+.c-switch--disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.c-switch--disabled .c-switch__track {
+  background-color: var(--color-off, #d1d5db);
+}
+
+.c-switch--disabled .c-switch__thumb {
+  background-color: var(--color-thumb, #ffffff);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* State: Loading */
+.c-switch--loading {
+  cursor: wait;
+}
+
+.c-switch--loading .c-switch__thumb {
+  animation: c-switch-loading 1.5s ease-in-out infinite;
+}
+
+@keyframes c-switch-loading {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.8);
+  }
+}
+
+/* State: Focused */
+.c-switch--focused .c-switch__track {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Color Variants */
+.c-switch--primary {
+  --color-on: #3b82f6;
+  --color-off: #d1d5db;
+  --color-thumb: #ffffff;
+}
+
+.c-switch--secondary {
+  --color-on: #6b7280;
+  --color-off: #d1d5db;
+  --color-thumb: #ffffff;
+}
+
+.c-switch--success {
+  --color-on: #10b981;
+  --color-off: #d1d5db;
+  --color-thumb: #ffffff;
+}
+
+.c-switch--warning {
+  --color-on: #f59e0b;
+  --color-off: #d1d5db;
+  --color-thumb: #ffffff;
+}
+
+.c-switch--error {
+  --color-on: #ef4444;
+  --color-off: #d1d5db;
+  --color-thumb: #ffffff;
+}
+
+.c-switch--info {
+  --color-on: #06b6d4;
+  --color-off: #d1d5db;
+  --color-thumb: #ffffff;
+}
+
+/* Hover States */
+.c-switch:not(.c-switch--disabled):not(.c-switch--loading):hover .c-switch__track {
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+.c-switch:not(.c-switch--disabled):not(.c-switch--loading):hover .c-switch__thumb {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Active States */
+.c-switch:not(.c-switch--disabled):not(.c-switch--loading):active .c-switch__thumb {
+  transform: scale(0.95);
+}
+
+.c-switch--on:not(.c-switch--disabled):not(.c-switch--loading):active .c-switch__thumb {
+  transform: translateX(
+      calc(var(--switch-width, 44px) - var(--thumb-size, 20px) - var(--thumb-offset, 2px) * 2)
+    )
+    scale(0.95);
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .c-switch__track {
+    border: 2px solid currentColor;
+  }
+
+  .c-switch__thumb {
+    border: 1px solid currentColor;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .c-switch,
+  .c-switch__track,
+  .c-switch__thumb {
+    transition: none;
+  }
+
+  .c-switch--loading .c-switch__thumb {
+    animation: none;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .c-switch--primary {
+    --color-on: #60a5fa;
+    --color-off: #374151;
+  }
+
+  .c-switch--secondary {
+    --color-on: #9ca3af;
+    --color-off: #374151;
+  }
+
+  .c-switch--success {
+    --color-on: #34d399;
+    --color-off: #374151;
+  }
+
+  .c-switch--warning {
+    --color-on: #fbbf24;
+    --color-off: #374151;
+  }
+
+  .c-switch--error {
+    --color-on: #f87171;
+    --color-off: #374151;
+  }
+
+  .c-switch--info {
+    --color-on: #22d3ee;
+    --color-off: #374151;
+  }
+}
+
+/* RTL Support */
+[dir='rtl'] .c-switch--on .c-switch__thumb {
+  transform: translateX(
+    calc(-1 * (var(--switch-width, 44px) - var(--thumb-size, 20px) - var(--thumb-offset, 2px) * 2))
+  );
+}
+
+[dir='rtl'] .c-switch--on:not(.c-switch--disabled):not(.c-switch--loading):active .c-switch__thumb {
+  transform: translateX(
+      calc(
+        -1 * (var(--switch-width, 44px) - var(--thumb-size, 20px) - var(--thumb-offset, 2px) * 2)
+      )
+    )
+    scale(0.95);
+}

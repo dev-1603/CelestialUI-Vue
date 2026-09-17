@@ -7,6 +7,7 @@
     :aria-label="ariaLabel"
     :aria-hidden="ariaHidden"
     v-bind="iconAttributes"
+    @click="handleClick"
   >
     <!-- Loading state for external SVG -->
     <template v-if="iconType === 'svg' && isLoading">

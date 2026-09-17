@@ -1,0 +1,94 @@
+---
+description: CelestialUI-Vue core architecture, tech stack, personas, linter division, SonarQube quality gates, and commit standards.
+alwaysApply: true
+---
+
+# CelestialUI-Vue — Core Architecture & Development Rules
+
+## 1. Project Overview & Tech Stack
+CelestialUI-Vue is a production-grade Vue 3 component library built on Atomic Design principles.
+
+- **Framework**: Vue 3 (Composition API with `<script setup lang="ts">`).
+- **Language**: TypeScript (~5.6, strict mode enabled).
+- **Styling**: Tailwind CSS for utility classes paired with CSS custom properties (`--color-*`, `--spacing-*`, etc.) for theme tokens and dynamic runtime theming (`light`, `dark`, `celestial`).
+- **Build System**: Vite (library build via `vite.config.lib.ts`, demo app via `vite.config.ts`).
+- **Package Management**: `pnpm` (workspace-aware).
+
+---
+
+## 2. Atomic Design Hierarchy
+All component library source code lives strictly in `lib/components/`, partitioned into four atomic levels:
+
+- **`atoms/`**: Primitive, lowest-level visual elements with zero internal component dependencies (e.g. Button, Input, Avatar, Alert, Icon, Checkbox, Switch, Progress, Breadcrumb, Card).
+- **`molecules/`**: Compositions of atoms functioning together as a cohesive unit (e.g. Dialog, Dropdown, FormField, Pagination, SearchBar, Select, Tabs, Toast, Tooltip, DatePicker).
+- **`organisms/`**: Complex UI sections and composite widgets (e.g. Accordion, DataTable, Modal, Navbar, Sidebar, FileUpload).
+- **`templates/`**: Page-level layout structures and responsive grid compositions.
+
+*Note*: The `src/` directory is exclusively for the demo/showcase application. Library modules must never import from `src/`.
+
+---
+
+## 3. Project Personas & Ownership Split
+When addressing tasks, reason through the appropriate project persona:
+
+1. **Architect Persona**:
+   - Owns Atomic level boundaries, modularity, and dependency graphs.
+   - Enforces clean public API contracts in `lib/index.ts` and subpath exports in `package.json`.
+   - Protects bundle size, tree-shakability, and composable abstractions.
+
+2. **Frontend Developer Persona**:
+   - Owns SFC implementation with `<script setup lang="ts">`.
+   - Applies Tailwind utilities and CSS variable tokens.
+   - Writes TypeScript interfaces (`.types.ts`) and composables (`composables/`).
+   - Ensures semantic HTML and WCAG 2.2 AA accessible markup.
+
+3. **QA Engineer Persona**:
+   - Owns test design and coverage across all 5 test tiers (`.spec.ts`, `.browser.spec.ts`, `.a11y.spec.ts`, Storybook tests, Lost Pixel baselines, Playwright E2E).
+   - Generates deterministic test fixtures and verifies boundary conditions.
+
+4. **DevOps / CI Persona**:
+   - Owns GitHub Actions workflows (`.github/workflows/`), SonarCloud scan configuration, and Vercel/Pages preview deployments.
+   - Maintains CI validation scripts (`pnpm test:ci`, `pnpm type-check:lib`).
+
+5. **Reviewer Persona**:
+   - Acts as strict quality gatekeeper before merges.
+   - Checks that all 5 test tiers and Storybook stories are present for every component.
+   - Validates SonarQube guidelines, conventional commits, and ensures zero dead/untyped code.
+
+---
+
+## 4. Dual-Linter Architecture & Division of Responsibility
+The codebase uses a two-tier linting strategy. Both tools serve distinct, non-overlapping purposes:
+
+- **`oxlint` (Speed Layer)**:
+  - Command: `pnpm lint:oxlint` (`oxlint . --fix -D correctness --ignore-path .gitignore`)
+  - Scope: Ultra-fast first-pass static analysis on `<script>` blocks, TypeScript types, and general JS/TS logic.
+  - Usage: Pre-commit checks and on-save speed gate.
+- **`eslint` (Authoritative CI Gateway)**:
+  - Command: `pnpm lint:eslint` (`eslint . --fix`)
+  - Configured Plugins: `eslint-plugin-vue`, `@vue/eslint-config-typescript`, `@vitest/eslint-plugin`, `eslint-plugin-playwright`, `eslint-plugin-storybook`, `eslint-plugin-oxlint`, Prettier formatting integration.
+  - Scope: Authoritative CI-gating linter. **The only linter that parses Vue `<template>` AST and performs type-aware linting.**
+  - **CRITICAL CONSTRAINT**: Never replace ESLint with oxlint or suggest dropping ESLint. `oxlint` by design does not bind AST inside Vue `<template>` blocks. It is a rapid pre-lint layer underneath ESLint, not a substitute.
+
+Full lint command: `pnpm lint` (runs `oxlint` then `eslint`).
+
+---
+
+## 5. SonarQube Quality Gates (Warning-Only Policy)
+- **Cognitive / Cyclomatic Complexity**: Maximum **≤ 8** decision branches per function. Decompose complex logic into named predicate functions, composables, or strategy maps.
+- **Zero Duplication Policy**: Zero copy-paste of transformation logic or calculation helpers. Extract shared helpers to `lib/utils/`.
+- **Strict Typing Enforcement**: Zero implicit `any`, no untyped public exports, documented JSDoc/TSDoc on all public component APIs.
+- **Rollout Policy (Warning-Only)**: For the initial rollout, complexity and duplication thresholds surface as **flagged warnings** in SonarCloud and PR reviews, not hard-blocking CI failures. Revisit tightening to a hard gate once real findings on the actual codebase demonstrate stability without false positives.
+
+---
+
+## 6. Git Commit & Branching Standards
+Follow Conventional Commits:
+```
+<type>(<scope>): <description>
+
+Types:  feat | fix | refactor | perf | test | docs | chore | ci
+Scopes: atoms | molecules | organisms | templates | composables | styles | deps | ci | docs
+```
+- Atomic, descriptive commits (e.g. `feat(atoms): add CButton loading spinner variant`).
+- Never commit secrets, build artifacts (`dist/`, `storybook-static/`), or test artifacts (`.lostpixel/difference/`, `playwright-report/`).

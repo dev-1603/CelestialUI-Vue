@@ -92,6 +92,10 @@ type Story = StoryObj<typeof CCheckbox>
 
 // Default story
 export const Default: Story = {
+  tags: ['a11y-smoke'],
+  parameters: {
+    a11y: { test: 'error' },
+  },
   args: {
     checked: false,
     children: 'Accept terms and conditions'

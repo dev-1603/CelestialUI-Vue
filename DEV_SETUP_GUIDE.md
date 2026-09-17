@@ -221,21 +221,24 @@ pnpm test:unit --inspect-brk CButton.spec.ts
 
 ### E2E Testing  
 ```bash
-# Run E2E tests
+# Playwright Chromium against demo preview
 pnpm test:e2e
 
-# Open Cypress UI for debugging
-pnpm test:e2e:dev
+# Playwright UI
+pnpm test:e2e:ui
 ```
 
 ### Visual Testing
 ```bash
-# Build Storybook for visual testing
+# Build Storybook, then Lost Pixel
 pnpm build-storybook
+pnpm test:visual
 
-# Run Chromatic (if configured)
-pnpm chromatic
+# Update baselines
+pnpm test:visual:update
 ```
+
+Chromatic is not installed. Treat it as a hosted-docs fallback only if you re-add it later.
 
 ## 📊 Build & Bundle Analysis
 

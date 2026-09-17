@@ -17,45 +17,41 @@ See [Vite Configuration Reference](https://vite.dev/config/).
 ## Project Setup
 
 ```sh
-yarn
+pnpm install
 ```
 
 ### Compile and Hot-Reload for Development
 
 ```sh
-yarn dev
+pnpm dev
 ```
 
 ### Type-Check, Compile and Minify for Production
 
 ```sh
-yarn build
+pnpm build
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+### Tests
+
+QA pyramid (pnpm):
+
+- `pnpm test:unit` — Vitest jsdom (CI uses `vitest run`, not watch)
+- `pnpm test:browser` — Vitest Browser Mode (Playwright Chromium)
+- `pnpm test:e2e` — Playwright against the demo preview (`e2e/`)
+- `pnpm test:storybook` / `pnpm test:a11y` — Storybook test-runner (axe gated via addon-a11y)
+- `pnpm test:visual` — Lost Pixel vs committed baselines (`.lostpixel/baseline`)
+- `pnpm test:visual:update` — refresh Lost Pixel baselines
+
+Chromatic is a **docs-only fallback** if you later want hosted visual review. It is not installed; Lost Pixel is the visual runner.
 
 ```sh
-yarn test:unit
-```
-
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
-
-```sh
-yarn test:e2e:dev
-```
-
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
-
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
-
-```sh
-yarn build
-yarn test:e2e
+pnpm test:unit
+pnpm test:e2e
 ```
 
 ### Lint with [ESLint](https://eslint.org/)
 
 ```sh
-yarn lint
+pnpm lint
 ```

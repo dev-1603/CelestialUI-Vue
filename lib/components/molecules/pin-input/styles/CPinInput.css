@@ -1,0 +1,82 @@
+.cui-pin-input-wrapper {
+  display: inline-flex;
+  gap: 0.5rem;
+}
+
+.cui-pin-input-field {
+  width: 3rem;
+  height: 3.5rem;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  border: 1px solid var(--cui-border, #e2e8f0);
+  border-radius: var(--cui-radius-md, 6px);
+  background-color: var(--cui-surface, #ffffff);
+  color: var(--cui-text-primary, #1a202c);
+  transition: all 0.2s;
+  outline: none;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.cui-pin-input-field:focus {
+  border-color: var(--cui-primary, #3182ce);
+  box-shadow: 0 0 0 2px rgba(49, 130, 206, 0.2);
+}
+
+/* Disabled State */
+.cui-pin-input--disabled .cui-pin-input-field {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: var(--cui-background-alt, #f7fafc);
+}
+
+/* Error State */
+.cui-pin-input--error .cui-pin-input-field {
+  border-color: var(--cui-danger, #e53e3e);
+}
+
+.cui-pin-input--error .cui-pin-input-field:focus {
+  box-shadow: 0 0 0 2px rgba(229, 62, 62, 0.2);
+}
+
+/* Remove arrows from number input */
+.cui-pin-input-field::-webkit-outer-spin-button,
+.cui-pin-input-field::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.cui-pin-input-field[type=number] {
+  appearance: textfield;
+}
+
+/* Slack Variant */
+.cui-pin-input--slack .cui-pin-input-field {
+  width: 3.5rem;
+  height: 4rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border-radius: var(--cui-radius-lg, 8px);
+  background-color: var(--cui-background-alt, #f7fafc);
+  border: 1px solid transparent;
+}
+
+.cui-pin-input--slack .cui-pin-input-field:focus {
+  background-color: var(--cui-surface, #ffffff);
+  border-color: var(--cui-primary, #3182ce);
+  box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.3);
+}
+
+/* Atlassian Variant */
+.cui-pin-input--atlassian .cui-pin-input-field {
+  border: none;
+  border-bottom: 2px solid var(--cui-border, #e2e8f0);
+  border-radius: 0;
+  box-shadow: none;
+  background-color: transparent;
+}
+
+.cui-pin-input--atlassian .cui-pin-input-field:focus {
+  border-color: var(--cui-primary, #3182ce);
+  box-shadow: none;
+}

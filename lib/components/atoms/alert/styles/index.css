@@ -1,0 +1,6 @@
+/**
+ * Alert component styles entry point
+ * Imports all alert-related styles
+ */
+
+@import './CAlert.css';

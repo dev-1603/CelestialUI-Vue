@@ -54,13 +54,8 @@ export function useButton(
       event.preventDefault()
 
       if (!isDisabled.value) {
-        // Create synthetic mouse event for consistency
-        const syntheticEvent = new MouseEvent('click', {
-          bubbles: true,
-          cancelable: true,
-          view: window
-        })
-        handleClick(syntheticEvent)
+        // JSDOM compatibility: emit click directly instead of creating MouseEvent
+        emit('click', event as any)
       }
     }
   }

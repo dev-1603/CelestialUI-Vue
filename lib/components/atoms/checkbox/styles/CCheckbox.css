@@ -1,10 +1,18 @@
 /* Base checkbox styles */
 .celestial-checkbox {
-  /* Flexbox layout */
-  @apply inline-flex items-start gap-2;
+  /* Flexbox layout - align items center by default for perfect inline text alignment */
+  @apply inline-flex items-center gap-2.5;
   
   /* Position relative for absolute positioned input */
   position: relative;
+}
+
+/* Align to top when there is a description */
+.celestial-checkbox:has(.celestial-checkbox__description) {
+  @apply items-start;
+}
+.celestial-checkbox:has(.celestial-checkbox__description) .celestial-checkbox__box {
+  @apply mt-0.5;
 }
 
 /* Hidden native input */
@@ -102,13 +110,13 @@
 /* Label styles */
 .celestial-checkbox__label {
   /* Typography */
-  @apply font-medium leading-relaxed;
+  @apply font-medium leading-normal select-none;
   
   /* Cursor */
   @apply cursor-pointer;
   
   /* Color */
-  @apply text-gray-900;
+  @apply text-gray-900 dark:text-gray-100;
   
   /* Flex grow */
   @apply flex-1;

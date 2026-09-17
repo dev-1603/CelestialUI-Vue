@@ -1,0 +1,203 @@
+/* Base card styles */
+.celestial-card {
+  /* Layout */
+  @apply relative flex flex-col;
+
+  /* Background and text colors */
+  @apply bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-gray-700;
+
+  /* Transitions */
+  @apply transition-all duration-200 ease-in-out;
+
+  /* Focus styles for interactive cards */
+  @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500;
+
+  /* Prevent text selection on interactive cards */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Padding variants */
+.celestial-card--padding-none {
+  @apply p-0;
+}
+
+.celestial-card--padding-sm {
+  @apply p-2;
+}
+
+.celestial-card--padding-md {
+  @apply p-4;
+}
+
+.celestial-card--padding-lg {
+  @apply p-6;
+}
+
+/* Radius variants */
+.celestial-card--radius-none {
+  @apply rounded-none;
+}
+
+.celestial-card--radius-sm {
+  @apply rounded-sm;
+}
+
+.celestial-card--radius-md {
+  @apply rounded-md;
+}
+
+.celestial-card--radius-lg {
+  @apply rounded-lg;
+}
+
+.celestial-card--radius-full {
+  @apply rounded-full;
+}
+
+/* Visual variants */
+.celestial-card--elevated {
+  @apply shadow-md;
+}
+
+.celestial-card--elevated:hover {
+  @apply shadow-lg;
+}
+
+.celestial-card--outlined {
+  @apply border border-gray-200 dark:border-gray-700;
+}
+
+.celestial-card--hoverable {
+  @apply cursor-pointer;
+}
+
+.celestial-card--hoverable:hover {
+  @apply shadow-md transform -translate-y-0.5;
+}
+
+.celestial-card--interactive {
+  @apply cursor-pointer;
+}
+
+.celestial-card--interactive:hover {
+  @apply shadow-md transform -translate-y-0.5;
+}
+
+.celestial-card--interactive:active {
+  @apply transform translate-y-0;
+}
+
+.celestial-card--loading {
+  @apply cursor-wait;
+}
+
+/* Header styles */
+.celestial-card__header {
+  @apply flex items-center justify-between;
+  @apply border-b border-gray-200 dark:border-gray-700;
+  @apply pb-3 mb-3 font-semibold text-lg text-gray-900 dark:text-white;
+}
+
+.celestial-card__header--no-padding {
+  @apply pb-0 mb-0;
+}
+
+/* Body styles */
+.celestial-card__body {
+  @apply flex-1 text-gray-600 dark:text-gray-300 text-sm leading-relaxed;
+}
+
+.celestial-card__body--no-padding {
+  @apply p-0;
+}
+
+/* Footer styles */
+.celestial-card__footer {
+  @apply flex items-center justify-between;
+  @apply border-t border-gray-200 dark:border-gray-700;
+  @apply pt-3 mt-3;
+}
+
+.celestial-card__footer--no-padding {
+  @apply pt-0 mt-0;
+}
+
+/* Media styles */
+.celestial-card__media {
+  @apply relative overflow-hidden;
+  @apply rounded-t-md;
+}
+
+.celestial-card__media img,
+.celestial-card__media video {
+  @apply w-full h-auto object-cover;
+}
+
+/* Overlay styles */
+.celestial-card__overlay {
+  @apply absolute inset-0;
+  @apply flex items-center justify-center;
+  @apply bg-white bg-opacity-75 dark:bg-gray-800 dark:bg-opacity-75;
+  @apply backdrop-blur-sm;
+  @apply z-10;
+}
+
+.celestial-card__overlay--loading {
+  @apply bg-white bg-opacity-90 dark:bg-gray-800 dark:bg-opacity-90;
+}
+
+/* Loading spinner */
+.celestial-card__spinner {
+  @apply w-8 h-8;
+  @apply border-4 border-gray-200 dark:border-gray-700;
+  @apply border-t-blue-500;
+  @apply rounded-full;
+  @apply animate-spin;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .celestial-card--padding-sm {
+    @apply p-1.5;
+  }
+
+  .celestial-card--padding-md {
+    @apply p-3;
+  }
+
+  .celestial-card--padding-lg {
+    @apply p-4;
+  }
+}
+
+
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .celestial-card--outlined {
+    @apply border-2;
+  }
+
+  .celestial-card--elevated {
+    @apply shadow-lg;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .celestial-card {
+    @apply transition-none;
+  }
+
+  .celestial-card--hoverable:hover,
+  .celestial-card--interactive:hover {
+    @apply transform-none;
+  }
+
+  .celestial-card__spinner {
+    @apply animate-none;
+  }
+}

@@ -1,5 +1,4 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
-import axios from 'axios'
 import {
   loadSvg,
   extractSvgContent,
@@ -11,49 +10,56 @@ import {
   removeSvgFromCache
 } from '../utils/svgLoader'
 
-// Mock axios
-vi.mock('axios', () => ({
-  default: {
-    get: vi.fn(),
-    isAxiosError: vi.fn()
-  }
-}))
-
-const mockedAxios = vi.mocked(axios)
+const originalFetch = global.fetch;
+const originalWindow = global.window;
 
 describe('SVG Loader', () => {
   beforeEach(() => {
     clearSvgCache()
     vi.clearAllMocks()
+    global.fetch = vi.fn().mockResolvedValue({
+      ok: true,
+      text: async () => '<svg></svg>'
+    })
+    global.window = {} as any
   })
 
   afterEach(() => {
     clearSvgCache()
+    global.fetch = originalFetch
+    global.window = originalWindow
   })
 
   describe('loadSvg', () => {
     it('loads SVG content from URL', async () => {
       const mockSvgContent = '<svg><path d="M12 2l3.09 6.26"/></svg>'
-      mockedAxios.get.mockResolvedValueOnce({
-        data: mockSvgContent
+      ;(global.fetch as any).mockResolvedValueOnce({
+        ok: true,
+        text: async () => mockSvgContent
       })
 
       const result = await loadSvg('https://example.com/icon.svg')
 
       expect(result).toBe(mockSvgContent)
-      expect(mockedAxios.get).toHaveBeenCalledWith('https://example.com/icon.svg', {
-        timeout: 5000,
-        responseType: 'text',
+      expect(global.fetch).toHaveBeenCalledWith('https://example.com/icon.svg', expect.objectContaining({
         headers: {
           'Accept': 'image/svg+xml, text/plain, */*'
         }
-      })
+      }))
+    })
+
+    it('returns empty string if window is undefined (SSR)', async () => {
+      global.window = undefined as any
+      const result = await loadSvg('https://example.com/icon.svg')
+      expect(result).toBe('')
+      expect(global.fetch).not.toHaveBeenCalled()
     })
 
     it('caches SVG content by default', async () => {
       const mockSvgContent = '<svg><path d="M12 2l3.09 6.26"/></svg>'
-      mockedAxios.get.mockResolvedValueOnce({
-        data: mockSvgContent
+      ;(global.fetch as any).mockResolvedValueOnce({
+        ok: true,
+        text: async () => mockSvgContent
       })
 
       const url = 'https://example.com/icon.svg'
@@ -66,13 +72,14 @@ describe('SVG Loader', () => {
       // Second load should use cache
       const result = await loadSvg(url)
       expect(result).toBe(mockSvgContent)
-      expect(mockedAxios.get).toHaveBeenCalledTimes(1)
+      expect(global.fetch).toHaveBeenCalledTimes(1)
     })
 
     it('respects cache option', async () => {
       const mockSvgContent = '<svg><path d="M12 2l3.09 6.26"/></svg>'
-      mockedAxios.get.mockResolvedValueOnce({
-        data: mockSvgContent
+      ;(global.fetch as any).mockResolvedValueOnce({
+        ok: true,
+        text: async () => mockSvgContent
       })
 
       const url = 'https://example.com/icon.svg'
@@ -84,8 +91,9 @@ describe('SVG Loader', () => {
 
     it('applies transform function', async () => {
       const mockSvgContent = '<svg><path d="M12 2l3.09 6.26"/></svg>'
-      mockedAxios.get.mockResolvedValueOnce({
-        data: mockSvgContent
+      ;(global.fetch as any).mockResolvedValueOnce({
+        ok: true,
+        text: async () => mockSvgContent
       })
 
       const transform = (svg: string) => svg.toUpperCase()
@@ -95,10 +103,9 @@ describe('SVG Loader', () => {
     })
 
     it('handles timeout errors', async () => {
-      const error = new Error('timeout')
-      error.code = 'ECONNABORTED'
-      mockedAxios.get.mockRejectedValueOnce(error)
-      mockedAxios.isAxiosError.mockReturnValueOnce(true)
+      const error = new Error('AbortError')
+      error.name = 'AbortError'
+      ;(global.fetch as any).mockRejectedValueOnce(error)
 
       await expect(loadSvg('https://example.com/icon.svg', { timeout: 1000 }))
         .rejects.toThrow('SVG loading timeout')
@@ -106,16 +113,16 @@ describe('SVG Loader', () => {
 
     it('handles network errors', async () => {
       const error = new Error('Network Error')
-      mockedAxios.get.mockRejectedValueOnce(error)
-      mockedAxios.isAxiosError.mockReturnValueOnce(true)
+      ;(global.fetch as any).mockRejectedValueOnce(error)
 
       await expect(loadSvg('https://example.com/icon.svg'))
         .rejects.toThrow('Failed to load SVG')
     })
 
     it('validates SVG content', async () => {
-      mockedAxios.get.mockResolvedValueOnce({
-        data: 'Not an SVG file'
+      ;(global.fetch as any).mockResolvedValueOnce({
+        ok: true,
+        text: async () => 'Not an SVG file'
       })
 
       await expect(loadSvg('https://example.com/icon.svg'))
@@ -186,8 +193,9 @@ describe('SVG Loader', () => {
 
     it('removes specific item from cache', async () => {
       const mockSvgContent = '<svg><path d="M12 2"/></svg>'
-      mockedAxios.get.mockResolvedValueOnce({
-        data: mockSvgContent
+      ;(global.fetch as any).mockResolvedValueOnce({
+        ok: true,
+        text: async () => mockSvgContent
       })
 
       const url = 'https://example.com/icon.svg'

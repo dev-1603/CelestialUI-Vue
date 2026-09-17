@@ -37,12 +37,6 @@
       </button>
       <button
         class="btn btn-ghost btn-sm font-medium text-sm"
-        @click="$router.push('/button-test')"
-      >
-        Button Test
-      </button>
-      <button
-        class="btn btn-ghost btn-sm font-medium text-sm"
         @click="$router.push('/themes')"
       >
         Themes
@@ -95,13 +89,18 @@ interface Emits {
 const props = defineProps<Props>()
 const emit = defineEmits<Emits>()
 
-// Simple theme toggle (will be replaced with proper theme system)
 const isDark = ref(false)
 
 const toggleTheme = () => {
   isDark.value = !isDark.value
-  // Theme switching logic will be implemented with the theme system
-  console.log('Theme toggle - to be implemented with theme system')
+  
+  if (isDark.value) {
+    document.documentElement.classList.add('dark')
+    localStorage.setItem('theme', 'dark')
+  } else {
+    document.documentElement.classList.remove('dark')
+    localStorage.setItem('theme', 'light')
+  }
 }
 
 const openStorybook = () => {

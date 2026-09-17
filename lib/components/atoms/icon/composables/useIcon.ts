@@ -1,9 +1,10 @@
-import { computed, ref, watch } from 'vue'
+import { computed, ref, watch, inject } from 'vue'
 import type { CIconProps, CIconEmits, IconConfig } from '../CIcon.types'
 import { getIconLibraryConfig } from '../config/iconLibraryConfig'
 import { loadSvg, transformSvgForInline, getSvgAttributes } from '../utils/svgLoader'
 
 export function useIcon(props: CIconProps, emit: CIconEmits) {
+  const iconManager = inject<any>('celestialui-icons', null)
   const svgContent = ref<string>('')
   const isLoading = ref(false)
   const loadError = ref<string | null>(null)
@@ -18,7 +19,11 @@ export function useIcon(props: CIconProps, emit: CIconEmits) {
       if (isSvgFile && props.inlineSvg) return 'svg'
       return 'image'
     }
-    return props.type || 'font'
+    if (props.type) return props.type
+    if (props.library === 'custom' || (props.name && iconManager?.library?.[props.name])) {
+      return 'svg'
+    }
+    return 'font'
   })
 
   // Determine the HTML element to render
@@ -83,7 +88,7 @@ export function useIcon(props: CIconProps, emit: CIconEmits) {
 
     // Generate attributes for different icon types
   const iconAttributes = computed(() => {
-    const attrs: Record<string, any> = {}
+    const attrs: Record<string, unknown> = {}
 
     switch (iconType.value) {
       case 'svg':
@@ -115,18 +120,14 @@ export function useIcon(props: CIconProps, emit: CIconEmits) {
           if (props.height) attrs.height = typeof props.height === 'number' ? `${props.height}px` : props.height
         }
 
-        attrs.onload = (event: Event) => emit('load', event)
-        attrs.onerror = (event: Event) => emit('error', event)
+        attrs.onLoad = (event: Event) => emit('load', event)
+        attrs.onError = (event: Event) => emit('error', event)
         break
 
       case 'font':
         if (props.clickable) {
           attrs.type = 'button'
-          attrs.onclick = (event: MouseEvent) => {
-            if (!props.disabled && !props.loading) {
-              emit('click', event)
-            }
-          }
+          // Click events are handled by the component template
         }
         break
     }
@@ -170,12 +171,20 @@ export function useIcon(props: CIconProps, emit: CIconEmits) {
     }
   }
 
-  // Watch for changes in src prop to load SVG
+  // Watch for changes in props to load SVG
   watch(
-    () => props.src,
-    (newSrc) => {
-      if (newSrc && iconType.value === 'svg' && props.inlineSvg) {
-        loadExternalSvg(newSrc)
+    () => [props.src, props.svg, props.name, iconType.value],
+    () => {
+      if (props.svg) {
+        loadSvgContent(props.svg)
+      } else if (props.src && iconType.value === 'svg' && props.inlineSvg) {
+        loadExternalSvg(props.src)
+      } else if (iconType.value === 'svg' && props.name && iconManager) {
+        const svg = iconManager.getIconSvg(props.name)
+        if (svg) {
+          loadSvgContent(transformSvgForInline(svg))
+          svgAttributes.value = getSvgAttributes(svg)
+        }
       }
     },
     { immediate: true }
@@ -201,11 +210,6 @@ export function useIcon(props: CIconProps, emit: CIconEmits) {
     // Hide decorative icons from screen readers
     return !props.ariaLabel && !props.alt && !props.clickable
   })
-
-    // Initialize SVG content if provided
-  if (props.svg) {
-    loadSvgContent(props.svg)
-  }
 
   return {
     iconElement,

@@ -144,7 +144,7 @@ Each component category has a registry that tracks:
 
 ### **✅ Multi-Level Testing Setup**
 - Unit testing with Vitest
-- E2E testing with Cypress
+- E2E testing with Playwright
 - Component testing with Vue Test Utils
 - Accessibility testing ready
 - Performance testing configured

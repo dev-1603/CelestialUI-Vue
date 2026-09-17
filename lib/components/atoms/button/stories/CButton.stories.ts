@@ -107,6 +107,10 @@ type Story = StoryObj<typeof CButton>
 
 // Default story
 export const Default: Story = {
+  tags: ['a11y-smoke'],
+  parameters: {
+    a11y: { test: 'error' },
+  },
   args: {
     variant: 'primary',
     size: 'md'

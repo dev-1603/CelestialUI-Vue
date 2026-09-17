@@ -3,6 +3,8 @@ export default {
   content: [
     "./index.html",
     "./src/**/*.{vue,js,ts,jsx,tsx}",
+    "./lib/**/*.{vue,js,ts,jsx,tsx}",
+    "./.storybook/**/*.{vue,js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
@@ -170,6 +172,6 @@ export default {
     },
   },
   plugins: [],
-  darkMode: ['class', '.cui-dark'],
+  darkMode: ['selector', '[data-theme="dark"], .dark, .cui-dark'],
 }
 

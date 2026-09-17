@@ -1,0 +1,57 @@
+.cui-user-tenant-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-radius: var(--cui-radius-md, 6px);
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.cui-user-tenant-trigger:hover:not(.cui-user-tenant-trigger--disabled) {
+  background-color: var(--cui-background-hover, #f7fafc);
+  border-color: var(--cui-border, #e2e8f0);
+}
+
+.cui-user-tenant-trigger--disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.cui-user-tenant-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.2;
+}
+
+.cui-user-tenant-name {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--cui-text-primary, #1a202c);
+}
+
+.cui-user-tenant-tenant-name {
+  font-size: 0.75rem;
+  color: var(--cui-text-secondary, #4b5563);
+}
+
+.cui-user-tenant-header {
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.cui-user-tenant-header-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--cui-text-primary, #1a202c);
+}
+
+.cui-user-tenant-header-email {
+  font-size: 0.75rem;
+  color: var(--cui-text-secondary, #718096);
+}

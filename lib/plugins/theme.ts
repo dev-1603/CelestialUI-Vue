@@ -27,31 +27,14 @@ export function createThemePlugin(options: ThemePluginOptions = {}): Plugin {
 
         setTheme(theme: 'light' | 'dark' | 'system') {
           this.currentTheme = theme
-          document.documentElement.setAttribute('data-theme', theme)
-
-          // Apply CSS variables if using CSS framework
-          if (framework === 'css') {
-            this.applyCSSVariables(theme)
+          
+          if (typeof document !== 'undefined') {
+            document.documentElement.setAttribute('data-theme', theme)
           }
         },
 
         getTheme() {
           return this.currentTheme
-        },
-
-        applyCSSVariables(theme: string) {
-          const root = document.documentElement
-
-          // Apply theme-specific CSS variables
-          if (theme === 'dark') {
-            root.style.setProperty('--cui-color-background-base', '#111827')
-            root.style.setProperty('--cui-color-text-primary', '#f9fafb')
-            // Add more dark theme variables as needed
-          } else {
-            root.style.setProperty('--cui-color-background-base', '#ffffff')
-            root.style.setProperty('--cui-color-text-primary', '#111827')
-            // Add more light theme variables as needed
-          }
         },
 
         detectSystemTheme() {

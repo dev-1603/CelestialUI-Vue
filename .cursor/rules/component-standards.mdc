@@ -1,0 +1,78 @@
+---
+description: Component architecture, deep directory structure, WCAG 2.2 AA accessibility, and public API packaging standards.
+globs: ["lib/components/**", "lib/composables/**", "lib/styles/**"]
+alwaysApply: false
+---
+
+# Component Architecture & Authoring Standards
+
+## 1. Deep Folder Anatomy (MANDATORY)
+Every component in `lib/components/{atoms,molecules,organisms,templates}/` must strictly adhere to the deep folder structure. Do not use flat single-file layouts.
+
+```
+lib/components/<tier>/<ComponentName>/
+├── C<ComponentName>.vue          # Main Vue 3 SFC with <script setup lang="ts">
+├── C<ComponentName>.types.ts     # TypeScript interfaces/types for props, emits, slots
+├── composables/                  # Reusable component-specific logic (e.g. use<ComponentName>.ts)
+│   └── use<ComponentName>.ts
+├── styles/                       # CSS custom properties and component-specific theme styles
+│   └── C<ComponentName>.css
+├── __tests__/                    # Component test suites (Unit, Browser Mode, A11y)
+│   ├── C<ComponentName>.spec.ts         # JSDOM unit tests (Vue Test Utils + vitest-axe)
+│   ├── C<ComponentName>.browser.spec.ts # Vitest Browser Mode tests (Playwright engine)
+│   └── C<ComponentName>.a11y.spec.ts    # Dedicated accessibility & keyboard navigation tests
+├── stories/                      # Storybook stories with interaction play functions
+│   └── C<ComponentName>.stories.ts
+├── index.ts                      # Barrel export for component, types, and composables
+└── README.md                     # Component documentation, API table, and usage examples
+```
+
+---
+
+## 2. Vue 3 SFC & TypeScript Standards
+- **Naming Convention**: Always prefix component names with `C` in PascalCase (e.g., `CButton`, `CDialog`, `CDataTable`).
+- **Setup Syntax**: Always use `<script setup lang="ts">`.
+- **Typed Props & Emits**:
+  - Define interfaces in `C<ComponentName>.types.ts`.
+  - Use `defineProps<C<ComponentName>Props>()` with `withDefaults()` for default values.
+  - Use `defineEmits<C<ComponentName>Emits>()` with explicit parameter signatures.
+- **Typed Slots**: Explicitly document and type all supported slots using `defineSlots()`.
+- **Theming & Styling**:
+  - Use Tailwind CSS utility classes and CSS custom properties (`var(--color-*, ...)`).
+  - Ensure styles adapt to all 3 theme states: `light`, `dark`, and `celestial`.
+  - Place custom CSS overrides or animations in `styles/C<ComponentName>.css`.
+
+---
+
+## 3. Accessibility & Semantic Layouts (WCAG 2.2 AA Compliance)
+All components must pass WCAG 2.2 AA accessibility standards:
+
+- **Interactive Telemetry**:
+  - All clickable/interactive elements must carry explicit `aria-label`, `aria-expanded` (for disclosures/dropdowns/modals), `aria-controls`, and `aria-describedby` where appropriate.
+  - Async state updates and error alerts must use `aria-live="polite"` or `role="alert"` / `role="status"`.
+- **Keyboard Navigation & Focus Management**:
+  - Sequential tab navigation must follow the visual flow (never use positive `tabindex > 0`).
+  - Never remove focus rings (`outline: none` is forbidden without a visible replacement using `:focus-visible` with contrast $\ge 3:1$).
+  - Modals and Dialogs must trap keyboard focus within the dialog boundary and return focus to the trigger element upon closing.
+  - Implement standard WAI-ARIA keyboard patterns for complex widgets (e.g. Arrow keys for Tabs/Dropdowns, Escape to close overlays).
+- **Target Size (WCAG 2.2 AA SC 2.5.8)**:
+  - Interactive touch/click targets must meet the minimum size requirement of $24 \times 24\text{px}$ or provide sufficient offset spacing.
+- **Color & Contrast**:
+  - Text contrast ratio must meet minimum 4.5:1 for normal text and 3:1 for large text ($\ge 18\text{pt}$ or $14\text{pt}$ bold).
+  - Never rely solely on color to convey state (pair colors with icons, badges, or text labels).
+
+---
+
+## 4. Public API Exports & Packaging Hygiene
+- **Folder Barrel Export (`index.ts`)**:
+  ```typescript
+  export { default as C<ComponentName> } from './C<ComponentName>.vue'
+  export * from './C<ComponentName>.types'
+  export * from './composables/use<ComponentName>'
+  ```
+- **Tier Registration**:
+  - Register the component in `lib/components/<tier>/index.ts`.
+  - Register the tier export in root `lib/index.ts`.
+- **Tree-Shakability**:
+  - Ensure zero side-effects on root imports.
+  - Subpath exports are mapped in `package.json` under `./atoms`, `./molecules`, `./organisms`, `./templates`, `./composables`, `./utils`.

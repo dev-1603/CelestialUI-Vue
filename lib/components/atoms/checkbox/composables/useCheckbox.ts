@@ -42,7 +42,6 @@ export function useCheckbox(
       type: 'checkbox',
       checked: isChecked.value,
       disabled: isDisabled.value,
-      'aria-checked': isIndeterminate.value ? 'mixed' : isChecked.value,
       'aria-describedby': props.ariaDescribedBy,
       tabindex: props.tabIndex,
       form: props.form,
@@ -67,9 +66,15 @@ export function useCheckbox(
     }
 
     const target = event.target as HTMLInputElement
-    const newChecked = target.checked
 
-    emit('change', newChecked, event)
+    // JSDOM compatibility: check if target exists and has checked property
+    if (target && typeof target.checked === 'boolean') {
+      const newChecked = target.checked
+      emit('change', newChecked, event)
+    } else {
+      // Fallback: use current checked state
+      emit('change', isChecked.value, event)
+    }
   }
 
   /**

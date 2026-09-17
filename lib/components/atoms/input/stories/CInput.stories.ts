@@ -105,6 +105,10 @@ type Story = StoryObj<typeof CInput>
 
 // Default story
 export const Default: Story = {
+  tags: ['a11y-smoke'],
+  parameters: {
+    a11y: { test: 'error' },
+  },
   args: {
     value: '',
     placeholder: 'Enter text here'

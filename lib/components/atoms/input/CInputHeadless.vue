@@ -175,7 +175,7 @@ const {
 
 // Helper text and error message display logic
 const showHelperText = computed(() => {
-  return (props.helperText || slots.helperText) && !showErrorMessage
+  return (props.helperText || slots.helperText) && !showErrorMessage.value
 })
 
 const showErrorMessage = computed(() => {
@@ -244,11 +244,11 @@ const computedAriaDescribedBy = computed(() => {
     ids.push(props.ariaDescribedBy)
   }
 
-  if (showHelperText && helperTextId) {
+  if (showHelperText.value && helperTextId) {
     ids.push(helperTextId)
   }
 
-  if (showErrorMessage && errorMessageId) {
+  if (showErrorMessage.value && errorMessageId) {
     ids.push(errorMessageId)
   }
 

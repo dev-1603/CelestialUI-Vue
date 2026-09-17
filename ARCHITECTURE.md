@@ -195,10 +195,10 @@ CelestialUI-Vue/
 │   ├── visual/                      # Visual regression tests
 │   │   ├── components/
 │   │   ├── themes/
-│   │   └── chromatic.config.ts
+│   │   └── lostpixel.config.ts
 │   └── setup/                       # Test configuration
 │       ├── vitest.config.ts
-│       ├── cypress.config.ts
+│       ├── playwright.config.ts
 │       ├── jest.config.ts
 │       └── test-utils.ts
 ├── 📚 .storybook/                   # Storybook configuration
@@ -256,8 +256,8 @@ CelestialUI-Vue/
 │   │   └── tsconfig.stories.json
 │   ├── testing/
 │   │   ├── vitest.config.ts
-│   │   ├── cypress.config.ts
 │   │   ├── playwright.config.ts
+│   │   ├── lostpixel.config.ts
 │   │   └── jest.config.ts
 │   ├── linting/
 │   │   ├── eslint.config.js

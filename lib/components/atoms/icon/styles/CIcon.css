@@ -253,7 +253,7 @@
   font-family: 'Material Icons', 'Material Icons Outlined', 'Material Icons Round', 'Material Icons Sharp', 'Material Icons Two Tone';
   font-weight: normal;
   font-style: normal;
-  font-size: 24px;
+  font-size: inherit;
   line-height: 1;
   letter-spacing: normal;
   text-transform: none;

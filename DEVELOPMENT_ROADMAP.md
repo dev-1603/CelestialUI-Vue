@@ -12,7 +12,7 @@ CelestialUI-Vue is designed to be a comprehensive, maintainable, and scalable co
 #### Week 1: Infrastructure Setup
 - [x] ✅ **Project Structure**: Optimize folder architecture
 - [x] ✅ **Build System**: Configure Vite + TypeScript + DTS generation
-- [x] ✅ **Testing Setup**: Configure Vitest, Cypress, Playwright
+- [x] ✅ **Testing Setup**: Configure Vitest (jsdom + browser), Playwright E2E, Storybook test-runner, Lost Pixel
 - [x] ✅ **Documentation**: Setup enhanced Storybook configuration
 - [x] ✅ **CI/CD Pipeline**: GitHub Actions for testing and deployment
 

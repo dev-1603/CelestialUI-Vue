@@ -300,11 +300,13 @@ test.describe('Button Visual Tests', () => {
 ## 🛠️ Testing Tools & Configuration
 
 ### Testing Stack
-- **Unit/Integration**: Vitest + Vue Test Utils
-- **E2E**: Cypress + Testing Library
-- **Visual**: Playwright + Chromatic
-- **Performance**: Lighthouse CI
-- **Accessibility**: axe-core + cypress-axe
+- **Unit/Integration**: Vitest (jsdom) + Vue Test Utils
+- **Component (browser)**: Vitest Browser Mode + Playwright
+- **E2E**: Playwright (`e2e/`) against the demo preview
+- **Storybook smoke / a11y**: `@storybook/test-runner` + `@storybook/addon-a11y`
+- **Visual**: Lost Pixel (git-owned baselines). Chromatic is a docs-only fallback and is not installed.
+- **Static analysis**: SonarQube Cloud (`SONAR_TOKEN` in CI)
+- **Accessibility (unit)**: vitest-axe
 
 ### Configuration Files
 
@@ -343,32 +345,8 @@ export default defineConfig({
 })
 ```
 
-#### Cypress Configuration
-```typescript
-// config/testing/cypress.config.ts
-import { defineConfig } from 'cypress'
-
-export default defineConfig({
-  e2e: {
-    baseUrl: 'http://localhost:5173',
-    supportFile: 'tests/e2e/support/e2e.ts',
-    specPattern: 'tests/e2e/specs/**/*.cy.{js,jsx,ts,tsx}',
-    viewportWidth: 1280,
-    viewportHeight: 720,
-    video: true,
-    screenshotOnRunFailure: true,
-    defaultCommandTimeout: 10000
-  },
-  component: {
-    devServer: {
-      framework: 'vue',
-      bundler: 'vite'
-    },
-    supportFile: 'tests/e2e/support/component.ts',
-    specPattern: 'lib/**/*.cy.{js,jsx,ts,tsx}'
-  }
-})
-```
+#### Playwright configuration
+See root `playwright.config.ts` (`testDir: 'e2e'`, `baseURL` `http://localhost:4173`).
 
 ## 📈 Testing Metrics & Reporting
 
@@ -380,7 +358,7 @@ export default defineConfig({
 
 ### Test Reporting
 - **Coverage Reports**: HTML + LCOV
-- **Visual Regression**: Chromatic + Percy
+- **Visual Regression**: Lost Pixel (Chromatic is a docs-only fallback)
 - **Performance**: Lighthouse CI
 - **Accessibility**: axe reports
 
@@ -424,7 +402,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
       - run: npm ci
-      - run: npm run chromatic
+      - run: pnpm test:visual
 ```
 
 ## 🎯 Testing Best Practices

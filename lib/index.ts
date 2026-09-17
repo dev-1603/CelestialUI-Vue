@@ -48,12 +48,9 @@ export const COMPONENT_CATEGORIES = {
   templates: TEMPLATES
 } as const
 
-// Import existing components for backward compatibility
-import CToast from './components/molecules/toast/CToast.vue'
-
-// Legacy component map for backward compatibility
+// Component map to register globally
 const components = {
-  CToast
+  ...ALL_COMPONENTS
 }
 
 // Vue plugin install function
@@ -72,7 +69,7 @@ const CelestialUI = {
     // Register all components globally if specified
     if (options.globalComponents !== false) {
       Object.entries(components).forEach(([name, component]) => {
-        app.component(name, component)
+        app.component(name, component as any)
       })
     }
 

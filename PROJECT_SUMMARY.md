@@ -184,7 +184,7 @@ Complete page layout patterns:
 
 ### Testing Infrastructure
 - **Unit Testing**: Vitest with Vue Test Utils
-- **E2E Testing**: Cypress with custom commands
+- **E2E Testing**: Playwright against the demo preview
 - **Visual Testing**: Chromatic for regression testing
 - **A11y Testing**: axe-core integration
 - **Performance**: Lighthouse CI integration

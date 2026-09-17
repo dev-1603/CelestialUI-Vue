@@ -5,6 +5,14 @@
 // CToast component exists but temporarily disabled for clean build
 // export { default as CToast } from './toast/CToast.vue'
 
+export * from './dialog'
+export * from './dropdown-menu'
+export * from './tabs'
+export * from './pin-input'
+export * from './password-input'
+export * from './social-login-button'
+export * from './countdown-timer'
+
 // Type definitions for when components are implemented
 export interface MolecularComponent {
   name: string
@@ -19,8 +27,8 @@ export const MOLECULE_REGISTRY: MolecularComponent[] = [
   { name: 'CModal', implemented: false, description: 'Modal dialog', category: 'overlay' },
   { name: 'CToast', implemented: false, description: 'Toast notification', category: 'feedback' },
   { name: 'CFormField', implemented: false, description: 'Complete form field', category: 'form' },
-  { name: 'CDropdown', implemented: false, description: 'Dropdown menu', category: 'overlay' },
-  { name: 'CTabs', implemented: false, description: 'Tab navigation', category: 'navigation' },
+  { name: 'CDropdown', implemented: true, description: 'Dropdown menu', category: 'overlay' },
+  { name: 'CTabs', implemented: true, description: 'Tab navigation', category: 'navigation' },
   { name: 'CTabPanel', implemented: false, description: 'Tab content panel', category: 'navigation' },
   { name: 'CSelect', implemented: false, description: 'Selection dropdown', category: 'form' },
   { name: 'CMultiSelect', implemented: false, description: 'Multiple selection', category: 'form' },
@@ -32,7 +40,7 @@ export const MOLECULE_REGISTRY: MolecularComponent[] = [
   { name: 'CNumberInput', implemented: false, description: 'Numeric input', category: 'form' },
   { name: 'CSearchInput', implemented: false, description: 'Search input field', category: 'form' },
   { name: 'CPasswordInput', implemented: false, description: 'Password input field', category: 'form' },
-  { name: 'CPinInput', implemented: false, description: 'PIN code input', category: 'form' },
+  { name: 'CPinInput', implemented: true, description: 'PIN code input', category: 'form' },
   { name: 'CFormLabel', implemented: false, description: 'Form field label', category: 'form' },
   { name: 'CFormHelperText', implemented: false, description: 'Form help text', category: 'form' },
   { name: 'CFormErrorMessage', implemented: false, description: 'Form error message', category: 'form' },
@@ -47,14 +55,20 @@ export const MOLECULE_REGISTRY: MolecularComponent[] = [
   { name: 'CNotification', implemented: false, description: 'Notification message', category: 'feedback' },
   { name: 'CPopover', implemented: false, description: 'Popover overlay', category: 'overlay' },
   { name: 'CTooltip', implemented: false, description: 'Tooltip overlay', category: 'overlay' },
-  { name: 'CDialog', implemented: false, description: 'Dialog component', category: 'overlay' },
+  { name: 'CDialog', implemented: true, description: 'Dialog component', category: 'overlay' },
   { name: 'CDrawer', implemented: false, description: 'Drawer panel', category: 'overlay' },
   { name: 'CSheet', implemented: false, description: 'Bottom sheet', category: 'overlay' }
 ]
 
 // Collections - only include implemented components
 export const MOLECULES = {
-  // No components implemented yet
+  CDialog: true,
+  CDropdownMenu: true,
+  CTabs: true,
+  CPinInput: true,
+  CPasswordInput: true,
+  CSocialLoginButton: true,
+  CCountdownTimer: true,
 } as const
 
 // Category collections

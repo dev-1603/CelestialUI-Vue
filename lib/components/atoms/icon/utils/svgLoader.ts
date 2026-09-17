@@ -1,4 +1,4 @@
-import axios from 'axios'
+
 
 // SVG cache to avoid repeated network requests
 const svgCache = new Map<string, string>()
@@ -76,16 +76,29 @@ export async function loadSvg(
  * Load SVG content from URL using axios
  */
 async function loadSvgContent(url: string, timeout: number): Promise<string> {
+  // No fetch on server
+  if (typeof window === 'undefined') {
+    return ''
+  }
+
+  const controller = new AbortController()
+  const timeoutId = setTimeout(() => controller.abort(), timeout)
+
   try {
-    const response = await axios.get(url, {
-      timeout,
-      responseType: 'text',
+    const response = await fetch(url, {
+      signal: controller.signal,
       headers: {
         'Accept': 'image/svg+xml, text/plain, */*'
       }
     })
 
-    const content = response.data
+    clearTimeout(timeoutId)
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+
+    const content = await response.text()
 
     // Validate that the response is actually SVG
     if (typeof content !== 'string' || !content.includes('<svg')) {
@@ -93,14 +106,12 @@ async function loadSvgContent(url: string, timeout: number): Promise<string> {
     }
 
     return content
-  } catch (error) {
-    if (axios.isAxiosError(error)) {
-      if (error.code === 'ECONNABORTED') {
-        throw new Error(`SVG loading timeout: ${url}`)
-      }
-      throw new Error(`Failed to load SVG from ${url}: ${error.message}`)
+  } catch (error: any) {
+    clearTimeout(timeoutId)
+    if (error.name === 'AbortError') {
+      throw new Error(`SVG loading timeout: ${url}`)
     }
-    throw error
+    throw new Error(`Failed to load SVG from ${url}: ${error.message}`)
   }
 }
 
@@ -124,7 +135,7 @@ export function extractSvgContent(svgString: string): string {
  * Transform SVG for inline use
  */
 export function transformSvgForInline(svgString: string): string {
-  let content = extractSvgContent(svgString)
+  const content = extractSvgContent(svgString)
 
   // Extract just the inner content if it's a complete SVG
   const svgMatch = content.match(/<svg[^>]*>([\s\S]*?)<\/svg>/i)

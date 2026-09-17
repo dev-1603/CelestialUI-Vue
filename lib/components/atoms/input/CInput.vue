@@ -174,7 +174,7 @@ const {
 
 // Helper text and error message display logic
 const showHelperText = computed(() => {
-  return (props.helperText || slots.helperText) && !showErrorMessage
+  return (props.helperText || slots.helperText) && !showErrorMessage.value
 })
 
 const showErrorMessage = computed(() => {
@@ -192,7 +192,7 @@ const errorMessageId = computed(() => {
 
 // Clear button logic
 const showClearButton = computed(() => {
-  return inputValue && !isDisabled && !isReadonly && slots.clearIcon !== undefined
+  return inputValue.value && !isDisabled.value && !isReadonly.value && slots.clearIcon !== undefined
 })
 
 const clearButtonClasses = computed(() => {
@@ -291,12 +291,12 @@ const computedAriaDescribedBy = computed(() => {
     ids.push(props.ariaDescribedBy)
   }
 
-  if (showHelperText && helperTextId) {
-    ids.push(helperTextId)
+  if (showHelperText.value && helperTextId.value) {
+    ids.push(helperTextId.value)
   }
 
-  if (showErrorMessage && errorMessageId) {
-    ids.push(errorMessageId)
+  if (showErrorMessage.value && errorMessageId.value) {
+    ids.push(errorMessageId.value)
   }
 
   return ids.length > 0 ? ids.join(' ') : undefined

@@ -3,27 +3,57 @@ import { mount } from '@vue/test-utils'
 import CIcon from '../CIcon.vue'
 import type { CIconProps } from '../CIcon.types'
 
-// Mock the composables
 vi.mock('../composables/useIcon', () => ({
-  useIcon: vi.fn(() => ({
-    iconElement: 'i',
-    iconAttributes: {},
-    iconType: 'font',
-    iconConfig: {},
-    fontIconClasses: ['material-icons'],
-    svgContent: '',
-    loadSvgContent: vi.fn(),
-    role: 'img',
-    ariaLabel: 'test-icon',
-    ariaHidden: false
-  }))
+  useIcon: vi.fn((props, emit) => {
+    let iconType = props.type || 'font'
+    if (props.svg) {
+      iconType = 'svg'
+    } else if (props.src) {
+      const isSvgFile = props.src.toLowerCase().includes('.svg')
+      if (isSvgFile && props.inlineSvg !== false) {
+        iconType = 'svg'
+      } else {
+        iconType = 'image'
+      }
+    }
+
+    let iconElement = 'i'
+    if (iconType === 'svg') iconElement = 'svg'
+    else if (iconType === 'image') iconElement = 'img'
+    else if (props.clickable) iconElement = 'button'
+
+    const iconAttributes: any = {}
+    if (iconElement === 'img') {
+      iconAttributes.onLoad = (e: Event) => emit('load', e)
+      iconAttributes.onError = (e: Event) => emit('error', e)
+    }
+
+    return {
+      iconElement,
+      iconAttributes,
+      iconType,
+      iconConfig: {},
+      fontIconClasses: ['material-icons'],
+      svgContent: props.svg || '',
+      loadSvgContent: vi.fn(),
+      role: props.role || (iconElement === 'button' ? 'button' : 'img'),
+      ariaLabel: props.ariaLabel || props.name || props.alt || 'test-icon',
+      ariaHidden: props.ariaHidden !== undefined ? props.ariaHidden : false
+    }
+  })
 }))
 
 vi.mock('../composables/useIconStyles', () => ({
-  useIconStyles: vi.fn(() => ({
-    iconClasses: 'c-icon material-icons',
-    iconStyles: {}
-  }))
+  useIconStyles: vi.fn((props) => {
+    const classes = ['c-icon', 'material-icons']
+    if (props.class) {
+      classes.push(props.class)
+    }
+    return {
+      iconClasses: classes.join(' '),
+      iconStyles: {}
+    }
+  })
 }))
 
 describe('CIcon', () => {
@@ -46,8 +76,8 @@ describe('CIcon', () => {
 
     it('renders with custom class', () => {
       const wrapper = mount(CIcon, {
-        props: {
-          ...defaultProps,
+        props: defaultProps,
+        attrs: {
           class: 'custom-class'
         }
       })

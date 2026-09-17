@@ -1,0 +1,53 @@
+.cui-resolver-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.cui-resolver-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cui-resolver-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--cui-text-primary, #1a202c);
+}
+
+.cui-resolver-input {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--cui-border, #e2e8f0);
+  border-radius: var(--cui-radius-md, 6px);
+  background-color: var(--cui-surface, #ffffff);
+  color: var(--cui-text-primary, #1a202c);
+  font-size: 0.875rem;
+  transition: all 0.2s;
+  width: 100%;
+}
+
+.cui-resolver-input:focus {
+  outline: none;
+  border-color: var(--cui-primary, #3182ce);
+  box-shadow: 0 0 0 2px rgba(49, 130, 206, 0.2);
+}
+
+.cui-resolver-input--error {
+  border-color: var(--cui-danger, #e53e3e);
+}
+.cui-resolver-input--error:focus {
+  box-shadow: 0 0 0 2px rgba(229, 62, 62, 0.2);
+}
+
+.cui-resolver-input:disabled {
+  opacity: 0.6;
+  background-color: var(--cui-background-alt, #f7fafc);
+  cursor: not-allowed;
+}
+
+.cui-resolver-error {
+  font-size: 0.75rem;
+  color: var(--cui-danger, #e53e3e);
+}
